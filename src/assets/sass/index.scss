@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+// SETTINGS
+//@import '../../../node_modules/inuitcss/settings/settings.global';
+//@import '_settings/_settings.global';
+//@import '_settings/_settings.colors';
+//@import '_settings/_settings.typography';
+
+// TOOLS
+//@import '../../../node_modules/inuitcss/tools/tools.functions';
+//@import '../../../node_modules/inuitcss/tools/tools.mixins';
+//@import '../../../node_modules/inuitcss/tools/tools.widths';
+//@import '_tools/_tools.responsive-hide';
+
+// GENERIC
+@import '../../../node_modules/inuitcss/generic/generic.box-sizing';
+@import '../../../node_modules/inuitcss/generic/generic.normalize';
+@import '../../../node_modules/inuitcss/generic/generic.reset';
+//@import '_generic/_generic.typography';
+
+// ELEMENTS
+//@import '../../../node_modules/inuitcss/elements/elements.page';
+//@import '_elements/_elements.base';
+//@import '_elements/_elements.headings';
+
+// OBJECTS
+//@import '../../../node_modules/inuitcss/objects/objects.layout';
+//@import '_objects/_objects.wrapper';
+//@import '_objects/_objects.buttons';
+//@import '_objects/_objects.nav';
+//@import '_objects/_objects.nav-pagination';
+//@import '_objects/_objects.nav-blue-blocks';
+//@import '_objects/_objects.nav-tabs';
+//@import '_objects/_objects.nav-mobile-tabs';
+//@import '_objects/_objects.icons';
+//@import '_objects/_objects.agenda-items';
+//@import '_objects/_objects.bgbars';
+//@import '_objects/_objects.radio-toggle';
+//@import '_objects/_objects.event-counter';
+//@import '_objects/_objects.hotels-list';
+
+// COMPONENTS
+//@import '_components/_components.header';
+//@import '_components/_components.hero';
+//@import '_components/_components.home-agenda';
+//@import '_components/_components.home-today';
+//@import '_components/_components.home-article';
+//@import '_components/_components.page';
+//@import '_components/_components.footer';
+
+// UTILITIES
+//@import '../../../node_modules/inuitcss/utilities/utilities.clearfix';
+//@import '../../../node_modules/inuitcss/utilities/utilities.spacing';
+//@import '../../../node_modules/inuitcss/utilities/utilities.print';
+//@import '../../../node_modules/inuitcss/utilities/utilities.hide';
+//@import '_utilities/_utilities.headings';
+//@import '_utilities/_utilities.widths';
+//@import '_utilities/_utilities.misc';
+
+body {
+  background-color: blue;
+  transition: all .2s ease;
+}
+
+.o-layout__item {
+  //border-right: 1px solid lime;
+
+}
+
