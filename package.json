@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "backend": "php -S localhost:9000 -t src/",
     "serve": "webpack-dev-server --inline --port 3000 --config webpack.config.dev.js --content-base src",
-    "build": "rm -rf ./build/; webpack; cp src/vote.php build/",
+    "build": "./run-scripts/build.sh",
     "install-composer": "./run-scripts/install-composer.sh"
   },
   "author": "",
