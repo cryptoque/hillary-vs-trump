@@ -43,8 +43,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js'
+    filename: '[name].js',
+    chunkFilename: '[name].js'
   },
   plugins: [
     // JS
@@ -52,26 +52,14 @@ module.exports = {
       name: ['vendor'],
       minChunks: Infinity
     }),
-    new WebpackMd5Hash(),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery"
     }),
-    new ngAnnotatePlugin({
-      include: /\.js$/,
-      add: true
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.js$/,
-      compress: {
-        warnings: false,
-        drop_debugger: false
-      }
-    }),
 
     // CSS
-    new ExtractTextPlugin('[name].[chunkhash].css'),
+    new ExtractTextPlugin('[name].css'),
 
     // HTML
     new HtmlWebpackPlugin({
@@ -80,5 +68,17 @@ module.exports = {
   ],
   postcss: function () {
     return [precss, autoprefixer];
-  }
+  },
+  devServer: {
+    proxy: {
+      '/': {
+        target: {
+          host: "localhost",
+          port: 9000,
+          protocol: "http"
+        }
+      }
+    },
+  },
+  devtool: 'source-map'
 };
