@@ -22,6 +22,8 @@
  * <div ng-bind-html="'translate-key-with-html'|translate"></div>
  *
  */
+
+// @ngInject
 function translateFilter(translateService, $parse, $interpolate) {
   let translateFilter = function (key, interpolateParams, scope) {
 

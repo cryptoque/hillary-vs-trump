@@ -60,6 +60,7 @@ class TranslateProvider {
     return (preferredLanguage ? preferredLanguage.substr(0, 2) : this.availableLanguages[0]);
   }
 
+  // @ngInject
   $get ($rootScope, $log, $http, $q) {
     return {
       getTranslation: (key) => {

@@ -4,6 +4,8 @@ angular.module('Vote', [
     'ui.router',
     'vcRecaptcha'
   ])
+
+  // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider) => {
 
     // Detect language
@@ -46,6 +48,8 @@ angular.module('Vote', [
     // Initialize reCaptcha
     vcRecaptchaServiceProvider.setSiteKey('6LewDCoTAAAAAMpHUX9TQWjTPoCQ08SNBbdUk926')
   })
+
+  // @ngInject
   .run((translateService) => {
 
     // Load translations
