@@ -4,3 +4,4 @@ build/
 vendor/
 npm-debug.log
 config/config.ini
+logs/
