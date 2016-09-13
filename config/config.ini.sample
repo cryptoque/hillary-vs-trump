@@ -1,0 +1,17 @@
+[production]
+database.adapter = "PDO_MYSQL"
+database.params.host = "localhost"
+database.params.dbname = "hillary-vs-trump"
+database.params.username = "hillary-vs-trump"
+database.params.password = ""
+
+; Google reCaptcha
+google.recaptcha = ""
+
+[staging : production]
+
+database.adapter = "PDO_MYSQL"
+database.params.host = "hillary-vs-trump.fili.nl"
+database.params.dbname = "hillary-vs-trump-test"
+database.params.username = "hillary-vs-trump-test"
+database.params.password = ""

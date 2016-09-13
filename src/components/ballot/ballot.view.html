@@ -1,0 +1,24 @@
+<section class="ballot" ng-show="$ctrl.isVisible">
+
+  <form name="$ctrl.ballotForm" ng-submit="$ctrl.submitVote()">
+    <h2>You would vote:</h2>
+    <a href ng-click="$ctrl.isVisible = false">&times;</a>
+
+    <h1>Donald J. Trump</h1>
+    <p>as 45th PRESIDENT OF THE UNITED STATES</p>
+
+    <div class="ballot__flag ballot__flag--sw">
+      <p>We think you are from Sweden. <a ui-sref="root.faq">Are you?</a></p>
+      <p>We allow one vote per ip and no anonymous ip's. <a ui-sref="root.faq">Why?</a></p>
+    </div>
+
+    <div class="ballot__captcha">
+      <div vc-recaptcha
+        ng-model="$ctrl.ballotForm.gRecaptchaResponse"
+        on-success="$ctrl.votingEnabled = true"
+      ></div>
+    </div>
+
+    <button>VOTE</button>
+  </form>
+</section>

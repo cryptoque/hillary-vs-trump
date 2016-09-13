@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "backend": "php -S localhost:9000 -t src/",
     "serve": "webpack-dev-server --inline --port 3000 --config webpack.config.dev.js --content-base src",
-    "build": "rm -rf ./build/; webpack; cp src/vote.php build/"
+    "build": "rm -rf ./build/; webpack; cp src/vote.php build/",
+    "install-composer": "./run-scripts/install-composer.sh"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +39,7 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-recaptcha": "^3.0.4",
     "inuitcss": "6.0.0-beta.2",
     "jquery": "^3.1.0"
   }

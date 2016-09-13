@@ -1,6 +1,10 @@
 
-angular.module('Vote', [ 'ngSanitize', 'ui.router' ])
-  .config(($stateProvider, $urlRouterProvider, translateServiceProvider) => {
+angular.module('Vote', [
+    'ngSanitize',
+    'ui.router',
+    'vcRecaptcha'
+  ])
+  .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider) => {
 
     // Detect language
     const language = translateServiceProvider.detectLanguage();
@@ -38,6 +42,9 @@ angular.module('Vote', [ 'ngSanitize', 'ui.router' ])
     // Redirect unknown states to the root state
     $urlRouterProvider
       .otherwise('/');
+
+    // Initialize reCaptcha
+    vcRecaptchaServiceProvider.setSiteKey('6LewDCoTAAAAAMpHUX9TQWjTPoCQ08SNBbdUk926')
   })
   .run((translateService) => {
 
