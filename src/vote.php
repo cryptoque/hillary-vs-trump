@@ -14,7 +14,7 @@ if (!count($params)) { invalidVote('Missing parameters'); }
 // reCaptcha
 if (!STAGING) {
   if (!isset($params['gRecaptchaResponse'])) { invalidVote('Missing captcha'); }
-  $recaptcha = new \ReCaptcha\ReCaptcha($_CONFIG['google.recaptcha']);
+  $recaptcha = new \ReCaptcha\ReCaptcha($_CONFIG['general']['google.recaptcha']);
   $resp = $recaptcha->verify($params['gRecaptchaResponse'], $clientIp);
   if (!$resp->isSuccess()) {
     $errors = $resp->getErrorCodes();
@@ -23,7 +23,7 @@ if (!STAGING) {
 }
 
 // Connect DB
-  // Test if unique ip
+// Test if unique ip
 
 // Get country from ip
 
@@ -41,7 +41,7 @@ function invalidVote($reason) {
 }
 
 function getIp() {
-  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+  $ip = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
   if(strpos($ip,',') !== false) {
     $ip = substr($ip,0,strpos($ip,','));
   }
