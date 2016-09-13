@@ -1,0 +1,4 @@
+{
+  "my-tnt.create-shipment.confirm": "{{boldStart}}Address{{boldEnd}} book",
+  "my-tnt.account-settings.company-profile.status.denied.info-text": "We did not approve your company profile. Please contact {{linkStart=help-center}}Customer service{{linkEnd}}."
+}
