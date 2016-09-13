@@ -1,17 +1,14 @@
-[production]
-database.adapter = "PDO_MYSQL"
-database.params.host = "localhost"
-database.params.dbname = "hillary-vs-trump"
-database.params.username = "hillary-vs-trump"
-database.params.password = ""
-
-; Google reCaptcha
+[general]
 google.recaptcha = ""
 
-[staging : production]
+[production]
+database.host = "localhost"
+database.dbname = "hillary-vs-trump"
+database.username = "hillary-vs-trump"
+database.password = ""
 
-database.adapter = "PDO_MYSQL"
-database.params.host = "hillary-vs-trump.fili.nl"
-database.params.dbname = "hillary-vs-trump-test"
-database.params.username = "hillary-vs-trump-test"
-database.params.password = ""
+[staging]
+database.host = "hillary-vs-trump.fili.nl"
+database.dbname = "hillary-vs-trump-test"
+database.username = "hillary-vs-trump-test"
+database.password = ""

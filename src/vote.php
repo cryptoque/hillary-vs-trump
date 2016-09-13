@@ -23,6 +23,12 @@ if (!STAGING) {
 }
 
 // Connect DB
+$db = new mysqli($_DB['database.host'], $_DB['database.username'], $_DB['database.password']);
+if ($db->connect_errno) {
+  invalidVote('DB Error');
+}
+$db->select_db($_DB['database.dbname']);
+
 // Test if unique ip
 
 // Get country from ip

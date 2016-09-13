@@ -1,5 +1,6 @@
 {
   "require": {
-    "google/recaptcha": "~1.1"
+    "google/recaptcha": "~1.1",
+    "geoip2/geoip2": "~2.0"
   }
 }
