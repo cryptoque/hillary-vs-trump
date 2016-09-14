@@ -1,30 +1,48 @@
 <section class="ballot" ng-show="$ctrl.isVisible">
 
-  <form name="$ctrl.ballotForm" ng-submit="$ctrl.submitVote()">
-    {{$ctrl.yourVote}} {{$ctrl.countryCode}}
-    <h2>You would vote:</h2>
+  <div ng-if="$ctrl.hasVoted">
+    <h2>Thanks for your vote!</h2>
     <a href ng-click="$ctrl.isVisible = false">&times;</a>
 
-    <h1>Donald J. Trump</h1>
-    <p>as 45th PRESIDENT OF THE UNITED STATES</p>
+    <button ng-hide="!$ctrl.yourVote">Share my vote</button>
 
-    <div class="ballot__flag ballot__flag--sw">
-      <p>We think you are from Sweden. <a ui-sref="root.faq">Are you?</a></p>
-      <p>We allow one vote per ip and no anonymous ip's. <a ui-sref="root.faq">Why?</a></p>
-    </div>
+    <p>
+      We're working on a worldwide visual results map.
+    </p>
+    <p>
+      Check back soon!
+    </p>
+  </div>
 
-    <div class="ballot__captcha">
-      <div vc-recaptcha
-        ng-model="$ctrl.ballotForm.gRecaptchaResponse"
-        on-success="$ctrl.votingEnabled = true"
-      ></div>
-    </div>
+  <div ng-if="!$ctrl.hasVoted">
 
-    <button ng-disabled="$ctrl.votingInProgress">VOTE</button>
+    <form name="$ctrl.ballotForm" ng-submit="$ctrl.submitVote()">
+      {{$ctrl.yourVote}} {{$ctrl.countryCode}}
+      <h2>You would vote:</h2>
+      <a href ng-click="$ctrl.isVisible = false">&times;</a>
 
-    <div ng-show="$ctrl.apiError">
-      <span ng-bind-html="'error.' + $ctrl.apiError | translate"></span>
-    </div>
+      <h1 ng-show="$tcrl.yourVote === 'T'">Donald J. Trump</h1>
+      <h1 ng-show="$ctrl.yourVote === 'H'">Hillary Clinton</h1>
+      <p>as 45th PRESIDENT OF THE UNITED STATES</p>
 
-  </form>
+      <div class="ballot__flag ballot__flag--sw">
+        <p>We think you are from Sweden. <a ui-sref="root.faq">Are you?</a></p>
+        <p>We allow one vote per ip and no anonymous ip's. <a ui-sref="root.faq">Why?</a></p>
+      </div>
+
+      <div class="ballot__captcha">
+        <div vc-recaptcha
+             ng-model="$ctrl.ballotForm.gRecaptchaResponse"
+             on-success="$ctrl.votingEnabled = true"
+        ></div>
+      </div>
+
+      <button ng-disabled="$ctrl.votingInProgress">VOTE</button>
+
+      <div ng-show="$ctrl.apiError">
+        <span ng-bind-html="'error.' + $ctrl.apiError | translate"></span>
+      </div>
+    </form>
+  </div>
+
 </section>

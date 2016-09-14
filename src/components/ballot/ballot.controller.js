@@ -1,14 +1,19 @@
 class BallotController {
   // @ngInject
-  constructor($scope, apiService) {
+  constructor($window, $scope, apiService) {
+    this.$window = $window;
     this.$scope = $scope;
     this.apiService = apiService;
 
     this.$scope.$on('open-modal', (event, yourVote) => {
-      this.yourVote = yourVote;
-      this.votingEnabled = false;
       this.isVisible = true;
-      this.lookupCountry();
+      this.votingEnabled = false;
+      this.hasVoted = this.$window.localStorage.getItem('hasVoted');
+
+      if (!this.hasVoted) {
+        this.yourVote = yourVote;
+        this.lookupCountry();
+      }
     });
 
     this.votingSuccess = this.votingSuccess.bind(this);
@@ -26,20 +31,21 @@ class BallotController {
   }
 
   submitVote() {
-    this.apiError = false;
-    this.votingInProgress = true;
-    this.apiService.sendVote({ voted: this.yourVote })
-      .then(this.votingSuccess)
-      .catch(this.votingError)
-      .finally(() => {
-        this.votingInProgress = false;
-      });
+    if (!this.hasVoted) {
+      this.apiError = false;
+      this.votingInProgress = true;
+      this.apiService.sendVote({ voted: this.yourVote })
+        .then(this.votingSuccess)
+        .catch(this.votingError)
+        .finally(() => {
+          this.votingInProgress = false;
+        });
+    }
   }
 
   votingSuccess(response) {
-    console.log('succes', response);
-    // TODO
-    //  - localStorage, voting success
+    this.hasVoted = true;
+    this.$window.localStorage.setItem('hasVoted', this.hasVoted);
   }
 
   votingError(response) {
