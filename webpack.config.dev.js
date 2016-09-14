@@ -71,7 +71,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/vote.php': {
+      '/api': {
         target: {
           host: "localhost",
           port: 9000,

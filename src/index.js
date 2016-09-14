@@ -1,6 +1,6 @@
 import './assets/sass/index.scss';
 import './module';
-import './services/vote';
+import './services/api';
 import './services/translate';
 import './components/ballot';
 

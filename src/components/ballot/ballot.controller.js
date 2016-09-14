@@ -1,17 +1,34 @@
 class BallotController {
   // @ngInject
-  constructor(voteService) {
-    this.voteService = voteService;
-    this.votingEnabled = false;
+  constructor($scope, apiService) {
+    this.$scope = $scope;
+    this.apiService = apiService;
+
+    this.$scope.$on('open-modal', (event, yourVote) => {
+      this.yourVote = yourVote;
+      this.votingEnabled = false;
+      this.isVisible = true;
+      this.lookupCountry();
+    });
 
     this.votingSuccess = this.votingSuccess.bind(this);
     this.votingError = this.votingError.bind(this);
   }
 
+  lookupCountry() {
+    this.apiService.lookupCountry()
+      .then((response) => {
+        this.countryCode = response.data.country;
+      })
+      .catch((response) => {
+        this.countryCode = 'UNKNOWN';
+      });
+  }
+
   submitVote() {
     this.apiError = false;
     this.votingInProgress = true;
-    this.voteService.sendVote(this.ballotForm)
+    this.apiService.sendVote({ voted: this.yourVote })
       .then(this.votingSuccess)
       .catch(this.votingError)
       .finally(() => {
@@ -21,7 +38,8 @@ class BallotController {
 
   votingSuccess(response) {
     console.log('succes', response);
-
+    // TODO
+    //  - localStorage, voting success
   }
 
   votingError(response) {

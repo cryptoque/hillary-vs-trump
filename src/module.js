@@ -1,9 +1,12 @@
+import IndexController from './index.controller.js';
 
 angular.module('Vote', [
     'ngSanitize',
     'ui.router',
     'vcRecaptcha'
   ])
+
+  .controller('IndexController', IndexController)
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider) => {
@@ -29,11 +32,17 @@ angular.module('Vote', [
       })
       .state('root.index', {
         url: '/',
+        controllerAs: '$ctrl',
+        controller: 'IndexController',
         template: require('./views/root.index.html')
       })
       .state('root.results', {
         url: '/results',
         template: require('./views/root.results.html')
+      })
+      .state('root.faq', {
+        url: '/faq',
+        template: require('./views/root.faq.html')
       });
 
     // Redirect unknown states to the root state

@@ -1,4 +1,12 @@
 {
   "error.polls.closed": "The polls are closed",
+  "request.invalid.ip": "Unexpected error, please try again",
+  "request.invalid.parameters": "Unexpected error",
+  "request.missing.captcha": "Please fill out the captcha and try again",
+  "request.invalid.captcha": "Please fill out the captcha and try again",
+  "db.connect": "Unexpected error, please try again",
+  "db.error": "Unexpected error, please try again",
+  "request.not.unique": "This ipaddress has already voted",
+  "country.lookup.failed": "Unexpected error",
   "my-tnt.create-shipment.confirm": "{{boldStart}}Address{{boldEnd}} book"
 }

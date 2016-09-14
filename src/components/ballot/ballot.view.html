@@ -1,6 +1,7 @@
 <section class="ballot" ng-show="$ctrl.isVisible">
 
   <form name="$ctrl.ballotForm" ng-submit="$ctrl.submitVote()">
+    {{$ctrl.yourVote}} {{$ctrl.countryCode}}
     <h2>You would vote:</h2>
     <a href ng-click="$ctrl.isVisible = false">&times;</a>
 

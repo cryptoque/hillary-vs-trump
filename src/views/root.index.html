@@ -3,7 +3,8 @@ INDEX
 
 <trump-hillary></trump-hillary>
 
-<button ng-click="$ctrl.modalVisible = true">Vote</button>
+<button ng-click="$ctrl.openModal('T')">Vote Trump</button>
+<button ng-click="$ctrl.openModal('H')">Vote Hillary</button>
 
 <ballot is-visible="$ctrl.modalVisible"></ballot>
 

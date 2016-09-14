@@ -6,5 +6,5 @@ rm -rf ./build/
 
 webpack
 
-cp src/vote.php build/
-cp -r src/translations build/
+cp -r src/api/ build/
+cp -r src/translations/ build/
