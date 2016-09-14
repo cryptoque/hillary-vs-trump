@@ -8,7 +8,8 @@ class BallotController {
     this.$scope.$on('open-modal', (event, yourVote) => {
       this.isVisible = true;
       this.votingEnabled = false;
-      this.hasVoted = this.$window.localStorage.getItem('hasVoted');
+      // this.hasVoted = this.$window.localStorage.getItem('hasVoted');
+      this.hasVoted = false;
 
       if (!this.hasVoted) {
         this.yourVote = yourVote;

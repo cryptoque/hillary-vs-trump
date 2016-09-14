@@ -17,7 +17,6 @@
   <div ng-if="!$ctrl.hasVoted">
 
     <form name="$ctrl.ballotForm" ng-submit="$ctrl.submitVote()">
-      {{$ctrl.yourVote}} {{$ctrl.countryCode}}
       <h2>You would vote:</h2>
       <a href ng-click="$ctrl.isVisible = false">&times;</a>
 
@@ -26,7 +25,8 @@
       <p>as 45th PRESIDENT OF THE UNITED STATES</p>
 
       <div class="ballot__flag ballot__flag--sw">
-        <p>We think you are from Sweden. <a ui-sref="root.faq">Are you?</a></p>
+        <span class="flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>
+        <p>We think you are from {{ $ctrl.countryCode | translate }}. <a ui-sref="root.faq">Are you?</a></p>
         <p>We allow one vote per ip and no anonymous ip's. <a ui-sref="root.faq">Why?</a></p>
       </div>
 

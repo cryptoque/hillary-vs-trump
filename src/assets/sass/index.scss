@@ -25,6 +25,8 @@
 
 // OBJECTS
 //@import '../../../node_modules/inuitcss/objects/objects.layout';
+$flag-icon-css-path: '../../../node_modules/flag-icon-css/flags';
+@import '../../../node_modules/flag-icon-css/sass/_flag-icon.scss';
 //@import '_objects/_objects.wrapper';
 //@import '_objects/_objects.buttons';
 //@import '_objects/_objects.nav';
