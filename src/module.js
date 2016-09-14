@@ -1,4 +1,5 @@
 import IndexController from './index.controller.js';
+import FaqController from './faq.controller.js';
 
 angular.module('Vote', [
     'ngSanitize',
@@ -8,6 +9,7 @@ angular.module('Vote', [
   ])
 
   .controller('IndexController', IndexController)
+  .controller('FaqController', FaqController)
 
   .constant('Languages', [ 'en', 'nl' ])
 
@@ -44,6 +46,8 @@ angular.module('Vote', [
       })
       .state('root.faq', {
         url: '/faq',
+        controllerAs: '$ctrl',
+        controller: 'FaqController',
         template: require('./views/root.faq.html')
       });
 

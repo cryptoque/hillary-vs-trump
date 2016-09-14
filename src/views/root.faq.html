@@ -1,2 +1,13 @@
 FAQ
 <a ui-sref="root.index">Index</a>
+
+<dl>
+  <dt>Which languages are available</dt>
+  <dd>
+    We've tried our best to translate most of this site in as many languages as we could to allow for a balanced voting result.
+    Available languages:
+    <ul>
+      <li ng-repeat="l in $ctrl.Languages"><a ng-href="/?lang={{l}}/#/faq">{{l}}</a></li>
+    </ul>
+  </dd>
+</dl>
