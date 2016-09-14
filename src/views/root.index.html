@@ -3,9 +3,54 @@ INDEX
 
 <trump-hillary></trump-hillary>
 
+{{ 'share.action' | translate:{candidate: ('fullname.trump' | translate)} }}
+
 <button ng-click="$ctrl.openModal('T')">Vote Trump</button>
 <button ng-click="$ctrl.openModal('H')">Vote Hillary</button>
 
 <ballot is-visible="$ctrl.modalVisible"></ballot>
 
 <a ui-sref="root.results">results</a>
+
+
+<button class="btn btn-medium font-bold"
+        socialshare
+        socialshare-provider="facebook"
+        socialshare-type="sharer"
+        socialshare-text="{{ 'share.headline' | translate }}"
+        socialshare-url="{{ 'page.url' | translate }}"
+        socialshare-popup-height="300"
+        socialshare-popup-width="400"
+        socialshare-trigger="click" >
+  <i class="fa fa-facebook"></i> Share on Facebook (sharer)
+</button>
+
+
+<button class="btn btn-medium font-bold"
+        socialshare
+        socialshare-provider="facebook"
+        socialshare-type="feed"
+        socialshare-via="1788524538092788"
+        socialshare-media="http://720kb.net/assets/img/720kb-fb.png"
+        socialshare-text="{{ 'share.action' | translate:{candidate: ('fullname.trump' | translate)} }}"
+        socialshare-caption="{{ 'share.headline' | translate }}"
+        socialshare-url="{{ 'page.url' | translate }}"
+        socialshare-popup-height="300"
+        socialshare-popup-width="400"
+        socialshare-trigger="click" >
+  <i class="fa fa-facebook"></i> Share on Facebook (feed dialog)
+</button>
+
+
+<button class="btn btn-medium font-bold"
+        socialshare
+        socialshare-provider="twitter"
+        socialshare-hashtags="trump #hillary"
+        socialshare-text="{{ 'share.action' | translate:{candidate: ('fullname.trump' | translate)} }} {{ 'share.headline' | translate }}"
+        socialshare-url="{{ 'page.url' | translate }}"
+        socialshare-popup-height="300"
+        socialshare-popup-width="400"
+        socialshare-trigger="click" >
+  <i class="fa fa-twitter"></i> Share on Twitter
+</button>
+

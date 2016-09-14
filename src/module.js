@@ -3,27 +3,29 @@ import IndexController from './index.controller.js';
 angular.module('Vote', [
     'ngSanitize',
     'ui.router',
-    'vcRecaptcha'
+    'vcRecaptcha',
+    '720kb.socialshare'
   ])
 
   .controller('IndexController', IndexController)
 
+  .constant('Languages', [ 'en', 'nl' ])
+
   // @ngInject
-  .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider) => {
+  .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider, Languages) => {
 
     // Detect language
     const languageFromUrl = window.location.href.match(/lang=([a-z]{2})/i);
-    const language = languageFromUrl ? languageFromUrl[1] : translateServiceProvider.detectLanguage([ 'en', 'nl' ]);
+    const language = languageFromUrl ? languageFromUrl[1] : translateServiceProvider.detectLanguage(Languages);
     translateServiceProvider.setTranslation(`translations/${language}/labels.json`);
     translateServiceProvider.setFallbackTranslation(`translations/en/labels.json`);
 
     // States
-    let translationsPromise;
     $stateProvider
       .state('root', {
         abstract: true,
-        url: '',
-        template: require('./views/root.html'),
+        url: '?lang',
+        template: '<ui-view></ui-view>',
         resolve: {
           translationsLoaded: (translateService) => {
             return translateService.isLoaded();
@@ -31,7 +33,7 @@ angular.module('Vote', [
         }
       })
       .state('root.index', {
-        url: '/?lang',
+        url: '/',
         controllerAs: '$ctrl',
         controller: 'IndexController',
         template: require('./views/root.index.html')

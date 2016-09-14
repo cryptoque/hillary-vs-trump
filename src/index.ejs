@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" ng-app="Vote">
 <head>
   <meta charset="UTF-8"/>
   <meta name="fragment" content="!">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes"/>
-  <title></title>
+  <title>{{ 'page.title' | translate }}</title>
+  <meta name="description" content="{{ 'page.description' | translate }}"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta http-equiv="imagetoolbar" content="no"/>
-  <meta name="robots" content="noindex,nofollow"/>
+  <meta name="robots" content="index,follow"/>
+
+  <!-- Twitter card - https://dev.twitter.com/cards/types/summary-large-image -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@filidor.wiese">
+  <meta name="twitter:title" content="{{ 'page.title' | translate }}">
+  <meta name="twitter:description" content="{{ 'page.description' | translate }}">
+  <meta name="twitter:image" content="">
+
+  <!-- Facebook -->
+  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:title" content="{{ 'page.title' | translate }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ 'page.url' | translate }}" />
+  <meta property="og:site_name" content="Worldwide.vote" />
+  <meta property="og:description" content="{{ 'page.description' | translate }}" />
+  <meta property="og:image" content="" />
+
   <style>[ng-cloak], .ng-cloak, .translate-cloaked { display: none !important; }</style>
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900i&subset=cyrillic" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=cyrillic" rel="stylesheet">
@@ -16,7 +34,7 @@
 
 <body>
 
-<vote-app ui-view></vote-app>
+<vote-app></vote-app>
 
 <%=htmlWebpackPlugin.files.webpackManifest%>
 
