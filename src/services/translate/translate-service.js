@@ -1,34 +1,11 @@
-/**
- * @ngdoc service
- * @name Translate
- * @description
- *
- * Service to load translations
- * Used as a provider in config phase to define primary/fallback as follows:
- *
- *     tntTranslateServiceProvider.setTranslation(url_to_translation);
- *     tntTranslateServiceProvider.setFallbackTranslation(url_to_fallback_translation);
- *
- * Next you can use the translate service to load the translations in run phase or main controller:
- *
- *     tntTranslateService.loadTranslations();
- *
- * The translation keys returned by these requests are merged into one translation table, where any missing primary keys
- * will be amended with fallback keys. Undefined keys in both translations will fall back to the fallback string.
- *
- * While the translations are loading a .tnt-translate-cloaked class is applied to the html-tag
- * you can use the .tnt-translate-cloak class in common to color:transparent a translation string
- *
- * See the translate-filter for more information about usage.
- */
 class TranslateProvider {
   constructor() {
     this.translation = '';
     this.fallbackTranslation = '';
     this.translationTable = '';
-    this.translationsLoaded = false;
     this.fallbackString = ' '; // by default a space to satisfy one-time binded translations
-    this.availableLanguages = [ 'en', 'nl' ];
+    this.translationsLoaded = false;
+    this.translationsLoadedPromise = false;
   }
 
   setTranslation (url) {
@@ -43,21 +20,15 @@ class TranslateProvider {
     this.fallbackString = string;
   }
 
-  detectLanguage() {
+  detectLanguage(availableLanguages) {
     let preferredLanguage;
-
     if (navigator.languages) {
-
-      let filtered = navigator.languages.filter((value) => this.availableLanguages.includes(value.substr(0, 2)));
+      let filtered = navigator.languages.filter((value) => availableLanguages.includes(value.substr(0, 2)));
       preferredLanguage = filtered[0];
-
     } else {
-
       preferredLanguage = (navigator.language || navigator.userLanguage);
-
     }
-
-    return (preferredLanguage ? preferredLanguage.substr(0, 2) : this.availableLanguages[0]);
+    return (preferredLanguage ? preferredLanguage.substr(0, 2) : availableLanguages[0]);
   }
 
   // @ngInject
@@ -65,7 +36,7 @@ class TranslateProvider {
     return {
       getTranslation: (key) => {
         let translation;
-        if (this.translationsLoaded) {
+        if (this.translationsLoadedPromise) {
           if (angular.isObject(this.translationTable) && angular.isDefined(this.translationTable[key])) {
             translation = this.translationTable[key];
           } else {
@@ -77,10 +48,13 @@ class TranslateProvider {
       },
 
       isLoaded: () => {
-        return !!this.translationsLoaded;
+        return this.translationsLoadedPromise;
       },
 
       loadTranslations: () => {
+        this.translationsLoaded = $q.defer();
+        this.translationsLoadedPromise = this.translationsLoaded.promise;
+
         if (this.translation) {
           // Add a cloak class to html-tag
           angular.element('html').addClass('translate-cloaked');
@@ -108,26 +82,21 @@ class TranslateProvider {
             fallbackCall: fallbackCall,
             translationCall: translationCall
           }).then((translationResponse) => {
-            this.translationTable = _.merge({},
-              _.get(translationResponse, 'fallbackCall.data'),
-              _.get(translationResponse, 'translationCall.data'));
+            this.translationTable = angular.extend({},
+              translationResponse.fallbackCall && translationResponse.fallbackCall.data,
+              translationResponse.translationCall && translationResponse.translationCall.data);
 
-            this.translationsLoaded = true;
-            this.broadcastEvent($rootScope);
+            this.translationsLoaded.resolve();
 
             // Remove cloak class from html-tag
             angular.element('html').removeClass('translate-cloaked');
           });
         } else {
-          this.translationsLoaded = true;
-          this.broadcastEvent($rootScope);
+
+          this.translationsLoaded.resolve();
         }
       }
     };
-  }
-
-  broadcastEvent($rootScope) {
-    $rootScope.$broadcast('translationsLoaded');
   }
 }
 

@@ -3,6 +3,8 @@ require __DIR__ . '/../vendor/autoload.php';
 
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 
+invalidVote('polls.closed');
+
 $_CONFIG = parse_ini_file(__DIR__ . '/../config/config.ini', true);
 $_DB = STAGING ? $_CONFIG['staging'] : $_CONFIG['production'];
 $logFile = __DIR__ . '/../logs/votes.log';
@@ -15,7 +17,7 @@ if (filter_var($clientIp, FILTER_VALIDATE_IP) === false) {
 }
 
 $params = json_decode(file_get_contents('php://input'), true);
-if (!count($params)) { invalidVote('Missing parameters'); }
+if (!count($params)) { invalidVote('request.invalid.parameters'); }
 
 // reCaptcha
 if (!STAGING) {
@@ -24,21 +26,21 @@ if (!STAGING) {
   $resp = $recaptcha->verify($params['gRecaptchaResponse'], $clientIp);
   if (!$resp->isSuccess()) {
     $errors = $resp->getErrorCodes();
-    invalidVote('Invalid Captcha Response');
+    invalidVote('request.invalid.captcha');
   }
 }
 
 // Connect DB
 $db = new mysqli($_DB['database.host'], $_DB['database.username'], $_DB['database.password']);
 if ($db->connect_errno) {
-  invalidVote('DB Connect Error');
+  invalidVote('db.connect');
 }
 $db->select_db($_DB['database.dbname']);
 
 // Test if ip already voted
 $results = $db->query("SELECT `hash` FROM `votes` WHERE `hash` = '" . sha1($clientIp) . "' LIMIT 1");
 if ($results->num_rows) {
-  invalidVote('Already voted');
+  invalidVote('request.not.unique');
 }
 
 // Get country from ip
@@ -51,7 +53,7 @@ $countryCode = $record->country->isoCode;
 $db->query("INSERT INTO `votes` (`ts`, `ip`, `hash`, `vote`, `country`)" .
     "VALUES ('" . time() . "', '" . anonymizeIp($clientIp) . "'," .
     "'" . sha1($clientIp) . "', '" . mysqli_escape_string($db, $params['vote']) . "', '" . $countryCode . "')")
-    or invalidVote('DB Error ' . $db->errno);
+    or invalidVote('db.error.' . $db->errno);
 
 
 logIt('Success. Vote = ' . $params['vote'] . ", Country = " . $countryCode);
@@ -62,7 +64,7 @@ die('OK');
 function invalidVote($reason) {
   logIt($reason);
   header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
-  echo $reason;
+  echo json_encode(array('error' => $reason));
   die;
 }
 

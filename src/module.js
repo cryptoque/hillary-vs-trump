@@ -9,8 +9,10 @@ angular.module('Vote', [
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider) => {
 
     // Detect language
-    const language = translateServiceProvider.detectLanguage();
+    const language = translateServiceProvider.detectLanguage([ 'en', 'nl' ]);
+    // const language = 'nl';
     translateServiceProvider.setTranslation(`translations/${language}/labels.json`);
+    translateServiceProvider.setFallbackTranslation(`translations/en/labels.json`);
 
     // States
     let translationsPromise;
@@ -20,15 +22,8 @@ angular.module('Vote', [
         url: '',
         template: require('./views/root.html'),
         resolve: {
-          translationsLoaded: ($rootScope, $q) => {
-            // Listen for translationsLoaded event and resolve state
-            function createTranslationsPromise() {
-              var deferred = $q.defer();
-              $rootScope.$on('translationsLoaded', deferred.resolve);
-              translationsPromise = deferred.promise;
-              return translationsPromise;
-            }
-            return translationsPromise || createTranslationsPromise();
+          translationsLoaded: (translateService) => {
+            return translateService.isLoaded();
           }
         }
       })

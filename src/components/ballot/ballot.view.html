@@ -19,6 +19,11 @@
       ></div>
     </div>
 
-    <button>VOTE</button>
+    <button ng-disabled="$ctrl.votingInProgress">VOTE</button>
+
+    <div ng-show="$ctrl.apiError">
+      <span ng-bind-html="'error.' + $ctrl.apiError | translate"></span>
+    </div>
+
   </form>
 </section>
