@@ -9,4 +9,4 @@ webpack
 cp -r src/api/ build/
 cp -r src/translations/ build/
 
-php ./generate-results-json.php
+php ./scripts/generate-results-json.php
