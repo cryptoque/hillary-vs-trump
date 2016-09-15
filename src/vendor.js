@@ -4,3 +4,7 @@ import 'angular-sanitize';
 import 'angular-ui-router';
 import 'angular-recaptcha';
 import 'angular-socialshare';
+import 'topojson';
+import 'leaflet';
+import 'chroma-js';
+import './topojson.init';

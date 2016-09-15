@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "backend": "php -S localhost:9000 -t src/",
-    "serve": "webpack-dev-server --inline --port 3000 --config webpack.config.dev.js --content-base src",
+    "serve": "webpack-dev-server --inline --host 0.0.0.0 --port 3000 --config webpack.config.dev.js --content-base src",
     "build": "./scripts/build.sh",
     "install-composer": "./scripts/install-composer.sh"
   },
@@ -42,8 +42,11 @@
     "angular-sanitize": "^1.5.8",
     "angular-socialshare": "^2.2.8",
     "angular-ui-router": "^1.0.0-beta.2",
+    "chroma-js": "^1.2.1",
     "flag-icon-css": "^2.4.0",
     "inuitcss": "6.0.0-beta.2",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "leaflet": "^0.7.7",
+    "topojson": "^1.6.27"
   }
 }

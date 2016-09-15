@@ -1,5 +1,6 @@
 import IndexController from './index.controller.js';
 import FaqController from './faq.controller.js';
+import ResultsController from './results.controller.js';
 
 angular.module('Vote', [
     'ngSanitize',
@@ -10,6 +11,7 @@ angular.module('Vote', [
 
   .controller('IndexController', IndexController)
   .controller('FaqController', FaqController)
+  .controller('ResultsController', ResultsController)
 
   .constant('Languages', [ 'en', 'nl' ])
 
@@ -42,7 +44,17 @@ angular.module('Vote', [
       })
       .state('root.results', {
         url: '/results',
-        template: require('./views/root.results.html')
+        controllerAs: '$ctrl',
+        controller: 'ResultsController',
+        template: require('./views/root.results.html'),
+        resolve: {
+          votingResults: ($http) => {
+            return $http.get('json/results.json');
+          },
+          topoData: ($http) => {
+            return $http.get('json/countries-iso2.topo.json');
+          }
+        }
       })
       .state('root.faq', {
         url: '/faq',

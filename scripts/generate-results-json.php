@@ -1,7 +1,7 @@
 <?php
 define('ROOTPATH', __DIR__ . '/../');
 define('STAGING', true);
-define('FILE', ROOTPATH . '/build/results.json');
+define('FILE', ROOTPATH . '/build/json/results.json');
 
 if (!php_sapi_name() == "cli") { die('Only through CLI'); }
 
