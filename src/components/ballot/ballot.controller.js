@@ -13,7 +13,7 @@ class BallotController {
 
       if (!this.hasVoted) {
         this.yourVote = yourVote;
-        this.lookupCountry();
+        // this.lookupCountry();
       }
     });
 

@@ -10,15 +10,14 @@ class AddClassOnWrap {
   }
 
   link(scope, element, attrs) {
-
     this.$timeout(() => {
       this.origLineHeight = parseInt(element.css('line-height'), 10);
       this.addWrapClass(element, scope.wrapClass);
-
-      angular.element(window).on('resize', () => {
-        this.addWrapClass(element, scope.wrapClass)
-      });
     }, 100);
+
+    angular.element(window).on('resize', () => {
+      this.addWrapClass(element, scope.wrapClass);
+    });
   }
 
   addWrapClass(element, wrapClass) {

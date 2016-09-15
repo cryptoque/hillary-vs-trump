@@ -15,8 +15,8 @@ $db->select_db($_DB['database.dbname']);
 
 // Read votes from DB
 $countryCodes = array();
-$votes = array('H' => array(), 'T' => array());
-$totalVotes = array('H' => 0, 'T' => 0);
+$votes = array('D' => array(), 'R' => array());
+$totalVotes = array('D' => 0, 'R' => 0);
 $results = $db->query("SELECT `country`, `vote` FROM `votes`");
 while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCodes[] = $row['country'];
@@ -27,18 +27,18 @@ while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
     $votes[$row['vote']][$row['country']] = 1;
   }
 
-  if ($row['vote'] === 'H') {
-    $totalVotes['H']++;
+  if ($row['vote'] === 'D') {
+    $totalVotes['D']++;
   } else {
-    $totalVotes['T']++;
+    $totalVotes['R']++;
   }
 }
 
 // Calculate percentages
 $countryVotes = array();
 foreach (array_unique($countryCodes) as $country) {
-  $voteH = isset($votes['H'][$country]) ? $votes['H'][$country] : 0;
-  $voteT = isset($votes['T'][$country]) ? $votes['T'][$country] : 0;
+  $voteH = isset($votes['D'][$country]) ? $votes['D'][$country] : 0;
+  $voteT = isset($votes['R'][$country]) ? $votes['R'][$country] : 0;
   $totalVotesForThisCountry = $voteH + $voteT;
 
   if ($voteH === $voteT) {
@@ -46,10 +46,10 @@ foreach (array_unique($countryCodes) as $country) {
     $percentage = 50;
   } else {
     if ($voteH > $voteT) {
-      $winner = 'H';
+      $winner = 'D';
       $percentage = 100 / ($totalVotesForThisCountry / $voteH);
     } else {
-      $winner = 'T';
+      $winner = 'R';
       $percentage = 100 / ($totalVotesForThisCountry / $voteT);
     }
   }
@@ -60,12 +60,12 @@ foreach (array_unique($countryCodes) as $country) {
   );
 }
 
-$totalPercentageH = round(100 / (($totalVotes['H']+$totalVotes['T']) / $totalVotes['H']));
-$totalPercentageT = round(100 / (($totalVotes['H']+$totalVotes['T']) / $totalVotes['T']));
+$totalPercentageH = round(100 / (($totalVotes['D']+$totalVotes['R']) / $totalVotes['D']));
+$totalPercentageT = round(100 / (($totalVotes['D']+$totalVotes['R']) / $totalVotes['R']));
 
 file_put_contents(FILE, json_encode(array(
   'total' => $totalVotes,
-  'H' => $totalPercentageH,
-  'T' => $totalPercentageT,
+  'D' => $totalPercentageH,
+  'R' => $totalPercentageT,
   'countries' => $countryVotes
 )), LOCK_EX);

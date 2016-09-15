@@ -16,11 +16,13 @@
     order: 0;
     flex: 1 1 auto;
     align-self: auto;
+    padding: 0 inuit-rem(25px);
 
     h1 {
-      padding: 0 inuit-rem(25px);
+      display: inline-block;
       margin-bottom: 0;
       line-height: inuit-rem(80px);
+      cursor: pointer;
 
       @media screen and (min-width: #{map-get($breakpoints, medium)}) {
         &.top-nav__title--wrapped {
@@ -32,9 +34,13 @@
       }
 
       @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-        padding-top: inuit-rem(10px);
-        padding-bottom: inuit-rem(15px);
-        line-height: inuit-rem(40px);
+        line-height: inuit-rem(113px);
+
+        &.top-nav__title--wrapped {
+          padding-top: inuit-rem(10px);
+          padding-bottom: inuit-rem(15px);
+          line-height: inuit-rem(40px);
+        }
       }
 
       b {
@@ -124,6 +130,16 @@
         width: 100%;
         margin-top: inuit-rem(-3px);
 
+        .top-nav__countdown__char1 {
+          display: inline-block;
+          animation: slideIn .3s;
+        }
+
+        .top-nav__countdown__char2 {
+          display: inline-block;
+          animation: slideIn .5s;
+        }
+
         @media screen and (max-width: #{map-get($breakpoints, medium)}) {
           font-size: inuit-rem(25px);
           line-height: inuit-rem(70px);
@@ -159,6 +175,7 @@
       a {
         width: 100%;
         transform-style: preserve-3d;
+        backface-visibility: hidden;
       }
 
       &:hover {
@@ -181,7 +198,7 @@
     margin-right: inuit-rem(5px);
     background: url(../images/icon--world.svg) 0 0 repeat-x;
     background-size: inuit-rem(50px) inuit-rem(50px);
-    animation: slide 2s linear infinite;
+    animation: slideBg 2s linear infinite;
 
     @media screen and (max-width: #{map-get($breakpoints, medium)}) {
       width: inuit-rem(35px);
@@ -192,7 +209,7 @@
     }
   }
 
-  @-webkit-keyframes slide {
+  @-webkit-keyframes slideBg {
     from { background-position: 0 0; }
     to { background-position: inuit-rem(-50px) 0; }
   }
@@ -200,5 +217,10 @@
   @-webkit-keyframes flip {
     from { transform: rotateY(0deg); }
     to { transform: rotateY(360deg); }
+  }
+
+  @-webkit-keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
 }

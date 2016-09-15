@@ -1,0 +1,57 @@
+.trump-hillary {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100vw;
+  height: 100vh;
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    flex-direction: column;
+  }
+
+  .trump-hillary__trump,
+  .trump-hillary__hillary {
+    position: relative;
+    flex: 1 1 auto;
+    align-self: stretch;
+    width: 50%;
+    transition: all .2s ease;
+
+    .trump-hillary__hotspot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 25% 12%;
+      border: 1px solid lime;
+      overflow: hidden;
+    }
+
+    .trump-hillary__button {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 150%);
+      opacity: 0;
+    }
+
+    &.trump-hillary--hover {
+      width: 60%;
+
+      .trump-hillary__button {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .trump-hillary__trump {
+    background-color: $color-republicans;
+  }
+
+  .trump-hillary__hillary {
+    background-color: $color-democrats;
+  }
+}

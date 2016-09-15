@@ -5,8 +5,6 @@
   "share.headline": "Who would you vote for U.S. president?",
   "share.action": "I voted: {{candidate}}!",
 
-  "fullname.trump": "Donald J. Trump",
-  "fullname.hillary": "Hillary Clinton",
   "error.polls.closed": "The polls are closed",
   "request.invalid.ip": "Unexpected error, please try again",
   "request.invalid.parameters": "Unexpected error",
@@ -22,6 +20,12 @@
   "header.faq": "FAQ",
   "header.days-left": "days left",
   "header.day-left": "day left",
+
+  "fullname.trump": "Donald J. Trump",
+  "fullname.hillary": "Hillary Clinton",
+  "shortname.trump": "Trump",
+  "shortname.hillary": "Clinton",
+  "vote": "Vote",
 
   "AF": "Afghanistan",
   "AX": "Åland Islands",

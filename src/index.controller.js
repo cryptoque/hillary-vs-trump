@@ -4,10 +4,6 @@ class IndexController {
     this.$scope = $scope;
     this.modalVisible = false;
   }
-
-  openModal(yourVote) {
-    this.$scope.$broadcast('open-modal', yourVote);
-  }
 }
 
 export default IndexController;

@@ -71,7 +71,7 @@ class WorldMapController {
     let fillColor;
     if (countryVote) {
 
-      if (countryVote.winner === 'T') {
+      if (countryVote.winner === 'R') {
         fillColor = colorScale(countryVote.percentage).hex();
       } else {
         fillColor = colorScale(100 - countryVote.percentage).hex();

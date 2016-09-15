@@ -53,7 +53,6 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   apiError('country.lookup.failed');
 }
 
-
 // Insert vote into db
 $db->query("INSERT INTO `votes` (`ts`, `ip`, `hash`, `vote`, `country`)" .
     "VALUES ('" . time() . "', '" . anonymizeIp(CLIENTIP) . "'," .
