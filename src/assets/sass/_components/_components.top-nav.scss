@@ -159,13 +159,11 @@
       a {
         width: 100%;
         transform-style: preserve-3d;
-        transform: rotateY(0deg);
-        transition: all .5s ease;
       }
 
       &:hover {
         a {
-          transform: rotateY(360deg);
+          animation: flip .5s linear forwards;
         }
 
         background-color: $color-background-darker;
