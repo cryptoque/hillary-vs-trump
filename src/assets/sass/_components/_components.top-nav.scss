@@ -3,29 +3,55 @@
   flex-direction: row;
   flex-wrap: nowrap;
   height: inuit-rem(80px);
+  line-height: inuit-rem(80px);
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: auto;
+  }
 
   .top-nav__title {
+    display: inline-block;
     order: 0;
     flex: 1 1 auto;
     align-self: auto;
 
-    line-height: inuit-rem(80px);
-    padding-left: inuit-rem(25px);
-    margin-bottom: 0;
+    h1 {
+      padding: 0 inuit-rem(25px);
+      margin-bottom: 0;
+      line-height: inuit-rem(80px);
 
-    b {
-      font-style: italic;
-      font-weight: 900;
+      @media screen and (min-width: #{map-get($breakpoints, medium)}) {
+        &.top-nav__title--wrapped {
+          @include inuit-font-size($inuit-font-size-h1-smaller);
+          line-height: inuit-rem(32px);
+          margin-top: inuit-rem(38px);
+          transform: translateY(-50%);
+        }
+      }
+
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        padding-top: inuit-rem(10px);
+        padding-bottom: inuit-rem(15px);
+        line-height: inuit-rem(40px);
+      }
+
+      b {
+        font-style: italic;
+        font-weight: 900;
+      }
     }
   }
 
   .top-nav__items {
-    order: 0;
+    order: 1;
     flex: 0 1 auto;
     align-self: auto;
     list-style: none;
     display: inline-block;
     min-width: inuit-rem(470px);
+    max-height: inuit-rem(80px);
     margin: 0;
   }
 
@@ -36,7 +62,6 @@
       display: inline-block;
       @extend %font--bold;
       padding: 0;
-      line-height: inuit-rem(80px);
       width: inuit-rem(80px);
       height: inuit-rem(80px);
       color: #FFF;
@@ -105,15 +130,12 @@
       a {
         width: inuit-rem(66px);
         transform-style: preserve-3d;
-        //animation: flip .5s ease-in-out infinite;
-        //animation-play-state: paused;
         transform: rotateY(0deg);
         transition: all .5s ease;
       }
 
       &:hover {
         a {
-          //animation-play-state: running;
           transform: rotateY(360deg);
         }
 

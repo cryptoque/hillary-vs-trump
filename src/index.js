@@ -2,6 +2,7 @@ import './assets/sass/index.scss';
 import './module';
 import './services/api';
 import './services/translate';
+import './directives/add-class-on-wrap';
 import './components/ballot';
 import './components/vote-app';
 import './components/world-map';

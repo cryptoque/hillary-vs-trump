@@ -1,5 +1,7 @@
 <nav class="top-nav">
-  <h1 class="top-nav__title" ng-bind-html="'header.title' | translate"></h1>
+  <div class="top-nav__title">
+    <h1 ng-bind-html="'header.title' | translate" add-class-on-wrap="top-nav__title--wrapped"></h1>
+  </div>
 
   <ul class="top-nav__items">
     <li class="top-nav__item top-nav__item--results">
@@ -10,7 +12,7 @@
     </li>
     <li class="top-nav__item top-nav__item--days">
       <div class="top-nav__countdown">
-        <div class="top-nav__countdown__days">30</div>
+        <div class="top-nav__countdown__days">{{$ctrl.daysLeft}}</div>
         <span class="top-nav__countdown__left" ng-show="true">
           {{'header.days-left' | translate}}
         </span>
