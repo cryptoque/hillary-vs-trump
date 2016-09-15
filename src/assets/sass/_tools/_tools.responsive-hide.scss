@@ -1,0 +1,20 @@
+
+@mixin responsive-hide($className) {
+  @each $breakpoint, $px in $breakpoints {
+    @media screen and (max-width: $px) {
+      .#{$className}\@#{$breakpoint} {
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin responsive-show($className) {
+  @each $breakpoint, $px in $breakpoints {
+    @media screen and (min-width: $px) {
+      .#{$className}\@#{$breakpoint} {
+        display: none;
+      }
+    }
+  }
+}

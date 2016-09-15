@@ -1,0 +1,26 @@
+
+.u-hide-text {
+  text-indent: -100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.u-visibility-hidden {
+  visibility: hidden;
+}
+
+.u-opacity-hidden {
+  opacity: 0;
+}
+
+.disable-scrolling {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  position: fixed;
+}
+
+
+@include responsive-hide(u-hide);
+@include responsive-show(u-show);

@@ -1,0 +1,19 @@
+
+$inuit-wrapper-width: 1920px;
+//$inuit-wrapper-width: 1200px;
+
+$inuit-global-spacing-unit: round($inuit-global-line-height);
+$inuit-global-spacing-unit-tiny: 8px;
+$inuit-global-spacing-unit-small: $inuit-global-spacing-unit;
+$inuit-global-spacing-unit-large: 40px;
+$inuit-global-spacing-unit-huge: 80px;
+
+$breakpoints: (
+  tiny: 480px,
+  small: 640px,
+  medium: 900px,
+  in-between: 1100px,
+  large: 1280px
+);
+
+$inuit-responsive-settings: true;

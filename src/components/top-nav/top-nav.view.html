@@ -1,0 +1,48 @@
+<nav class="top-nav">
+  <h1 class="top-nav__title" ng-bind-html="'header.title' | translate"></h1>
+
+  <ul class="top-nav__items">
+    <li class="top-nav__item top-nav__item--results">
+      <a href ui-sref="root.results">
+        <span class="top-nav__world"></span>
+        {{'header.results' | translate}}
+      </a>
+    </li>
+    <li class="top-nav__item top-nav__item--days">
+      <div class="top-nav__countdown">
+        <div class="top-nav__countdown__days">30</div>
+        <span class="top-nav__countdown__left" ng-show="true">
+          {{'header.days-left' | translate}}
+        </span>
+        <span class="top-nav__countdown__left" ng-show="false">
+          {{'header.day-left' | translate}}
+        </span>
+      </div>
+    </li>
+    <li class="top-nav__item top-nav__item--faq"><a href ui-sref="root.faq">{{'header.faq' | translate}}</a></li>
+    <li class="top-nav__item top-nav__item--twitter">
+      <a class="icon icon--twitter"
+              socialshare
+              socialshare-provider="twitter"
+              socialshare-hashtags="trump #hillary"
+              socialshare-text="{{ 'share.action' | translate:{candidate: ('fullname.trump' | translate)} }} {{ 'share.headline' | translate }}"
+              socialshare-url="{{ 'page.url' | translate }}"
+              socialshare-popup-height="300"
+              socialshare-popup-width="400"
+              socialshare-trigger="click">
+      </a>
+    </li>
+    <li class="top-nav__item top-nav__item--facebook">
+      <a class="icon icon--facebook"
+              socialshare
+              socialshare-provider="facebook"
+              socialshare-type="sharer"
+              socialshare-text="{{ 'share.headline' | translate }}"
+              socialshare-url="{{ 'page.url' | translate }}"
+              socialshare-popup-height="300"
+              socialshare-popup-width="400"
+              socialshare-trigger="click">
+      </a>
+    </li>
+  </ul>
+</nav>

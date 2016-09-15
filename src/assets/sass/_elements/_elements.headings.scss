@@ -1,0 +1,44 @@
+
+%heading-1 {
+  @extend %font-headings;
+  @include inuit-font-size($inuit-font-size-h1);
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    @include inuit-font-size($inuit-font-size-h1-smaller);
+  }
+}
+
+%heading-2 {
+  @extend %font--bold;
+  @include inuit-font-size($inuit-font-size-h2);
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    @include inuit-font-size($inuit-font-size-h2-smaller);
+  }
+}
+
+%heading-3 {
+  @extend %font--bold;
+  @include inuit-font-size($inuit-font-size-h3);
+  margin-bottom: $inuit-global-spacing-unit;
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    @include inuit-font-size($inuit-font-size-h3-smaller);
+  }
+}
+
+h1 {
+  @extend %heading-1;
+}
+
+h2 {
+  @extend %heading-2;
+}
+
+h3 {
+  @extend %heading-3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $inuit-global-spacing-unit - 8;
+}

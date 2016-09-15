@@ -1,0 +1,70 @@
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+
+html {
+  @extend %font--regular;
+  background: $color-background-fallback;
+  color: $color-text-regular;
+}
+
+body {
+  max-width: $inuit-wrapper-width;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+//::-moz-selection {
+//  background: $color-text-selection;
+//  color: #FFF;
+//}
+//::selection {
+//  background: $color-text-selection;
+//  color: #FFF;
+//}
+
+a {
+  color: $color-link;
+  text-decoration: underline;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+//
+//strong {
+//  @extend %font--bold;
+//  @include inuit-font-size($inuit-font-size-secondary);
+//}
+
+ul, ol, dl,
+blockquote, p, address,
+hr,
+table,
+fieldset, figure,
+pre  {
+  margin-bottom: inuit-rem($inuit-global-spacing-unit);
+}
+
+ul, ol,
+dd {
+  margin-left: $inuit-global-spacing-unit;
+}
+
+button {
+  @extend %font--bold;
+  @include inuit-font-size(26px);
+  background: $color-btn;
+  color: #FFF;
+  border: 0;
+  padding: inuit-rem(30px) inuit-rem(30px);
+  transition: all .2s ease;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-btn-hover;
+  }
+
+  &[disabled] {
+    background-color: $color-btn-disabled;
+  }
+}

@@ -1,0 +1,25 @@
+///* ========================================================================
+//   #COLORS
+//   ======================================================================== */
+$color-democrats:                 #117db6;
+$color-republicans:               #ef5c5c;
+
+$color-brand-primary:             $color-republicans;
+$color-brand-primary-darker:      #d54949;
+
+$color-background:                #0d4e71;
+$color-background-darker:         #0a415e;
+$color-background-fallback:       #ececec;
+
+$color-link:                      #4a90e2;
+
+$color-btn:                       $color-brand-primary;
+$color-btn-hover:                 $color-brand-primary-darker;
+$color-btn-disabled:              #e8e8e8;
+
+$color-text-headline:             $color-background-darker;
+$color-text-regular:              #0f5275;
+$color-text-alternate:            $color-democrats;
+
+$color-line:                      #eaeaea;
+$color-line-darker:               $color-background-darker;

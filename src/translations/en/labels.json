@@ -16,7 +16,12 @@
   "db.error": "Unexpected error, please try again",
   "request.not.unique": "This ipaddress has already voted",
   "country.lookup.failed": "Unexpected error",
-  "my-tnt.create-shipment.confirm": "{{boldStart}}Address{{boldEnd}} book",
+
+  "header.title": "Who would {{boldStart}}you vote{{boldEnd}} for U.S. president?",
+  "header.results": "Results",
+  "header.faq": "FAQ",
+  "header.days-left": "days left",
+  "header.day-left": "day left",
 
   "AF": "Afghanistan",
   "AX": "Åland Islands",
