@@ -1,6 +1,6 @@
 <?php
 define('ROOTPATH', __DIR__ . '/../');
-define('STAGING', true);
+define('STAGING', gethostname() === 'hillary-vs-trump');
 define('FILE', ROOTPATH . '/build/json/results.json');
 
 if (!php_sapi_name() == "cli") { die('Only through CLI'); }
