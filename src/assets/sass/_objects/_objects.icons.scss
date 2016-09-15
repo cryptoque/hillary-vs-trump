@@ -10,9 +10,25 @@
 .icon--facebook {
   background-image: url(../images/icon--facebook.svg);
   background-position: center center;
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    background-size: auto inuit-rem(25px);
+  }
+
+  @media screen and (max-width: #{map-get($breakpoints, small)}) {
+    background-size: auto inuit-rem(20px);
+  }
 }
 
 .icon--twitter {
   background-image: url(../images/icon--twitter.svg);
   background-position: center center;
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    background-size: auto inuit-rem(25px);
+  }
+
+  @media screen and (max-width: #{map-get($breakpoints, small)}) {
+    background-size: auto inuit-rem(20px);
+  }
 }

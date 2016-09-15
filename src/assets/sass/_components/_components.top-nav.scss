@@ -47,33 +47,47 @@
   .top-nav__items {
     order: 1;
     flex: 0 1 auto;
-    align-self: auto;
     list-style: none;
-    display: inline-block;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     min-width: inuit-rem(470px);
-    max-height: inuit-rem(80px);
+    height: inuit-rem(80px);
     margin: 0;
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      font-size: inuit-rem(14px);
+      height: inuit-rem(50px);
+      line-height: inuit-rem(50px);
+      min-width: 0;
+      width: 100%;
+    }
   }
 
   .top-nav__item {
     float: left;
+    flex: 1 0 inuit-rem(40px);
 
     a {
       display: inline-block;
       @extend %font--bold;
       padding: 0;
-      width: inuit-rem(80px);
-      height: inuit-rem(80px);
+      width: 100%;
+      height: 100%;
       color: #FFF;
       text-decoration: none;
       text-align: center;
-      transition: all .2s ease;
       vertical-align: top;
     }
 
-    &.top-nav__item--results a {
-      width: inuit-rem(170px);
+    &.top-nav__item--results {
       background-color: $color-btn;
+      flex-basis: inuit-rem(140px);
+
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        flex-basis: auto;
+      }
 
       .top-nav__world {
         animation-play-state: paused;
@@ -89,13 +103,17 @@
     }
 
     &.top-nav__item--days {
+      @media screen and (max-width: #{map-get($breakpoints, small)}) {
+        display: none;
+      }
+
       .top-nav__countdown {
         @extend %font--bold;
         display: inline-block;
         background-color: $color-brand-primary-darker;
         line-height: 0;
-        width: inuit-rem(80px);
-        height: inuit-rem(80px);
+        width: 100%;
+        height: 100%;
         text-align: center;
       }
 
@@ -105,6 +123,12 @@
         line-height: inuit-rem(80px);
         width: 100%;
         margin-top: inuit-rem(-3px);
+
+        @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+          font-size: inuit-rem(25px);
+          line-height: inuit-rem(70px);
+          margin-top: inuit-rem(-13px);
+        }
       }
 
       .top-nav__countdown__left {
@@ -115,20 +139,25 @@
       }
     }
 
-    &.top-nav__item--faq a {
-      background-color: $color-background-darker;
+    &.top-nav__item--faq {
+      text-align: center;
 
-      &:hover {
-        background-color: $color-background;
+      a {
+        background-color: $color-background-darker;
+
+        &:hover {
+          background-color: $color-background;
+        }
       }
     }
 
     &.top-nav__item--twitter,
     &.top-nav__item--facebook {
+      flex-basis: inuit-rem(30px);
       border-left: inuit-rem(4px) solid $color-background-darker;
 
       a {
-        width: inuit-rem(66px);
+        width: 100%;
         transform-style: preserve-3d;
         transform: rotateY(0deg);
         transition: all .5s ease;
@@ -153,12 +182,21 @@
     vertical-align: middle;
     margin-right: inuit-rem(5px);
     background: url(../images/icon--world.svg) 0 0 repeat-x;
+    background-size: inuit-rem(50px) inuit-rem(50px);
     animation: slide 2s linear infinite;
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      width: inuit-rem(35px);
+      height: inuit-rem(35px);
+      border: inuit-rem(3px) solid #FFF;
+      background-size: cover;
+      animation: none;
+    }
   }
 
   @-webkit-keyframes slide {
     from { background-position: 0 0; }
-    to { background-position: -50px 0; }
+    to { background-position: inuit-rem(-50px) 0; }
   }
 
   @-webkit-keyframes flip {
