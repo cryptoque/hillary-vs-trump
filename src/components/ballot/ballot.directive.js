@@ -11,8 +11,9 @@ class BallotDirective {
 
   link(scope, element, attrs, ctrl) {
     // Close the search on ESC
-    angular.element(document).keyup(function(event) {
+    angular.element(document).keydown((event) => {
       if (event.keyCode === 27) {
+        event.preventDefault();
         ctrl.closeModal();
       }
     });

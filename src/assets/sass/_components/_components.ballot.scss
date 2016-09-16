@@ -6,9 +6,11 @@
   width: 90%;
   max-width: inuit-rem(1060px);
   background-color: #FFF;
-  transform: translate(-50%, -50%);
   text-align: center;
   padding: inuit-rem(95px) 7% inuit-rem(37px) 7%;
+  transition: all .5s ease;
+  transform: translate(-50%, -50%);
+  animation: ballotSlideUp .5s ease-out forwards;
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
     top: inuit-rem(193px);  // Offset needed for fixed header
@@ -156,11 +158,34 @@
   bottom: 0;
   left: 0;
   background-color: #000;
-  opacity: .6;
-  transition: all .5s ease;
+  opacity: 0;
+  animation: ballotBgFadeIn .5s ease-out forwards;
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    transition: none;
     background-color: #FFF;
     opacity: 1;
+  }
+}
+
+@keyframes ballotBgFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: .6;
+  }
+}
+
+@keyframes ballotSlideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 50%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
   }
 }

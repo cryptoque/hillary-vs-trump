@@ -13,7 +13,7 @@ class HotspotDirective {
     const parent = angular.element('.' + scope.parent);
     let debounce;
 
-    element.on('mouseover', () => {
+    element.on('mouseover mouseenter', () => {
       angular.element('.' + scope.wrapClass).removeClass(scope.wrapClass);
       parent.addClass(scope.wrapClass);
     });
@@ -25,7 +25,6 @@ class HotspotDirective {
       debounce = this.$timeout(() => {
         parent.removeClass(scope.wrapClass);
       }, 200);
-
     });
   }
 
