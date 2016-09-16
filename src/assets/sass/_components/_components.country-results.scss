@@ -1,0 +1,99 @@
+.country-results {
+  @extend %font--bold;
+  max-width: inuit-rem(850px);
+  width: 100%;
+  margin: inuit-rem(10px) auto;
+  border-collapse: collapse;
+  background-color: #FFF;
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    font-size: inuit-rem($inuit-font-size-tiny);
+    width: 96%;
+    margin: inuit-rem(10px) inuit-rem(10px);
+  }
+
+  thead {
+    td {
+      padding: inuit-rem(15px) 0;
+    }
+  }
+
+  td {
+    vertical-align: middle;
+    border-bottom: inuit-rem(3px) solid $color-line;
+    padding: 0;
+  }
+
+  .country-results__title {
+    text-align: center;
+
+    .country-results__title--R {
+      color: $color-republicans;
+    }
+
+    .country-results__title--D {
+      color: $color-democrats;
+    }
+
+    @media screen and (min-width: #{map-get($breakpoints, medium)}) {
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .country-results__label-votes {
+    text-align: right;
+  }
+
+  .country-results__flag {
+    .flag-icon {
+      width: 70px;
+      height: 50px;
+    }
+  }
+
+  .country-results__countryname {
+    padding-left: inuit-rem(10px);
+
+    &.country-results__countryname--D {
+      color: $color-democrats;
+    }
+    &.country-results__countryname--R {
+      color: $color-republicans;
+    }
+    &.country-results__countryname--U {
+    }
+  }
+
+  .country-results__score {
+    text-align: right;
+
+    .country-results__winner {
+      padding: inuit-rem(25px) 0;
+
+      &.country-results__winner--D {
+        border-right: inuit-rem(20px) solid $color-democrats;
+        color: $color-democrats;
+      }
+      &.country-results__winner--R {
+        border-right: inuit-rem(20px) solid $color-republicans;
+        color: $color-republicans;
+      }
+      &.country-results__winner--U {
+        border-right: inuit-rem(20px) solid #FFF;
+      }
+    }
+
+    .country-results__name {
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        display: none;
+      }
+    }
+
+    .country-results__percentage {
+      padding-right: inuit-rem(20px);
+    }
+
+  }
+}

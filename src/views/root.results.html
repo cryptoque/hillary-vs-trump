@@ -1,4 +1,7 @@
-RESULTS
-<a ui-sref="root.index">Index</a>
+<main class="page page--results">
+  <div class="page__wrapper">
+    <world-map voting-results="$ctrl.votingResults" topo-data="$ctrl.topoData"></world-map>
 
-<world-map voting-results="$ctrl.votingResults" topo-data="$ctrl.topoData"></world-map>
+    <country-results voting-results="$ctrl.votingResults"></country-results>
+  </div>
+</main>

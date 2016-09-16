@@ -1,0 +1,38 @@
+.world-map {
+  background-color: $color-background-fallback;
+
+  .world-map__R,
+  .world-map__D {
+    display: none;
+  }
+
+  .world-map__header {
+    background-color: #FFF;
+    text-align: center;
+    padding: inuit-rem(20px) 0;
+  }
+
+  .world-map__title {
+    margin-bottom: inuit-rem(10px);
+  }
+
+  .world-map__sub {
+    @extend %font--bold;
+    color: $color-democrats;
+    font-size: inuit-rem($inuit-font-size-tiny);
+    margin-bottom: 0;
+  }
+}
+
+#world-map-leaflet {
+  height: inuit-rem(570px);
+  overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    height: inuit-rem(300px);
+  }
+}

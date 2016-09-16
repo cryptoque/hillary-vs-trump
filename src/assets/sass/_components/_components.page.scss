@@ -1,0 +1,20 @@
+.page {
+  &.page--index {}
+
+  &.page--results {
+    margin-top: inuit-rem(80px);
+    margin-bottom: inuit-rem(50px);
+
+    @media screen and (min-width: #{map-get($breakpoints, medium)}) {
+      background: 0 0 url(../images/page--results__bg.png) repeat-x;
+    }
+
+    .page__wrapper {
+      max-width: $inuit-wrapper-width;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+  }
+
+  &.page--faq {}
+}

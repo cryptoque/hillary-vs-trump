@@ -4,14 +4,11 @@
 
 html {
   @extend %font--regular;
-  background: $color-background-fallback;
+  background: #FFF;
   color: $color-text-regular;
 }
 
 body {
-  max-width: $inuit-wrapper-width;
-  margin: 0 auto;
-  overflow: hidden;
 }
 
 //::-moz-selection {

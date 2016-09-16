@@ -70,7 +70,7 @@ class BallotController {
   }
 
   candidate() {
-    return this.$filter('translate')('fullname.' + (this.yourVote === 'R' ? 'trump' : 'hillary'));
+    return this.$filter('translate')('fullname.' + (this.yourVote === 'R' ? 'trump' : (this.yourVote === 'D' ? 'hillary' : '')));
   }
 
   closeModal() {

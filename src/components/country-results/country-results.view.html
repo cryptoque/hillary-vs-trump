@@ -1,0 +1,31 @@
+<table class="country-results">
+  <thead>
+    <tr>
+      <td></td>
+      <td class="country-results__title">
+        <span class="country-results__title--R">{{'shortname.trump' | translate}}</span>
+        <span>VS</span>
+        <span class="country-results__title--D">{{'shortname.hillary' | translate}}</span>
+      </td>
+      <td class="country-results__label-votes">
+        {{ 'worldmap.votes' | translate}} / %
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(code, data) in $ctrl.votingResults.countries" id="country-{{code}}">
+      <td class="country-results__flag">
+        <span class="flag-icon flag-icon-{{code.toLowerCase()}}"></span>
+      </td>
+      <td class="country-results__countryname country-results__countryname--{{data.winner}}">
+        <span>{{code | translate}}</span>
+      </td>
+      <td class="country-results__score">
+        <div class="country-results__winner country-results__winner--{{data.winner}}">
+          <span class="country-results__name">{{$ctrl.candidate(data.winner)}}:</span>
+          <span class="country-results__percentage">{{data.percentage}}%</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

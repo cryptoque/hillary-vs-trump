@@ -1,6 +1,6 @@
 <?php
 define('ROOTPATH', __DIR__ . '/../');
-define('STAGING', gethostname() === 'hillary-vs-trump');
+define('STAGING', gethostname() !== 'hillary-vs-trump');
 define('FILE', ROOTPATH . '/build/json/results.json');
 
 if (!php_sapi_name() == "cli") { die('Only through CLI'); }
@@ -37,27 +37,29 @@ while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
 // Calculate percentages
 $countryVotes = array();
 foreach (array_unique($countryCodes) as $country) {
-  $voteH = isset($votes['D'][$country]) ? $votes['D'][$country] : 0;
-  $voteT = isset($votes['R'][$country]) ? $votes['R'][$country] : 0;
-  $totalVotesForThisCountry = $voteH + $voteT;
+  $voteD = isset($votes['D'][$country]) ? $votes['D'][$country] : 0;
+  $voteR = isset($votes['R'][$country]) ? $votes['R'][$country] : 0;
+  $totalVotesForThisCountry = $voteD + $voteR;
 
-  if ($voteH === $voteT) {
-    $winner = '?';
-    $percentage = 50;
-  } else {
-    if ($voteH > $voteT) {
-      $winner = 'D';
-      $percentage = 100 / ($totalVotesForThisCountry / $voteH);
+  if ($totalVotesForThisCountry > 0) {
+    if ($voteD === $voteR) {
+      $winner = '?';
+      $percentage = 50;
     } else {
-      $winner = 'R';
-      $percentage = 100 / ($totalVotesForThisCountry / $voteT);
+      if ($voteD > $voteR) {
+        $winner = 'D';
+        $percentage = 100 / ($totalVotesForThisCountry / $voteD);
+      } else {
+        $winner = 'R';
+        $percentage = 100 / ($totalVotesForThisCountry / $voteR);
+      }
     }
-  }
 
-  $countryVotes[$country] = array(
-    'winner' => $winner,
-    'percentage' => round($percentage)
-  );
+    $countryVotes[$country] = array(
+      'winner' => $winner,
+      'percentage' => round($percentage)
+    );
+  }
 }
 
 $totalPercentageH = round(100 / (($totalVotes['D']+$totalVotes['R']) / $totalVotes['D']));

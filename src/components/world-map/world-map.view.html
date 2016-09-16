@@ -1,13 +1,22 @@
 <div class="world-map">
-  <div class="world-map__T">
-    Trump<br />
+  <div class="world-map__R">
+    {{'shortname.trump' | translate}}<br />
     52%
   </div>
 
-  <div id="world-map" style="border:1px solid lime;height:500px;background:white"></div>
+  <div id="world-map-leaflet"></div>
 
-  <div class="world-map__H">
-    Hillary<br />
+  <div class="world-map__D">
+    {{'shortname.clinton' | translate}}<br />
     48%
   </div>
+
+  <div class="world-map__header">
+    <h1 class="world-map__title">{{'worldmap.title' | translate}}</h1>
+
+    <p class="world-map__sub">
+      Total number of votes: {{$ctrl.votingResults.total.D + $ctrl.votingResults.total.R}}
+    </p>
+  </div>
 </div>
+

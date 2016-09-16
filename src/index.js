@@ -7,5 +7,6 @@ import './directives/hotspot';
 import './components/ballot';
 import './components/vote-app';
 import './components/world-map';
+import './components/country-results';
 import './components/top-nav';
 import './components/trump-hillary';

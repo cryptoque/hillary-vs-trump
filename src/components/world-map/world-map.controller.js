@@ -5,7 +5,8 @@ class WorldMapController {
     this.colors = {
       republicans: '#ef5c5c',
       democrats: '#117db6',
-      undecided: '#EEE'
+      undecided: '#dadada',
+      split: '#dadada'
     };
 
     this.initCountryLayer = this.initCountryLayer.bind(this);
@@ -13,13 +14,11 @@ class WorldMapController {
   }
 
   initMap() {
-
-
     const southWest = new L.LatLng(-40.44694705960048, -165.9375),
       northEast = new L.LatLng(76.67978490310692, 175.4296875),
       bounds = new L.LatLngBounds(southWest, northEast);
 
-    this.leafletMap = L.map('world-map', {
+    this.leafletMap = L.map('world-map-leaflet', {
       // zoom: 3,
       maxZoom: 3,
       minZoom: 1,
@@ -27,23 +26,18 @@ class WorldMapController {
       zoomControl: false,
       dragging: false
     });
-
-    this.leafletMap.on('click', function(e) {
-      console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-    });
+    //
+    // this.leafletMap.on('click', function(e) {
+    //   console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
+    // });
 
     angular.element(window).on('resize', () => {
       this.leafletMap.fitBounds(bounds);
     });
 
     this.leafletMap.setView([44, -31], 3);
-
-    console.log(this.leafletMap.getBounds());
-
-    // this.leafletMap.fitWorld([[-190.0, -160.0], [-190.0, -180.0]]);
     this.leafletMap.fitBounds(bounds);
     this.addTopoData();
-    // this.fitBounds();
   }
 
   addTopoData() {
@@ -51,13 +45,6 @@ class WorldMapController {
     topoLayer.addData(this.topoData);
     topoLayer.addTo(this.leafletMap);
     topoLayer.eachLayer(this.initCountryLayer);
-  }
-
-  fitBounds() {
-    const southWest = new L.LatLng(0.7031073524364783, -9.140625),
-      northEast = new L.LatLng(71.74643171904148, 62.57812500000001),
-      bounds = new L.LatLngBounds(southWest, northEast);
-    this.leafletMap.fitWorld(bounds);
   }
 
   initCountryLayer(layer) {
@@ -72,9 +59,15 @@ class WorldMapController {
     if (countryVote) {
 
       if (countryVote.winner === 'R') {
-        fillColor = colorScale(countryVote.percentage).hex();
+        fillColor = this.colors.republicans;
+        // fillColor = colorScale(countryVote.percentage).hex();
+      } else if (countryVote.winner === 'D') {
+        // fillColor = colorScale(100 - countryVote.percentage).hex();
+        fillColor = this.colors.democrats;
       } else {
-        fillColor = colorScale(100 - countryVote.percentage).hex();
+
+        fillColor = this.colors.split;
+
       }
 
     } else {
@@ -83,10 +76,11 @@ class WorldMapController {
 
     }
 
+    // fillColor = this.colors.undecided;
     layer.setStyle({
       fillColor: fillColor,
       fillOpacity: 1,
-      color: '#555',
+      color: '#ececec',
       weight: 1,
       opacity: .5
     });
@@ -102,9 +96,7 @@ class WorldMapController {
   }
 
   clickLayer(l) {
-    // console.log(l, this.feature.properties.name);
-    // debugger;
-    // this.leafletMap.fitBounds(l.target.getBounds());
+    console.log(this.votingResults.countries[l.target.feature.id]);
   }
 
   enterLayer() {

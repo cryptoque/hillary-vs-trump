@@ -10,7 +10,7 @@
   padding: inuit-rem(95px) 7% inuit-rem(37px) 7%;
   transition: all .5s ease;
   transform: translate(-50%, -50%);
-  animation: ballotSlideUp .5s ease-out forwards;
+  animation: ballotSlideUp .6s linear forwards;
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
     top: inuit-rem(193px);  // Offset needed for fixed header
