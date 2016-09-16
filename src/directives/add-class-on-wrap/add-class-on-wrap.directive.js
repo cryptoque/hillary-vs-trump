@@ -1,4 +1,4 @@
-class AddClassOnWrap {
+class AddClassOnWrapDirective {
   constructor($timeout) {
     this.restrict = 'A';
     this.scope = {
@@ -29,5 +29,5 @@ class AddClassOnWrap {
 
 // @ngInject
 export default ($timeout) => {
-  return new AddClassOnWrap($timeout);
+  return new AddClassOnWrapDirective($timeout);
 };

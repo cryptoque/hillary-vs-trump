@@ -6,6 +6,13 @@
   width: 100vw;
   height: 100vh;
 
+  // Offset needed for fixed header
+  padding-top: inuit-rem(80px);
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    padding-top: inuit-rem(163px);
+  }
+
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
     flex-direction: column;
   }
@@ -15,18 +22,35 @@
     position: relative;
     flex: 1 1 auto;
     align-self: stretch;
-    width: 50%;
     transition: all .2s ease;
+    height: 100%;
+    width: 50%;
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      width: 100%;
+      height: 50%;
+    }
 
     .trump-hillary__hotspot {
       position: absolute;
       top: 0;
-      bottom: 0;
       left: 0;
+      bottom: 0;
       right: 0;
       margin: 25% 12%;
       border: 1px solid lime;
       overflow: hidden;
+      cursor: pointer;
+
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        right: auto;
+        bottom: auto;
+        top: 20%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+        margin: 0;
+      }
     }
 
     .trump-hillary__button {
@@ -35,10 +59,16 @@
       left: 50%;
       transform: translate(-50%, 150%);
       opacity: 0;
+      white-space: nowrap;
     }
 
     &.trump-hillary--hover {
       width: 60%;
+
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        width: 100%;
+        height: 60%;
+      }
 
       .trump-hillary__button {
         transform: translate(-50%, 0);

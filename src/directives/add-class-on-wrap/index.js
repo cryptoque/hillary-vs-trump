@@ -1,4 +1,4 @@
-import AddClassOnWrap from './add-class-on-wrap.directive';
+import AddClassOnWrapDirective from './add-class-on-wrap.directive';
 
 angular.module('Vote')
-    .directive('addClassOnWrap', AddClassOnWrap);
+    .directive('addClassOnWrap', AddClassOnWrapDirective);
