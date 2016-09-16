@@ -1,17 +1,9 @@
-import IndexController from './index.controller.js';
-import FaqController from './faq.controller.js';
-import ResultsController from './results.controller.js';
-
 angular.module('Vote', [
     'ngSanitize',
     'ui.router',
     'vcRecaptcha',
     '720kb.socialshare'
   ])
-
-  .controller('IndexController', IndexController)
-  .controller('FaqController', FaqController)
-  .controller('ResultsController', ResultsController)
 
   .constant('Languages', [ 'en', 'nl' ])
 
@@ -39,13 +31,18 @@ angular.module('Vote', [
       .state('root.index', {
         url: '/',
         controllerAs: '$ctrl',
-        controller: 'IndexController',
+        //@ngInject
+        controller: function() {},
         template: require('./views/root.index.html')
       })
       .state('root.results', {
         url: '/results',
         controllerAs: '$ctrl',
-        controller: 'ResultsController',
+        //@ngInject
+        controller: function(votingResults, topoData) {
+          this.votingResults = votingResults.data;
+          this.topoData = topoData.data;
+        },
         template: require('./views/root.results.html'),
         resolve: {
           votingResults: ($http) => {
@@ -59,7 +56,10 @@ angular.module('Vote', [
       .state('root.faq', {
         url: '/faq',
         controllerAs: '$ctrl',
-        controller: 'FaqController',
+        //@ngInject
+        controller: function(Languages) {
+          this.Languages = Languages;
+        },
         template: require('./views/root.faq.html')
       });
 

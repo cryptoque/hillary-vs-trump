@@ -13,8 +13,7 @@
     <li class="top-nav__item top-nav__item--days">
       <div class="top-nav__countdown">
         <div class="top-nav__countdown__days">
-          <span class="top-nav__countdown__char1">3</span><span class="top-nav__countdown__char2">0</span>
-          <!--{{$ctrl.daysLeft}}-->
+          <span class="top-nav__countdown__char1">{{$ctrl.daysLeft.toString()[0]}}</span><span class="top-nav__countdown__char2">{{$ctrl.daysLeft.toString()[1]}}</span>
         </div>
         <span class="top-nav__countdown__left" ng-show="true">
           {{'header.days-left' | translate}}
@@ -30,7 +29,7 @@
               socialshare
               socialshare-provider="twitter"
               socialshare-hashtags="trump #hillary"
-              socialshare-text="{{ 'share.action' | translate:{candidate: ('fullname.trump' | translate)} }} {{ 'share.headline' | translate }}"
+              socialshare-text="{{ 'share.headline' | translate }}"
               socialshare-url="{{ 'page.url' | translate }}"
               socialshare-popup-height="300"
               socialshare-popup-width="400"

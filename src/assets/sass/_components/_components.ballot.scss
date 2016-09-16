@@ -1,0 +1,166 @@
+.ballot {
+  position: absolute;
+  z-index: 990;
+  top: 55%;
+  left: 50%;
+  width: 90%;
+  max-width: inuit-rem(1060px);
+  background-color: #FFF;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: inuit-rem(95px) 7% inuit-rem(37px) 7%;
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    top: inuit-rem(193px);  // Offset needed for fixed header
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    font-size: 90%;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .ballot__close {
+    position: absolute;
+    z-index: 991;
+    top: inuit-rem(28px);
+    right: inuit-rem(28px);
+    width: inuit-rem(40px);
+    height: inuit-rem(40px);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      width: inuit-rem(25px);
+      height: inuit-rem(25px);
+    }
+  }
+
+  .ballot__subtitle {
+    @extend %font--bold;
+    position: absolute;
+    top: inuit-rem(40px);
+    left: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .ballot__content {
+    @extend %font--bold;
+    border-top: inuit-rem(3px) solid $color-background-darker;
+    border-bottom: inuit-rem(3px) solid $color-background-darker;
+    padding-top: inuit-rem(55px);
+    padding-bottom: inuit-rem(50px);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      padding-top: inuit-rem(35px);
+      padding-bottom: inuit-rem(30px);
+    }
+
+    .ballot__title {
+      @extend %font--bold;
+      margin-bottom: inuit-rem(5px);
+    }
+
+    .ballot__text--pleaseshare {
+      max-width: 70%;
+      margin: 0 auto;
+    }
+
+
+    .ballot__captcha-vote {
+      @media screen and (min-width: #{map-get($breakpoints, medium)}) {
+        @include inuit-clearfix();
+        margin: 0 auto;
+        display: inline-block;
+
+        .ballot__recaptcha,
+        .ballot__button--vote {
+          float: left;
+          margin: inuit-rem(25px) inuit-rem(15px) 0 inuit-rem(15px);
+        }
+      }
+
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        display: block;
+
+        .ballot__recaptcha,
+        .ballot__button--vote {
+          margin: inuit-rem(15px) auto 0 auto;
+        }
+
+        .ballot__recaptcha div {
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .ballot__error {
+      margin-top: inuit-rem(15px);
+    }
+
+    .ballot__button--facebook,
+    .ballot__button--twitter {
+      margin: inuit-rem(55px) inuit-rem(15px) 0 inuit-rem(15px);
+
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        display: block;
+        margin: inuit-rem(25px) auto 0 auto;
+      }
+    }
+
+    .ballot__button--facebook {
+      background-position: inuit-rem(25px) center;
+      padding-left: inuit-rem(50px);
+    }
+
+    .ballot__button--twitter {
+      background-position: inuit-rem(20px) center;
+      padding-left: inuit-rem(60px);
+    }
+  }
+
+  .ballot__footer {
+    position: relative;
+    display: inline-block;
+    margin: inuit-rem(30px) auto 0 auto;
+    text-align: left;
+
+    .ballot__flag {
+      position: absolute;
+      width: inuit-rem(50px);
+      height: 100%;
+
+      span {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+      padding-left: inuit-rem(60px);
+      font-size: inuit-rem($inuit-font-size-tiny);
+
+      @media screen and (max-width: #{map-get($breakpoints, small)}) {
+        font-size: inuit-rem(12px);
+      }
+    }
+  }
+}
+
+.ballot__bg {
+  position: fixed;
+  z-index: 900;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: .6;
+  transition: all .5s ease;
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    background-color: #FFF;
+    opacity: 1;
+  }
+}

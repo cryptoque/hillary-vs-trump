@@ -8,7 +8,6 @@
 
   // Offset needed for fixed header
   padding-top: inuit-rem(80px);
-
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
     padding-top: inuit-rem(163px);
   }

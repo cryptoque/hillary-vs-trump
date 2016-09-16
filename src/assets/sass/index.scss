@@ -30,10 +30,10 @@ $flag-icon-css-path: '../../../node_modules/flag-icon-css/flags';
 @import '_objects/_objects.icons';
 
 // COMPONENTS
-@import '_components/_components.vote-app';
 @import '_components/_components.header';
 @import '_components/_components.top-nav';
 @import '_components/_components.trump-hillary';
+@import '_components/_components.ballot';
 
 // UTILITIES
 @import '../../../node_modules/inuitcss/utilities/utilities.clearfix';
