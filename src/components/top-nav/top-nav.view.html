@@ -15,10 +15,10 @@
         <div class="top-nav__countdown__days">
           <span class="top-nav__countdown__char1">{{$ctrl.daysLeft.toString()[0]}}</span><span class="top-nav__countdown__char2">{{$ctrl.daysLeft.toString()[1]}}</span>
         </div>
-        <span class="top-nav__countdown__left" ng-show="true">
+        <span class="top-nav__countdown__left" ng-show="$ctrl.daysLeft !== 1">
           {{'header.days-left' | translate}}
         </span>
-        <span class="top-nav__countdown__left" ng-show="false">
+        <span class="top-nav__countdown__left" ng-show="$ctrl.daysLeft === 1">
           {{'header.day-left' | translate}}
         </span>
       </div>

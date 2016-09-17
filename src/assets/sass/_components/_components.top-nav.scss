@@ -125,12 +125,12 @@
 
         .top-nav__countdown__char1 {
           display: inline-block;
-          animation: slideIn .3s;
+          animation: slideIn .5s;
         }
 
         .top-nav__countdown__char2 {
           display: inline-block;
-          animation: slideIn .5s;
+          animation: slideIn .7s;
         }
 
         @media screen and (max-width: #{map-get($breakpoints, medium)}) {
@@ -203,27 +203,32 @@
       width: inuit-rem(35px);
       height: inuit-rem(35px);
       border: inuit-rem(3px) solid #FFF;
-      background-size: cover;
-      animation: none;
+      animation: slideBgMobile 4s linear infinite;
+      background-size: inuit-rem(35px) inuit-rem(35px);
     }
   }
 
-  @-webkit-keyframes slideBg {
+  @keyframes slideBg {
     from { background-position: 0 0; }
     to { background-position: inuit-rem(-50px) 0; }
   }
 
-  @-webkit-keyframes flip {
+  @keyframes slideBgMobile {
+    from { background-position: 0 0; }
+    to { background-position: inuit-rem(-35px) 0; }
+  }
+
+  @keyframes flip {
     from { transform: rotateY(0deg); }
     to { transform: rotateY(360deg); }
   }
 
-  @-webkit-keyframes flipShort {
+  @keyframes flipShort {
     from { transform: rotateY(180deg); }
     to { transform: rotateY(360deg); }
   }
 
-  @-webkit-keyframes slideIn {
+  @keyframes slideIn {
     from { transform: translateY(-50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }

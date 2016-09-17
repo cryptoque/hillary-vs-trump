@@ -7,29 +7,29 @@
       <dt>What is this website?</dt>
       <dd>
         <p>
-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
+          The upcoming presidential election of the United States affects the entire world. Will it be Trump or Hillary? And which candidate do people in other countries prefer?
+          We, <a href="http://www.arthurvanthoog.nl">Arthur van 't Hoog</a> (design) and <a href="https://galaxy.fili.nl">Filidor Wiese</a> (development), built this website as a fun
+          side-project in our spare time to answer this intriguing question. Please share!
+        </p>
+        <p>
+          Disclaimer: we are two non-U.S. citizens, who are not affiliated with a political party. By no means is this website intended to be scientifically correct.
+          Please don't take it too serious :)
         </p>
       </dd>
 
       <dt>How does it work?</dt>
       <dd>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
+          On this site you can vote for either Trump or Hillary until the day of the election, November 8th. To discourage possible abuse one vote is allowed per ip-address and
+          no anonymous ip's. The country your vote counts for is determind by the country your ip-address originates from, this can not be changed.
         </p>
       </dd>
 
       <dt>What about my privacy?</dt>
       <dd>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
-        </p>
-      </dd>
-
-      <dt>Some other question</dt>
-      <dd>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
+          We care about your privacy and don't store your ip-address or any other personal identifier in our database. We do store an anonymous (hashed) version of your ip-address to prevent
+          multiple votes per ip.
         </p>
       </dd>
 
@@ -37,13 +37,14 @@
       <dd>
         <p>
           We've tried our best to translate most of this site in as many languages as we could to allow for a balanced voting result.
-          Most of these translations are automated and might contain errors. Sorry about that.
+          Most of these translations are automated and might contain silly errors. Sorry about that.
         </p>
         <ul class="faq-questions__languages">
           <li>Available languages:</li>
           <li ng-repeat="l in $ctrl.Languages"><a ng-href="/?lang={{l}}/#/faq">{{'lang.' + l | translate}}</a></li>
         </ul>
       </dd>
+
     </dl>
 
   </div>

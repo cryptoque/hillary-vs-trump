@@ -140,7 +140,7 @@
     p {
       margin-bottom: 0;
       padding-left: inuit-rem(60px);
-      font-size: inuit-rem($inuit-font-size-tiny);
+      font-size: inuit-rem($inuit-font-size-small);
 
       @media screen and (max-width: #{map-get($breakpoints, small)}) {
         font-size: inuit-rem(12px);

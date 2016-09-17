@@ -27,7 +27,7 @@
 
       <div class="ballot__footer">
         <span class="ballot__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>
-        <p>{{'ballot.yourcountry' | translate:{country: ('country.' + $ctrl.countryCode | translate)} }} <a ui-sref="root.faq">{{'ballot.yourcountry.areyou' | translate}}</a></p>
+        <p>{{'ballot.yourcountry' | translate:{country: ('country.' + $ctrl.countryCode | translate)} }} <a ui-sref="root.faq">{{'ballot.yourcountry.incorrect' | translate}}</a></p>
         <p>{{'ballot.onevoteperip' | translate}} <a ui-sref="root.faq">{{'ballot.onevoteperip.why' | translate}}</a></p>
       </div>
     </form>

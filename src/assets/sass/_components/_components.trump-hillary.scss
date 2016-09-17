@@ -37,8 +37,8 @@
       bottom: 0;
       right: 0;
       margin: 25% 12%;
-      border: 1px solid lime;
-      overflow: hidden;
+      //border: 1px solid lime;
+      //overflow: hidden;
       cursor: pointer;
 
       @media screen and (max-width: #{map-get($breakpoints, medium)}) {
@@ -64,6 +64,10 @@
     &.trump-hillary--hover {
       width: 60%;
 
+      .fili-test {
+        animation: filiTest 1s steps(6, end) forwards, filiTest2 1s linear forwards;
+      }
+
       @media screen and (max-width: #{map-get($breakpoints, medium)}) {
         width: 100%;
         height: 60%;
@@ -82,5 +86,32 @@
 
   .trump-hillary__hillary {
     background-color: $color-democrats;
+  }
+}
+
+.fili-test {
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  margin-left: -170px;
+  background-image: url(../images/testsprite.svg);
+  width: 340px;
+  height: 690px;
+  transform-origin: center center;
+  transform: scale(2);
+}
+
+
+@keyframes filiTest {
+  from { background-position: 0 0; }
+  to {
+    background-position: inuit-rem(-2040px) 0;
+  }
+}
+
+@keyframes filiTest2 {
+  from { transform: scale(2); }
+  to {
+    transform: scale(.4);
   }
 }

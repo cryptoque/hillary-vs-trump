@@ -31,7 +31,7 @@
   "ballot.youwouldvote": "YOU WOULD VOTE:",
   "ballot.aspresident": "as 45th PRESIDENT OF THE UNITED STATES",
   "ballot.yourcountry": "We think you are from {{country}}.",
-  "ballot.yourcountry.areyou": "Are you?",
+  "ballot.yourcountry.incorrect": "Incorrect?",
   "ballot.onevoteperip": "We allow one vote per ip and no anonymous ip's.",
   "ballot.onevoteperip.why": "Why?",
   "ballot.vote": "Submit vote!",
