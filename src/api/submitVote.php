@@ -2,11 +2,12 @@
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', __DIR__ . '/../logs/votes.log');
-define('CLIENTIP', STAGING ? '1.0.0.0' : getIp());
 
 require ROOTPATH . '/vendor/autoload.php';
 require __DIR__ . '/functions.php';
 use GeoIp2\WebService\Client;
+
+define('CLIENTIP', STAGING ? '1.0.0.0' : getIp());
 
 //apiError('polls.closed');
 
