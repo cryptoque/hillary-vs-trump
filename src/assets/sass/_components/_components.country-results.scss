@@ -34,10 +34,14 @@
     }
   }
 
+  .country-results--highlight {
+    background-color: $color-highlight;
+  }
+
   .country-results__flag {
     .flag-icon {
-      width: 70px;
-      height: 50px;
+      width: inuit-rem(70px);
+      height: inuit-rem(50px);
     }
   }
 

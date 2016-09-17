@@ -1,16 +1,18 @@
 class WorldMapController {
   // @ngInject
-  constructor($window) {
+  constructor($window, $document) {
     this.$window = $window;
+    this.$document = $document;
+
+    this.initCountryLayer = this.initCountryLayer.bind(this);
+    this.clickLayer = this.clickLayer.bind(this);
+
     this.colors = {
       republicans: '#ef5c5c',
       democrats: '#117db6',
       undecided: '#dadada',
       split: '#B26CC1'
     };
-
-    this.initCountryLayer = this.initCountryLayer.bind(this);
-    this.clickLayer = this.clickLayer.bind(this);
   }
 
   initMap() {
@@ -26,9 +28,9 @@ class WorldMapController {
       dragging: false
     });
 
-    this.leafletMap.on('click', function(e) {
-      console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
-    });
+    // this.leafletMap.on('click', function(e) {
+    //   console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
+    // });
 
     angular.element(window).on('resize', () => {
       this.leafletMap.fitBounds(bounds);
@@ -69,7 +71,6 @@ class WorldMapController {
 
     }
 
-    // fillColor = this.colors.undecided;
     layer.setStyle({
       fillColor: fillColor,
       fillOpacity: 1,
@@ -89,7 +90,11 @@ class WorldMapController {
   }
 
   clickLayer(l) {
-    console.log(this.votingResults.countries[l.target.feature.id]);
+    const id = l.target.feature.id;
+    const el = angular.element('body').find('#country-' + id);
+    this.$document.scrollToElement(el, 300, 3000);
+    angular.element('body').find('.country-results--highlight').removeClass('country-results--highlight');
+    el.addClass('country-results--highlight');
   }
 
   enterLayer() {

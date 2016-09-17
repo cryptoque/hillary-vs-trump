@@ -15,9 +15,9 @@
   "error.request.not.unique": "Sorry, this ip-address has already voted",
   "error.country.lookup.failed": "Unexpected error, please try again later",
 
-  "header.title": "Who would {{boldStart}}you vote{{boldEnd}} for U.S. president?",
+  "header.title": "¿Quién se {{boldStart}}USTED voto{{boldEnd}} para presidente EE.UU.?",
   "header.results": "Results",
-  "header.faq": "FAQ",
+  "header.faq": "info",
   "header.days-left": "days left",
   "header.day-left": "day left",
 

@@ -2,10 +2,11 @@ angular.module('Vote', [
     'ngSanitize',
     'ui.router',
     'vcRecaptcha',
-    '720kb.socialshare'
+    '720kb.socialshare',
+    'duScroll'
   ])
 
-  .constant('Languages', [ 'en', 'nl', 'ar', 'ru', 'ja', 'fr', 'de', 'es' ])
+  .constant('Languages', [ 'en', 'nl', 'fr', 'de', 'es', 'ar', 'ru', 'ja'  ])
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider, Languages) => {
