@@ -5,7 +5,7 @@ angular.module('Vote', [
     '720kb.socialshare'
   ])
 
-  .constant('Languages', [ 'en', 'nl' ])
+  .constant('Languages', [ 'en', 'nl', 'ar', 'ru', 'ja', 'fr', 'de', 'es' ])
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider, Languages) => {

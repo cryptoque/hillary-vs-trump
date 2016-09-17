@@ -11,14 +11,14 @@ html {
 body {
 }
 
-//::-moz-selection {
-//  background: $color-text-selection;
-//  color: #FFF;
-//}
-//::selection {
-//  background: $color-text-selection;
-//  color: #FFF;
-//}
+::-moz-selection {
+  background: $color-republicans;
+  color: #FFF;
+}
+::selection {
+  background: $color-republicans;
+  color: #FFF;
+}
 
 a {
   color: $color-link;
@@ -34,11 +34,6 @@ table,
 fieldset, figure,
 pre  {
   margin-bottom: inuit-rem($inuit-global-spacing-unit);
-}
-
-ul, ol,
-dd {
-  margin-left: $inuit-global-spacing-unit;
 }
 
 button {

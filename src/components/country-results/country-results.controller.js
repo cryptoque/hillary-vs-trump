@@ -6,7 +6,8 @@ class CountryResultsController {
   }
 
   candidate(winner) {
-    return this.$filter('translate')('shortname.' + (winner === 'R' ? 'trump' : (winner === 'D' ? 'hillary' : '')));
+    const candidate = (winner === 'R' ? 'trump' : (winner === 'D' ? 'hillary' : 'split'));
+    return this.$filter('translate')('shortname.' + candidate);
   }
 }
 

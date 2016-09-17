@@ -16,5 +16,20 @@
     }
   }
 
-  &.page--faq {}
+  &.page--faq {
+    margin-bottom: inuit-rem(50px);
+
+    // Offset needed for fixed header
+    margin-top: inuit-rem(80px);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      margin-top: inuit-rem(163px);
+    }
+
+    .page__wrapper {
+      max-width: inuit-rem(840px);
+      margin: 0 auto;
+      overflow: hidden;
+    }
+  }
 }

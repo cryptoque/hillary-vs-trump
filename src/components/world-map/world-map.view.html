@@ -1,4 +1,8 @@
 <div class="world-map">
+
+  <div class="pie pie__trump" style="animation-delay: -35s"></div>
+  <div class="pie pie--flip pie__hillary" style="animation-delay: -95s"></div>
+
   <div class="world-map__R">
     {{'shortname.trump' | translate}}<br />
     52%
@@ -12,11 +16,16 @@
   </div>
 
   <div class="world-map__header">
-    <h1 class="world-map__title">{{'worldmap.title' | translate}}</h1>
-
+    <h1 class="world-map__title">{{'worldmap.title' | translate}}<br />{{'worldmap.subtitle' | translate}}</h1>
     <p class="world-map__sub">
       Total number of votes: {{$ctrl.votingResults.total.D + $ctrl.votingResults.total.R}}
     </p>
+
+    <div class="svg-pie">
+      <svg viewBox="0 0 32 32">
+        <circle r="16" cx="16" cy="16" style="stroke-dasharray: 45 100" />
+      </svg>
+    </div>
+
   </div>
 </div>
-

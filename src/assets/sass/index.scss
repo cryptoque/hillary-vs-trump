@@ -27,6 +27,7 @@
 $flag-icon-css-path: '../../../node_modules/flag-icon-css/flags';
 @import '../../../node_modules/flag-icon-css/sass/_flag-icon.scss';
 @import '_objects/_objects.icons';
+@import '_objects/_objects.pie';
 
 // COMPONENTS
 @import '_components/_components.page';
@@ -36,6 +37,7 @@ $flag-icon-css-path: '../../../node_modules/flag-icon-css/flags';
 @import '_components/_components.ballot';
 @import '_components/_components.world-map';
 @import '_components/_components.country-results';
+@import '_components/_components.faq-questions';
 
 // UTILITIES
 @import '../../../node_modules/inuitcss/utilities/utilities.clearfix';

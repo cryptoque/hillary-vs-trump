@@ -1,12 +1,50 @@
-<main class="page page--index">
-  <dl>
-    <dt>Which languages are available</dt>
-    <dd>
-      We've tried our best to translate most of this site in as many languages as we could to allow for a balanced voting result.
-      Available languages:
-      <ul>
-        <li ng-repeat="l in $ctrl.Languages"><a ng-href="/?lang={{l}}/#/faq">{{l}}</a></li>
-      </ul>
-    </dd>
-  </dl>
+<main class="page page--faq">
+  <div class="page__wrapper faq-questions">
+
+    <h1 class="faq-questions__title">FAQ</h1>
+
+    <dl class="faq-questions__list">
+      <dt>What is this website?</dt>
+      <dd>
+        <p>
+
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
+        </p>
+      </dd>
+
+      <dt>How does it work?</dt>
+      <dd>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
+        </p>
+      </dd>
+
+      <dt>What about my privacy?</dt>
+      <dd>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
+        </p>
+      </dd>
+
+      <dt>Some other question</dt>
+      <dd>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque urna et ultricies dictum. Nulla finibus tristique ornare. Praesent porttitor, enim vel congue dictum, lacus turpis sagittis dolor, dignissim fermentum risus felis vel ante. Duis et convallis sem, pulvinar malesuada nulla. Etiam quis ante commodo tellus eleifend imperdiet.
+        </p>
+      </dd>
+
+      <dt>Which languages are available</dt>
+      <dd>
+        <p>
+          We've tried our best to translate most of this site in as many languages as we could to allow for a balanced voting result.
+          Most of these translations are automated and might contain errors. Sorry about that.
+        </p>
+        <ul class="faq-questions__languages">
+          <li>Available languages:</li>
+          <li ng-repeat="l in $ctrl.Languages"><a ng-href="/?lang={{l}}/#/faq">{{'lang.' + l | translate}}</a></li>
+        </ul>
+      </dd>
+    </dl>
+
+  </div>
 </main>

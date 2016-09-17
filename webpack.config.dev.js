@@ -55,8 +55,7 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery",
-      topojson: 'topojson',
-      chroma: 'chroma-js'
+      topojson: 'topojson'
     }),
 
     // CSS

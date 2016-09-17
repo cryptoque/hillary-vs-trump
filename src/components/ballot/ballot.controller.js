@@ -31,7 +31,6 @@ class BallotController {
     // this.countryCode = 'AZ';
     // this.hasVoted = true;
     // this.isVisible = true;
-
     this.votingSuccess = this.votingSuccess.bind(this);
     this.votingError = this.votingError.bind(this);
   }
@@ -66,6 +65,7 @@ class BallotController {
 
   votingError(response) {
     this.apiError = response.data.error;
+    this.votingEnabled = false;
     this.vcRecaptchaService.reload();
   }
 

@@ -10,4 +10,6 @@ cp -r src/api/ build/
 cp -r src/translations/ build/
 cp -r src/json/ build/
 
+php ./composer.phar install
 php ./scripts/generate-results-json.php
+

@@ -7,6 +7,22 @@
     display: none;
   }
 
+  .pie {
+    position: absolute;
+    top: 50%;
+    margin-top: -100px;
+  }
+
+  .pie__trump {
+    left: 0;
+    //background-color: $color-republicans;
+  }
+
+  .pie__hillary {
+    right: 0;
+    //background-color: $color-democrats;
+  }
+
   .world-map__header {
     background-color: #FFF;
     text-align: center;
@@ -14,14 +30,19 @@
   }
 
   .world-map__title {
-    margin-bottom: inuit-rem(10px);
+    line-height: inuit-rem(40px);
+    margin-bottom: inuit-rem(25px);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      line-height: inuit-rem(32px);
+    }
   }
 
   .world-map__sub {
     @extend %font--bold;
     color: $color-democrats;
     font-size: inuit-rem($inuit-font-size-tiny);
-    margin-bottom: 0;
+    margin-bottom: inuit-rem(30px);
   }
 }
 

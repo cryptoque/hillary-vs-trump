@@ -1,14 +1,9 @@
 <table class="country-results">
   <thead>
     <tr>
-      <td></td>
-      <td class="country-results__title">
-        <span class="country-results__title--R">{{'shortname.trump' | translate}}</span>
-        <span>VS</span>
-        <span class="country-results__title--D">{{'shortname.hillary' | translate}}</span>
-      </td>
-      <td class="country-results__label-votes">
-        {{ 'worldmap.votes' | translate}} / %
+      <td  colspan="2" class="country-results__label-country">{{ 'worldmap.country-votes' | translate}}</td>
+      <td class="country-results__label-candidate">
+        {{ 'worldmap.candidate' | translate}} : %
       </td>
     </tr>
   </thead>
@@ -18,7 +13,7 @@
         <span class="flag-icon flag-icon-{{code.toLowerCase()}}"></span>
       </td>
       <td class="country-results__countryname country-results__countryname--{{data.winner}}">
-        <span>{{code | translate}}</span>
+        <span>{{'country.' + code | translate}} ({{data.votes}})</span>
       </td>
       <td class="country-results__score">
         <div class="country-results__winner country-results__winner--{{data.winner}}">
