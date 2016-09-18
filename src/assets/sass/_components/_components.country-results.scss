@@ -31,6 +31,7 @@
 
     .country-results__label-candidate {
       text-align: right;
+      white-space: nowrap;
     }
   }
 
@@ -61,6 +62,7 @@
 
   .country-results__score {
     text-align: right;
+    white-space: nowrap;
 
     .country-results__winner {
       padding: inuit-rem(25px) 0;
@@ -76,12 +78,6 @@
       &.country-results__winner--U {
         border-right: inuit-rem(20px) solid $color-split;
         color: $color-split;
-      }
-    }
-
-    .country-results__score {
-      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-        min-width: inuit-rem(130px);
       }
     }
 
