@@ -6,7 +6,7 @@ angular.module('Vote', [
     'duScroll'
   ])
 
-  .constant('Languages', [ 'en', 'nl', 'fr', 'de', 'es', 'ar', 'ru', 'ja'  ])
+  .constant('Languages', [ 'en', 'nl', 'fr', 'de', 'es', 'ar', 'ru', 'ja', 'zh-CN'  ])
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider, Languages) => {

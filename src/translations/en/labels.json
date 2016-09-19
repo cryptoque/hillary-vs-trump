@@ -15,7 +15,7 @@
   "error.request.not.unique": "Sorry, this ip-address has already voted",
   "error.country.lookup.failed": "Unexpected error, please try again later",
 
-  "header.title": "Who would {{boldStart}}you vote{{boldEnd}} for U.S. president?",
+  "header.title": "Who would <b>the world</b> vote for U.S. president?",
   "header.results": "Results",
   "header.faq": "FAQ",
   "header.days-left": "days left",
@@ -322,7 +322,7 @@
   "lang.ch": "Chamorro",
   "lang.ce": "Chechen",
   "lang.ny": "Chichewa; Chewa; Nyanja",
-  "lang.zh": "Chinese",
+  "lang.zh-CN": "Chinese",
   "lang.cv": "Chuvash",
   "lang.kw": "Cornish",
   "lang.co": "Corsican",
