@@ -1,51 +1,51 @@
 <main class="page page--faq">
   <div class="page__wrapper faq-questions">
 
-    <h1 class="faq-questions__title">FAQ</h1>
+    <h1 class="faq-questions__title">{{'faq.title' | translate}}</h1>
 
     <dl class="faq-questions__list">
-      <dt>What is this website?</dt>
+      <dt>{{'faq.question.1' | translate}}</dt>
       <dd>
+        <!--<p ng-bind-html="'faq.question.1.text.1' | translate"></p>-->
+        <!--<p>{{'faq.question.2.text.1' | translate}}</p>-->
+        <!--<p>{{'faq.question.1.text.2' | translate}}</p>-->
         <p>
-          The upcoming presidential election of the United States will affect, not only America, but the entire world! Outside of the USA we are all silently holding our breath, will it be Trump or Hillary?
-          Which candidate do people in other countries prefer? We, <a href="http://www.arthurvanthoog.nl">Arthur van 't Hoog</a> (design) and <a href="https://galaxy.fili.nl">Filidor Wiese</a> (development), built this website as a fun
-          side-project in our spare time to answer this intriguing question. Enjoy and please share!
+          <i>We the people</i>, from outside of the United States, are anxiously holding our breath. On November 8th 2016, either Hillary Clinton or Donald J. Trump
+          will be elected as the 45th president of the Unites States. We, as concerned fellow citizens of the world, care about this election and would like to help out.
         </p>
         <p>
-          Disclaimer: we are two non-U.S. citizens, who are not affiliated with either political party. By no means is this website intended to be scientifically correct.
-          Please don't take it too serious :)
+          On this website <b>anyone from any country</b> get's a vote!
+        </p>
+        <p>
+          Which candidate do people in other countries, like China, France or Zimbabwe, prefer?
         </p>
       </dd>
 
-      <dt>How does it work?</dt>
+      <!--<dt>{{'faq.question.2' | translate}}</dt>-->
+      <!--<dd>-->
+        <!--<p>{{'faq.question.2.text.1' | translate}}</p>-->
+      <!--</dd>-->
+
+      <dt>{{'faq.question.3' | translate}}</dt>
       <dd>
-        <p>
-          On this site you can vote for the either Trump or Hillary until the day of the election, November 8th. To discourage possible abuse one vote is allowed per ip-address and
-          anonymous ip's are blocked. The country your vote counts for is determind by the country your ip-address originates from, this can not be changed.
-        </p>
+        <p>{{'faq.question.3.text.1' | translate}}</p>
       </dd>
 
-      <dt>What about my privacy?</dt>
+      <dt>{{'faq.question.4' | translate}}</dt>
       <dd>
-        <p>
-          We care about your privacy and don't store your ip-address or any other personal identifier in our database. We do store an anonymous (hashed) version of your ip-address to prevent
-          multiple votes per ip.
-        </p>
-      </dd>
-
-      <dt>Which languages are available</dt>
-      <dd>
-        <p>
-          We've tried our best to translate most of this site in as many languages as we could to allow for a balanced voting result.
-          Most of these translations are automated and might contain silly errors. Sorry about that.
-        </p>
+        <p>{{'faq.question.4.text.1' | translate}}</p>
         <ul class="faq-questions__languages">
-          <li>Available languages:</li>
+          <li>{{'faq.question.4.text.2' | translate}}</li>
           <li ng-repeat="l in $ctrl.Languages"><a ng-href="/?lang={{l}}/#/faq">{{'lang.' + l | translate}}</a></li>
         </ul>
       </dd>
 
+      <dd><p>This is a webproject by <a href=\"http://www.arthurvanthoog.nl\" target=\"_blank\">Arthur van 't Hoog</a> and <a href=\"https://galaxy.fili.nl\" target=\"_blank\">Filidor Wiese</a>.</p></dd>
+
     </dl>
+
+    <!--// We, <a href=\"http://www.arthurvanthoog.nl\" target=\"_blank\">Arthur van 't Hoog</a> and <a href=\"https://galaxy.fili.nl\" target=\"_blank\">Filidor Wiese</a>, built this website to answer this intriguing question.-->
+    <!--We are two non-U.S. citizens, who are not affiliated with either political party. By no means is this website intended to be scientifically correct. Enjoy and please share!-->
 
   </div>
 </main>
