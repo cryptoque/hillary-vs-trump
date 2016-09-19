@@ -21,14 +21,26 @@ class TranslateProvider {
   }
 
   detectLanguage(availableLanguages) {
-    let preferredLanguage;
-    if (navigator.languages) {
-      let filtered = navigator.languages.filter((value) => availableLanguages.includes(value.substr(0, 2)));
-      preferredLanguage = filtered[0];
+    this.preferredLanguage = availableLanguages[0];
+
+    const languageFromUrl = window.location.href.match(/lang=([a-z]{2}\-[a-z]{2}|[a-z]{2})/i);
+    if (languageFromUrl) {
+      this.preferredLanguage = languageFromUrl[1];
     } else {
-      preferredLanguage = (navigator.language || navigator.userLanguage);
+      let browserLanguage;
+      if (navigator.languages) {
+        let filtered = navigator.languages.filter((value) => availableLanguages.includes(value.substr(0, 2)));
+        browserLanguage = filtered[0];
+      } else {
+        browserLanguage = (navigator.language || navigator.userLanguage);
+      }
+
+      if (browserLanguage) {
+        this.preferredLanguage = browserLanguage.substr(0, 2);
+      }
     }
-    return (preferredLanguage ? preferredLanguage.substr(0, 2) : availableLanguages[0]);
+
+    return this.preferredLanguage;
   }
 
   // @ngInject
@@ -88,8 +100,11 @@ class TranslateProvider {
 
             this.translationsLoaded.resolve();
 
-            // Remove cloak class from html-tag
-            angular.element('html').removeClass('translate-cloaked');
+            // Remove cloak class from html-tag, add lang/dir attribute
+            angular.element('html')
+                   .removeClass('translate-cloaked')
+                   .attr('lang', this.preferredLanguage)
+                   .attr('dir', this.preferredLanguage === 'ar' ? 'rtl' : 'ltr');
           });
         } else {
 

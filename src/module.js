@@ -12,8 +12,7 @@ angular.module('Vote', [
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider, Languages) => {
 
     // Detect language
-    const languageFromUrl = window.location.href.match(/lang=([a-z]{2})/i);
-    const language = languageFromUrl ? languageFromUrl[1] : translateServiceProvider.detectLanguage(Languages);
+    const language = translateServiceProvider.detectLanguage(Languages);
     translateServiceProvider.setTranslation(`translations/${language}/labels.json`);
     translateServiceProvider.setFallbackTranslation(`translations/en/labels.json`);
 
