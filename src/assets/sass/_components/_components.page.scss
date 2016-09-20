@@ -1,5 +1,11 @@
 .page {
-  &.page--index {}
+  &.page--index {
+    margin-top: inuit-rem(80px);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      margin-top: inuit-rem(129px);
+    }
+  }
 
   &.page--results {
     margin-top: inuit-rem(80px);

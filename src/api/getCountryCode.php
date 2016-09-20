@@ -1,4 +1,5 @@
 <?php
+
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', __DIR__ . '/../logs/votes.log');

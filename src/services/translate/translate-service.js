@@ -1,5 +1,6 @@
 class TranslateProvider {
   constructor() {
+    this.preferredLanguage = '';
     this.translation = '';
     this.fallbackTranslation = '';
     this.translationTable = '';
@@ -21,11 +22,11 @@ class TranslateProvider {
   }
 
   detectLanguage(availableLanguages) {
-    this.preferredLanguage = availableLanguages[0];
+    let preferredLanguage = availableLanguages[0];
 
     const languageFromUrl = window.location.href.match(/lang=([a-z]{2}\-[a-z]{2}|[a-z]{2})/i);
-    if (languageFromUrl) {
-      this.preferredLanguage = languageFromUrl[1];
+    if (languageFromUrl && availableLanguages.includes(languageFromUrl[1])) {
+      preferredLanguage = languageFromUrl[1];
     } else {
       let browserLanguage;
       if (navigator.languages) {
@@ -36,10 +37,11 @@ class TranslateProvider {
       }
 
       if (browserLanguage) {
-        this.preferredLanguage = browserLanguage.substr(0, 2);
+        preferredLanguage = browserLanguage.substr(0, 2);
       }
     }
 
+    this.preferredLanguage = preferredLanguage;
     return this.preferredLanguage;
   }
 
@@ -61,6 +63,10 @@ class TranslateProvider {
 
       isLoaded: () => {
         return this.translationsLoadedPromise;
+      },
+
+      getCurrentLanguage: () => {
+        return this.preferredLanguage;
       },
 
       loadTranslations: () => {

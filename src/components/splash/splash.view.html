@@ -1,0 +1,23 @@
+<section class="splash" ng-hide="$ctrl.hideSplash">
+
+  <p>
+    Hi, we see that you're from
+    <span class="splash__country">
+      <span class="splash__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>{{ 'country.' + $ctrl.countryCode | translate }}!
+    </span>
+  </p>
+  <p>
+    Who would you vote for as 45th president of the United States?
+  </p>
+
+  <button ng-click="$ctrl.hideSplash = true;">Start voting!</button>
+
+  <div class="splash__language">
+    <label>Language:</label>
+    <select ng-model="$ctrl.language" name="language" ng-change="$ctrl.changeLanguage()">
+      <option ng-repeat="l in $ctrl.Languages" value="{{l}}"><a ng-href="/?lang={{l}}/#/faq">{{'lang.' + l | translate}}</a></option>
+    </select>
+  </div>
+
+</section>
+<div class="splash__bg" ng-hide="$ctrl.hideSplash"></div>

@@ -6,7 +6,7 @@ angular.module('Vote', [
     'duScroll'
   ])
 
-  .constant('Languages', [ 'en', 'nl', 'fr', 'de', 'es', 'ar', 'ru', 'ja', 'zh-CN'  ])
+  .constant('Languages', [ 'en', 'nl', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider, Languages) => {
@@ -32,8 +32,15 @@ angular.module('Vote', [
         url: '/',
         controllerAs: '$ctrl',
         //@ngInject
-        controller: function() {},
-        template: require('./views/root.index.html')
+        controller: function(countryLookup) {
+          this.countryCode = countryLookup.data.country;
+        },
+        template: require('./views/root.index.html'),
+        resolve: {
+          countryLookup: (apiService) => {
+            return apiService.lookupCountry();
+          }
+        }
       })
       .state('root.results', {
         url: '/results',
@@ -57,9 +64,7 @@ angular.module('Vote', [
         url: '/faq',
         controllerAs: '$ctrl',
         //@ngInject
-        controller: function(Languages) {
-          this.Languages = Languages;
-        },
+        controller: function() {},
         template: require('./views/root.faq.html')
       });
 

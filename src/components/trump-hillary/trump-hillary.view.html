@@ -1,5 +1,5 @@
 <div class="trump-hillary">
-  <div class="trump-hillary__trump">
+  <div class="trump-hillary__trump" ng-class="{'trump-hillary--winner': $ctrl.yourVote === 'R'}">
 
     <div class="trump-hillary__hotspot" hotspot="trump-hillary--hover" hotspot-parent="trump-hillary__trump">
       <div class="fili-test"></div>
@@ -7,11 +7,13 @@
     </div>
 
   </div>
-  <div class="trump-hillary__hillary">
+  <div class="trump-hillary__hillary" ng-class="{'trump-hillary--winner': $ctrl.yourVote === 'D'}">
 
     <div class="trump-hillary__hotspot" hotspot="trump-hillary--hover" hotspot-parent="trump-hillary__hillary">
       <button class="trump-hillary__button" ng-click="$ctrl.openModal('D')">{{ 'vote' | translate }} {{ 'shortname.hillary' | translate }}</button>
     </div>
 
   </div>
+
+  <ballot your-vote="$ctrl.yourVote" country-code="$ctrl.countryCode"></ballot>
 </div>

@@ -4,6 +4,7 @@ import './services/api';
 import './services/translate';
 import './directives/add-class-on-wrap';
 import './directives/hotspot';
+import './components/splash';
 import './components/ballot';
 import './components/vote-app';
 import './components/world-map';

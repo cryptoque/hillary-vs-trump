@@ -1,0 +1,68 @@
+.splash {
+  @extend %font--bold;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  max-width: inuit-rem(768px);
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, .95);
+  text-align: center;
+  padding: inuit-rem(90px) inuit-rem(55px) inuit-rem(50px) inuit-rem(55px);
+  font-size: inuit-rem($inuit-font-size-h1-smaller);
+  line-height: inuit-rem(50px);
+
+  @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    top: inuit-rem(220px);
+    transform: translate(-50%, 0);
+    font-size: inuit-rem($inuit-global-font-size);
+    line-height: inuit-rem(30px);
+    width: 90%;
+    padding: inuit-rem(50px) inuit-rem(35px) inuit-rem(40px) inuit-rem(35px);
+  }
+
+  .splash__country {
+    white-space: nowrap;
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      display: block;
+    }
+  }
+
+  .splash__flag {
+    padding-left: inuit-rem(55px);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      padding-left: inuit-rem(30px);
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  button {
+    margin-top: inuit-rem(35px);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      margin-top: inuit-rem(15px);
+    }
+  }
+
+  .splash__language {
+    display: block;
+    margin: inuit-rem(40px) auto 0 auto;
+    font-size: inuit-rem(14px);
+  }
+}
+
+.splash__bg {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+

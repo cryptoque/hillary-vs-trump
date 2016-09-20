@@ -29,11 +29,8 @@
   "vote": "Vote",
 
   "ballot.youwouldvote": "YOU WOULD VOTE:",
+  "ballot.onevotefromcountry": "ONE VOTE FROM {{country}} FOR:",
   "ballot.aspresident": "as 45th PRESIDENT OF THE UNITED STATES",
-  "ballot.yourcountry": "Hi! We see you are from {{country}}. Who would you vote for as 45th President of the United States?",
-  "ballot.yourcountry.incorrect": "",
-  "ballot.onevoteperip": "",
-  "ballot.onevoteperip.why": "",
   "ballot.vote": "Submit vote!",
   "ballot.thankyou.title": "You voted {{candidate}}",
   "ballot.thankyou.thankyou": "Thank you!",

@@ -10,15 +10,14 @@ class BallotController {
     this.apiService = apiService;
     this.isVisible = false;
 
-    this.$scope.$on('open-modal', (event, yourVote) => {
+    this.$scope.$on('open-modal', (event) => {
       this.isVisible = true;
       this.votingEnabled = false;
       this.hasVoted = this.$window.localStorage.getItem('hasVoted');
       // this.hasVoted = false;
 
       if (!this.hasVoted) {
-        this.yourVote = yourVote;
-        this.lookupCountry();
+        // this.yourVote = yourVote;
       }
     });
 
@@ -28,21 +27,10 @@ class BallotController {
 
     //Temp
     // this.yourVote = 'D';
-    // this.countryCode = 'AZ';
     // this.hasVoted = true;
     // this.isVisible = true;
     this.votingSuccess = this.votingSuccess.bind(this);
     this.votingError = this.votingError.bind(this);
-  }
-
-  lookupCountry() {
-    this.apiService.lookupCountry()
-      .then((response) => {
-        this.countryCode = response.data.country;
-      })
-      .catch((response) => {
-        this.countryCode = 'UNKNOWN';
-      });
   }
 
   submitVote() {

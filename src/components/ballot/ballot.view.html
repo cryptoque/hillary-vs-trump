@@ -1,11 +1,14 @@
-<section class="ballot" ng-if="$ctrl.isVisible">
+<section class="ballot" ng-if="$ctrl.isVisible" ng-class="{'ballot--slide-left': $ctrl.yourVote === 'D', 'ballot--slide-right': $ctrl.yourVote === 'R'}">
+  <a href class="ballot__close icon icon--close" ng-click="$ctrl.closeModal()"></a>
 
   <!-- Vote now -->
-  <div class="ballot_votenow" ng-if="!$ctrl.hasVoted">
+  <div class="ballot__container" ng-if="!$ctrl.hasVoted">
 
     <form name="$ctrl.ballotForm" ng-submit="$ctrl.submitVote()">
-      <a href class="ballot__close icon icon--close" ng-click="$ctrl.closeModal()"></a>
-      <p class="ballot__subtitle">{{'ballot.youwouldvote' | translate}}</p>
+      <p class="ballot__header">
+        <span class="ballot__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>
+        {{'ballot.onevotefromcountry' | translate:{country: ('country.' + $ctrl.countryCode | translate)} }}
+      </p>
 
       <div class="ballot__content">
         <h2 class="ballot__title" ng-show="$ctrl.yourVote">{{$ctrl.candidate()}}</h2>
@@ -16,7 +19,6 @@
                vc-recaptcha
                ng-model="$ctrl.ballotForm.gRecaptchaResponse"
                on-success="$ctrl.votingEnabled = true"></div>
-
           <button class="ballot__button ballot__button--vote" ng-disabled="$ctrl.votingInProgress || !$ctrl.votingEnabled">{{'ballot.vote' | translate}}</button>
         </div>
 
@@ -24,20 +26,13 @@
           <span ng-bind-html="'error.' + $ctrl.apiError | translate"></span>
         </div>
       </div>
-
-      <div class="ballot__footer">
-        <span class="ballot__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>
-        <p>{{'ballot.yourcountry' | translate:{country: ('country.' + $ctrl.countryCode | translate)} }} <a ui-sref="root.faq">{{'ballot.yourcountry.incorrect' | translate}}</a></p>
-        <p>{{'ballot.onevoteperip' | translate}} <a ui-sref="root.faq">{{'ballot.onevoteperip.why' | translate}}</a></p>
-      </div>
     </form>
 
   </div>
 
   <!-- Thank you -->
-  <div class="ballot__thankyou" ng-if="$ctrl.hasVoted">
+  <div class="ballot__container" ng-if="$ctrl.hasVoted">
 
-    <a href class="ballot__close icon icon--close" ng-click="$ctrl.closeModal()"></a>
     <p class="ballot__subtitle" ng-show="$ctrl.yourVote">{{ 'ballot.thankyou.title' | translate:{candidate: $ctrl.candidate()} }}</p>
     <p class="ballot__subtitle" ng-hide="$ctrl.yourVote">{{ 'error.request.not.unique' | translate }}</p>
 
@@ -99,4 +94,3 @@
 
   </div>
 </section>
-<div class="ballot__bg" ng-show="$ctrl.isVisible" ng-click="$ctrl.closeModal()"></div>
