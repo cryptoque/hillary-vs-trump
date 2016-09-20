@@ -2,27 +2,22 @@
   .faq-questions__title {
     text-align: center;
     margin-top: inuit-rem(50px);
-    margin-bottom: inuit-rem(30px);
+    margin-bottom: inuit-rem(10px);
   }
 
   .faq-questions__list {
     border-top: inuit-rem(3px) solid $color-background-darker;
     border-bottom: inuit-rem(3px) solid $color-background-darker;
     padding-top: inuit-rem(40px);
-    padding-bottom: inuit-rem(40px);
+    padding-bottom: inuit-rem(20px);
 
     dt {
       @extend %font--bold;
       font-size: inuit-rem($inuit-font-size-h3);
     }
-  }
-
-  //.faq-questions__languages {
-    //margin-bottom: 0;
 
     li {
-      //display: inline-block;
       margin-left: inuit-rem(20px);
     }
-  //}
+  }
 }

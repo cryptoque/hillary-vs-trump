@@ -47,18 +47,6 @@
   "worldmap.country-votes": "Country (total votes)",
   "worldmap.candidate": "Candidate",
 
-  "faq.title": "FAQ",
-  "faq.question.1": "What about us?!",
-  "faq.question.1.text.1": "<i>We the people</i>, from outside of the United States, care about the upcoming presidential election. The entire world is anxiously holding it's breath. Will it be Trump or Hillary? On this website, everyone gets a vote!",
-  "faq.question.1.text.2": "Which candidate do people in other countries, like China, France or Zimbabwe, prefer?",
-  "faq.question.2": "How does it work?",
-  "faq.question.2.text.1": "",
-  "faq.question.3": "Rules?",
-  "faq.question.3.text.1": "Voting will be possible until the day of the election, November 8th 2016. One vote is allowed per ip-address, the country your vote counts for is determined by the country your ip-address originates from, this can not be changed. We care about your privacy and won't store your ip-address or any other personal identifier in our database. We do store an anonymous version (hashed) of your ip-address to prevent multiple votes per ip.",
-  "faq.question.4": "Which languages are available?",
-  "faq.question.4.text.1": "We've tried our best to translate this site in as many major languages as we could to allow for a balanced voting result. Most of these translations are automated and might contain silly errors. Sorry about that.",
-  "faq.question.4.text.2": "Available languages:",
-
   "country.AF": "Afghanistan",
   "country.AX": "Åland Islands",
   "country.AL": "Albania",
