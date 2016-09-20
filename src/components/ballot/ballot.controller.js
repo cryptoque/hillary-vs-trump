@@ -16,15 +16,11 @@ class BallotController {
       this.hasVoted = this.$window.localStorage.getItem('hasVoted');
     });
 
-    this.$scope.$on('close-modal', (event, yourVote) => {
+    this.$scope.$on('close-modal', (event) => {
       this.isVisible = false;
       this.yourVote = false;
     });
 
-    //Temp
-    // this.yourVote = 'D';
-    // this.hasVoted = true;
-    // this.isVisible = true;
     this.votingSuccess = this.votingSuccess.bind(this);
     this.votingError = this.votingError.bind(this);
   }
@@ -61,7 +57,7 @@ class BallotController {
   closeModal() {
     this.$timeout(() => {
       this.$rootScope.$broadcast('close-modal');
-    }, 10);
+    }, 0);
   }
 }
 

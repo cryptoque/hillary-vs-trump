@@ -38,8 +38,8 @@
       left: 0;
       bottom: 0;
       right: 0;
-      margin: 25% 12%;
-      border: 1px solid lime;
+      margin: 0 12%;
+      //border: 1px solid lime;
 
       @media screen and (max-width: #{map-get($breakpoints, medium)}) {
         right: auto;
@@ -54,7 +54,7 @@
 
     .trump-hillary__button {
       position: absolute;
-      bottom: 0;
+      bottom: 10%;
       left: 50%;
       transform: translate(-50%, 150%);
       opacity: 0;
@@ -109,14 +109,14 @@ html[dir=rtl] {
 
 .fili-test {
   position: absolute;
-  bottom: -100%;
+  bottom: 0;
   left: 50%;
   margin-left: -170px;
   background-image: url(../images/testsprite.svg);
   width: 340px;
   height: 690px;
   transform-origin: center center;
-  transform: scale(2);
+  transform: scale(1);
 }
 
 

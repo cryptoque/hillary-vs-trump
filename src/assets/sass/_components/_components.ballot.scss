@@ -11,13 +11,11 @@
     width: 50%;
 
     &.ballot--slide-left {
-      transform: translateX(100%);
-      animation: ballotSlideLeft .5s linear forwards;
+      animation: ballotSlideLeft .5s ease-out forwards;
     }
 
     &.ballot--slide-right {
-      transform: translateX(0%);
-      animation: ballotSlideRight .5s linear forwards;
+      animation: ballotSlideRight .5s ease-out forwards;
     }
   }
 
@@ -29,11 +27,15 @@
 
   .ballot__close {
     position: absolute;
-    top: inuit-rem(100px);
+    top: inuit-rem(30px);
     z-index: 901;
     right: inuit-rem(28px);
     width: inuit-rem(40px);
     height: inuit-rem(40px);
+
+    &:active {
+      opacity: .8;
+    }
 
     @media screen and (max-width: #{map-get($breakpoints, medium)}) {
       top: inuit-rem(30px);
@@ -150,6 +152,7 @@
     }
   }
 }
+
 
 
 @keyframes ballotSlideLeft {

@@ -1,4 +1,4 @@
-<section class="ballot" ng-if="$ctrl.isVisible" ng-class="{'ballot--slide-left': $ctrl.yourVote === 'D', 'ballot--slide-right': $ctrl.yourVote === 'R'}">
+<section class="ballot" ng-show="$ctrl.isVisible" ng-class="{'ballot--slide-left': $ctrl.yourVote === 'D', 'ballot--slide-right': $ctrl.yourVote === 'R'}">
   <a href class="ballot__close icon icon--close" ng-click="$ctrl.closeModal()"></a>
 
   <!-- Vote now -->

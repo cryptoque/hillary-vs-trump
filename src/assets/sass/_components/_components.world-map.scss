@@ -2,6 +2,7 @@
   position: relative;
   top: inuit-rem(-40px);
   background-color: $color-background-fallback;
+  direction: ltr;
 
   .world-map-leaflet {
     display: none;
