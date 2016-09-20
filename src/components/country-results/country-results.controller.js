@@ -2,7 +2,6 @@ class CountryResultsController {
   // @ngInject
   constructor($filter) {
     this.$filter = $filter;
-    console.log(this.votingResults);
   }
 
   candidate(winner) {

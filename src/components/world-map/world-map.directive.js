@@ -12,7 +12,6 @@ class WorldMapDirective {
   }
 
   link(scope, element, attrs, ctrl) {
-    // console.log(angular.element(element).attr('id'));
     ctrl.initMap();
   }
 }

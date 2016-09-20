@@ -6,6 +6,8 @@ class WorldMapController {
 
     this.initCountryLayer = this.initCountryLayer.bind(this);
     this.clickLayer = this.clickLayer.bind(this);
+    this.enterLayer = this.enterLayer.bind(this);
+    this.leaveLayer = this.leaveLayer.bind(this);
 
     this.colors = {
       republicans: '#ef5c5c',
@@ -81,10 +83,12 @@ class WorldMapController {
 
     if (countryVote) {
       layer.on({
+        click: this.clickLayer,
         mousedown: this.clickLayer,
         mouseover: this.enterLayer,
         mouseout: this.leaveLayer,
-        touchend: this.enterLayer
+        touchstart: this.enterLayer,
+        touchend: this.enterLayer,
       });
     }
   }
@@ -92,22 +96,22 @@ class WorldMapController {
   clickLayer(l) {
     const id = l.target.feature.id;
     const el = angular.element('body').find('#country-' + id);
-    this.$document.scrollToElement(el, 300, 3000);
+    this.$document.scrollToElement(el, 300, 2000);
     angular.element('body').find('.country-results--highlight').removeClass('country-results--highlight');
     el.addClass('country-results--highlight');
   }
 
-  enterLayer() {
-    this.bringToFront();
-    this.setStyle({
+  enterLayer(l) {
+    l.target.bringToFront();
+    l.target.setStyle({
       weight: 2,
       opacity: 1
     });
   }
 
-  leaveLayer() {
-    this.bringToBack();
-    this.setStyle({
+  leaveLayer(l) {
+    l.target.bringToBack();
+    l.target.setStyle({
       weight: 1,
       opacity: .5
     });

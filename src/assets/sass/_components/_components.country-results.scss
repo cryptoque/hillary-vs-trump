@@ -8,7 +8,7 @@
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
     font-size: inuit-rem($inuit-font-size-tiny);
-    width: 96%;
+    width: 95%;
     margin: inuit-rem(10px) inuit-rem(10px);
   }
 
@@ -43,6 +43,11 @@
     .flag-icon {
       width: inuit-rem(70px);
       height: inuit-rem(50px);
+
+      @media screen and (max-width: #{map-get($breakpoints, small)}) {
+        width: inuit-rem(50px);
+        height: inuit-rem(30px);
+      }
     }
   }
 
