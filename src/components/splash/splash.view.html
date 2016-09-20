@@ -12,10 +12,12 @@
   <button ng-click="$ctrl.hideSplash()">Start voting!</button>
 
   <div class="splash__language">
-    <label>Language:</label>
-    <select ng-model="$ctrl.language" name="language" ng-change="$ctrl.changeLanguage()">
-      <option ng-repeat="l in $ctrl.Languages" value="{{l}}"><a ng-href="/?lang={{l}}/#/info">{{'lang.' + l | translate}}</a></option>
-    </select>
+    <a href ng-click="$ctrl.showLanguageSwitch=true;" ng-hide="$ctrl.showLanguageSwitch">Change language</a>
+    <div ng-show="$ctrl.showLanguageSwitch">
+      <select ng-model="$ctrl.language" name="language" ng-change="$ctrl.changeLanguage()">
+        <option ng-repeat="l in $ctrl.Languages" value="{{l}}"><a ng-href="/?lang={{l}}/#/info">{{'lang.' + l | translate}}</a></option>
+      </select>
+    </div>
   </div>
 
 </section>

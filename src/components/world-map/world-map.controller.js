@@ -1,8 +1,9 @@
 class WorldMapController {
   // @ngInject
-  constructor($window, $document) {
+  constructor($window, $document, $timeout) {
     this.$window = $window;
     this.$document = $document;
+    this.$timeout = $timeout;
 
     this.initCountryLayer = this.initCountryLayer.bind(this);
     this.clickLayer = this.clickLayer.bind(this);
@@ -38,9 +39,12 @@ class WorldMapController {
       this.leafletMap.fitBounds(bounds);
     });
 
-    this.leafletMap.setView([44, -31], 2);
-    this.leafletMap.fitBounds(bounds);
     this.addTopoData();
+
+    this.$timeout(() => {
+      this.leafletMap.setView([44, -31], 2);
+      this.leafletMap.fitBounds(bounds);
+    }, 100);
   }
 
   addTopoData() {
