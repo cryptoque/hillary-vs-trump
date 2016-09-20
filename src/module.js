@@ -61,12 +61,12 @@ angular.module('Vote', [
           }
         }
       })
-      .state('root.faq', {
-        url: '/faq',
+      .state('root.info', {
+        url: '/info',
         controllerAs: '$ctrl',
         //@ngInject
         controller: function() {},
-        template: require('./views/root.faq.html')
+        template: require('./views/root.info.html')
       });
 
     // Redirect unknown states to the root state

@@ -14,7 +14,7 @@
   <div class="splash__language">
     <label>Language:</label>
     <select ng-model="$ctrl.language" name="language" ng-change="$ctrl.changeLanguage()">
-      <option ng-repeat="l in $ctrl.Languages" value="{{l}}"><a ng-href="/?lang={{l}}/#/faq">{{'lang.' + l | translate}}</a></option>
+      <option ng-repeat="l in $ctrl.Languages" value="{{l}}"><a ng-href="/?lang={{l}}/#/info">{{'lang.' + l | translate}}</a></option>
     </select>
   </div>
 

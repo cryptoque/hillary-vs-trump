@@ -2,6 +2,5 @@
   <header class="header">
     <top-nav></top-nav>
   </header>
-
-  <ui-view></ui-view>
+  <main class="page page--{{$ctrl.$state.current.name.replace('root.', '')}}" ui-view></main>
 </div>

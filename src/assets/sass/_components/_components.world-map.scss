@@ -1,5 +1,6 @@
 .world-map {
   position: relative;
+  top: inuit-rem(-40px);
   background-color: $color-background-fallback;
 
   .world-map-leaflet {

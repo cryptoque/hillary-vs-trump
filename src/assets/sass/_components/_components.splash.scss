@@ -1,7 +1,7 @@
 .splash {
   @extend %font--bold;
   position: absolute;
-  z-index: 1000;
+  z-index: 1010;
   top: 50%;
   left: 50%;
   width: 60%;
@@ -14,6 +14,7 @@
   line-height: inuit-rem(50px);
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    top: 45%;
     font-size: inuit-rem($inuit-global-font-size);
     line-height: inuit-rem(30px);
     width: 90%;
