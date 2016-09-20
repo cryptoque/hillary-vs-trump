@@ -24,6 +24,7 @@
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
     width: 100%;
     font-size: 90%;
+    z-index: 1010;
   }
 
   .ballot__close {
@@ -35,7 +36,7 @@
     height: inuit-rem(40px);
 
     @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-      top: inuit-rem(180px);
+      top: inuit-rem(30px);
       width: inuit-rem(25px);
       height: inuit-rem(25px);
       background-position: bottom left;
@@ -50,6 +51,11 @@
     width: 100%;
     padding-left: 4%;
     padding-right: 4%;
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      top: inuit-rem(30px);
+      transform: none;
+    }
   }
 
   .ballot__header {

@@ -102,6 +102,8 @@
     }
 
     &.top-nav__item--days {
+      background-color: $color-brand-primary-darker;
+
       @media screen and (max-width: #{map-get($breakpoints, small)}) {
         display: none;
       }
@@ -125,12 +127,12 @@
 
         .top-nav__countdown__char1 {
           display: inline-block;
-          animation: slideIn .5s;
+          animation: slideIn .5s forwards;
         }
 
         .top-nav__countdown__char2 {
           display: inline-block;
-          animation: slideIn .7s;
+          animation: slideIn .7s forwards;
         }
 
         @media screen and (max-width: #{map-get($breakpoints, medium)}) {
@@ -196,7 +198,7 @@
     vertical-align: middle;
     margin-right: inuit-rem(5px);
     background: url(../images/icon--world.svg) 0 0 repeat-x;
-    background-size: inuit-rem(50px) inuit-rem(50px);
+    background-size: inuit-rem(50px) inuit-rem(43px);
     animation: slideBg 4s linear infinite;
 
     @media screen and (max-width: #{map-get($breakpoints, medium)}) {
@@ -204,7 +206,7 @@
       height: inuit-rem(35px);
       border: inuit-rem(3px) solid #FFF;
       animation: slideBgMobile 4s linear infinite;
-      background-size: inuit-rem(35px) inuit-rem(35px);
+      background-size: inuit-rem(35px) inuit-rem(30px);
     }
   }
 
