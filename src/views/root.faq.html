@@ -1,50 +1,43 @@
 <main class="page page--faq">
   <div class="page__wrapper faq-questions">
 
-    <h1 class="faq-questions__title">FAQ</h1>
+    <h1 class="faq-questions__title">We the People of the World,</h1>
+    <p style="text-align:center">
+      <strong>
+        established this website to give everyone a vote in the upcoming U.S. election.
+      </strong>
+    </p>
 
     <dl class="faq-questions__list">
-      <dt>What is this website?</dt>
       <dd>
         <p>
-          The upcoming presidential election of the United States will affect, not only America, but the entire world! Outside of the USA we are all silently holding our breath, will it be Trump or Hillary?
-          Which candidate do people in other countries prefer? We, <a href="http://www.arthurvanthoog.nl">Arthur van 't Hoog</a> (design) and <a href="https://galaxy.fili.nl">Filidor Wiese</a> (development), built this website as a fun
-          side-project in our spare time to answer this intriguing question. Enjoy and please share!
-        </p>
-        <p>
-          Disclaimer: we are two non-U.S. citizens, who are not affiliated with either political party. By no means is this website intended to be scientifically correct.
-          Please don't take it too serious :)
+          On November 8th 2016, either Hillary Clinton or Donald J. Trump will be elected as the 45th president of the Unites States.
+          The outcome of this domestic election will have a global effect. People from all over the world are watching the U.S.
+          closely during this process. We follow all the scandals, debates, polls - and wished we’d had a voice.
         </p>
       </dd>
-
-      <dt>How does it work?</dt>
+      <dt>Now you do!</dt>
       <dd>
         <p>
-          On this site you can vote for the either Trump or Hillary until the day of the election, November 8th. To discourage possible abuse one vote is allowed per ip-address and
-          anonymous ip's are blocked. The country your vote counts for is determind by the country your ip-address originates from, this can not be changed.
+        On this website anyone from any country can cast a vote. Who would Argentina prefer? Or Belgium? Or China? And what about Zimbabwe?
+          The results will be accumulated on our <a ui-sref="root.results">visual result map</a>, which is updated in real time - so check back often!
         </p>
       </dd>
-
-      <dt>What about my privacy?</dt>
+      <dt>How it works</dt>
       <dd>
-        <p>
-          We care about your privacy and don't store your ip-address or any other personal identifier in our database. We do store an anonymous (hashed) version of your ip-address to prevent
-          multiple votes per ip.
-        </p>
-      </dd>
-
-      <dt>Which languages are available</dt>
-      <dd>
-        <p>
-          We've tried our best to translate most of this site in as many languages as we could to allow for a balanced voting result.
-          Most of these translations are automated and might contain silly errors. Sorry about that.
-        </p>
-        <ul class="faq-questions__languages">
-          <li>Available languages:</li>
-          <li ng-repeat="l in $ctrl.Languages"><a ng-href="/?lang={{l}}/#/faq">{{'lang.' + l | translate}}</a></li>
+        <ul>
+          <li>One vote is allowed per ip-address</li>
+          <li>We care about your privacy and won't store your ip-address or any other personal identifier in our database. We do however store an anonymous version (hashed) of your ip-address to prevent multiple votes per ip</li>
+          <li>We've tried our best to translate most of this site in as many languages as we could. There might still be some silly errors, sorry about that.</li>
         </ul>
       </dd>
-
+      <dt>Are you serious?</dt>
+      <dd>
+        <p>
+          No. This is just a pet-project by <a href="http://www.arthurvanthoog.nl" target="_blank">Arthur van 't Hoog</a> and <a href="https://galaxy.fili.nl" target="_blank">Filidor Wiese</a> from the Netherlands.
+          We're really curious how the World would vote if they could. So please vote and share our project.
+        </p>
+      </dd>
     </dl>
 
   </div>

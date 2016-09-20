@@ -17,7 +17,7 @@
 
   "header.title": "Who would <b>the world</b> vote for U.S. president?",
   "header.results": "Results",
-  "header.faq": "FAQ",
+  "header.faq": "INFO",
   "header.days-left": "days left",
   "header.day-left": "day left",
 
@@ -30,14 +30,14 @@
 
   "ballot.youwouldvote": "YOU WOULD VOTE:",
   "ballot.aspresident": "as 45th PRESIDENT OF THE UNITED STATES",
-  "ballot.yourcountry": "We think you are from {{country}}.",
-  "ballot.yourcountry.incorrect": "Incorrect?",
-  "ballot.onevoteperip": "We allow one vote per ip and no anonymous ip's.",
-  "ballot.onevoteperip.why": "Why?",
+  "ballot.yourcountry": "Hi! We see you are from {{country}}. Who would you vote for as 45th President of the United States?",
+  "ballot.yourcountry.incorrect": "",
+  "ballot.onevoteperip": "",
+  "ballot.onevoteperip.why": "",
   "ballot.vote": "Submit vote!",
   "ballot.thankyou.title": "You voted {{candidate}}",
   "ballot.thankyou.thankyou": "Thank you!",
-  "ballot.thankyou.pleaseshare": "We're working on a worldwide visual results map, so check back soon! In the meantime please share:",
+  "ballot.thankyou.pleaseshare": "We've added your vote. Go see visual worldwide results map and please share this website",
   "ballot.thankyou.button.sharevote": "Share your vote",
   "ballot.thankyou.button.share": "Share",
 
@@ -202,7 +202,7 @@
   "country.NA": "Namibia",
   "country.NR": "Nauru",
   "country.NP": "Nepal",
-  "country.NL": "Netherlands",
+  "country.NL": "the Netherlands",
   "country.AN": "Netherlands Antilles",
   "country.NC": "New Caledonia",
   "country.NZ": "New Zealand",
