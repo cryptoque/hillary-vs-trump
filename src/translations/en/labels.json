@@ -17,7 +17,7 @@
 
   "header.title": "Who would <b>the world</b> vote for U.S. president?",
   "header.results": "Results",
-  "header.faq": "FAQ",
+  "header.faq": "INFO",
   "header.days-left": "days left",
   "header.day-left": "day left",
 
@@ -214,7 +214,7 @@
   "country.NA": "Namibia",
   "country.NR": "Nauru",
   "country.NP": "Nepal",
-  "country.NL": "Netherlands",
+  "country.NL": "the Netherlands",
   "country.AN": "Netherlands Antilles",
   "country.NC": "New Caledonia",
   "country.NZ": "New Zealand",
