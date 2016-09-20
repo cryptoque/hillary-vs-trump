@@ -1,7 +1,8 @@
 class SplashController {
   // @ngInject
-  constructor($window, Languages, translateService) {
+  constructor($window, $rootScope, Languages, translateService) {
     this.$window = $window;
+    this.$rootScope = $rootScope;
     this.Languages = Languages;
     this.translateService = translateService;
 
@@ -12,6 +13,9 @@ class SplashController {
     this.$window.location = '/?lang=' + this.language;
   }
 
+  hideSplash() {
+    this.$rootScope.splashHidden = true;
+  }
 }
 
 export default SplashController;

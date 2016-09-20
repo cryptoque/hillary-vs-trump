@@ -1,4 +1,5 @@
 angular.module('Vote', [
+    'ngAnimate',
     'ngSanitize',
     'ui.router',
     'vcRecaptcha',

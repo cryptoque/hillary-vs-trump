@@ -1,10 +1,15 @@
 .page {
-  &.page--index {
-    margin-top: inuit-rem(80px);
+  position: relative;
 
-    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-      margin-top: inuit-rem(129px);
-    }
+  &.page--index {
+    height: 100vh;
+    overflow: hidden;
+
+    //margin-top: inuit-rem(80px);
+    //
+    //@media screen and (max-width: #{map-get($breakpoints, medium)}) {
+    //  margin-top: inuit-rem(129px);
+    //}
   }
 
   &.page--results {

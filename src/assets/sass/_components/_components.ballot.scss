@@ -1,6 +1,6 @@
 .ballot {
   position: absolute;
-  z-index: 990;
+  z-index: 900;
   top: 0;
   left: 0;
   height: 100%;
@@ -29,7 +29,7 @@
   .ballot__close {
     position: absolute;
     top: inuit-rem(100px);
-    z-index: 991;
+    z-index: 901;
     right: inuit-rem(28px);
     width: inuit-rem(40px);
     height: inuit-rem(40px);
@@ -93,9 +93,11 @@
       margin-bottom: inuit-rem(5px);
     }
 
+    .ballot__text--checkoutresults,
     .ballot__text--pleaseshare {
       max-width: 70%;
       margin: 0 auto;
+      margin-bottom: inuit-rem(15px);
     }
 
     .ballot__captcha-vote {
@@ -123,7 +125,7 @@
 
     .ballot__button--facebook,
     .ballot__button--twitter {
-      margin: inuit-rem(55px) inuit-rem(15px) 0 inuit-rem(15px);
+      margin: inuit-rem(35px) inuit-rem(15px) 0 inuit-rem(15px);
 
       @media screen and (max-width: #{map-get($breakpoints, medium)}) {
         display: block;

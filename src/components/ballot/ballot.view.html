@@ -18,11 +18,15 @@
           <div class="ballot__recaptcha"
                vc-recaptcha
                ng-model="$ctrl.ballotForm.gRecaptchaResponse"
-               on-success="$ctrl.votingEnabled = true"></div>
-          <button class="ballot__button ballot__button--vote" ng-disabled="$ctrl.votingInProgress || !$ctrl.votingEnabled">{{'ballot.vote' | translate}}</button>
+               on-success="$ctrl.apiError = false"></div>
+          <button class="ballot__button ballot__button--vote" ng-disabled="$ctrl.votingInProgress">{{'ballot.vote' | translate}}</button>
         </div>
 
-        <div class="ballot__error" ng-show="$ctrl.apiError">
+        <div class="ballot__error" ng-if="$ctrl.ballotForm.$submitted && $ctrl.ballotForm.$error.recaptcha && !$ctrl.apiError && !$ctrl.votingInProgress">
+          <span ng-bind-html="'error.request.missing.captcha' | translate"></span>
+        </div>
+
+        <div class="ballot__error" ng-if="$ctrl.apiError">
           <span ng-bind-html="'error.' + $ctrl.apiError | translate"></span>
         </div>
       </div>
@@ -32,15 +36,15 @@
 
   <!-- Thank you -->
   <div class="ballot__container" ng-if="$ctrl.hasVoted">
-
-    <p class="ballot__subtitle" ng-show="$ctrl.yourVote">{{ 'ballot.thankyou.title' | translate:{candidate: $ctrl.candidate()} }}</p>
-    <p class="ballot__subtitle" ng-hide="$ctrl.yourVote">{{ 'error.request.not.unique' | translate }}</p>
+    <p class="ballot__subtitle" ng-show="$ctrl.yourVote">{{ 'ballot.thankyou.title' | translate }}</p>
+    <p class="ballot__subtitle" ng-hide="$ctrl.yourVote">
+      <span class="ballot__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>
+      {{'ballot.youvotedfor' | translate:{country: ('country.' + $ctrl.countryCode | translate)} }}
+    </p>
 
     <div class="ballot__content">
       <h2 class="ballot__title">{{'ballot.thankyou.thankyou' | translate}}</h2>
-      <p class="ballot__text ballot__text--pleaseshare">
-        {{'ballot.thankyou.pleaseshare' | translate}}
-      </p>
+      <p class="ballot__text ballot__text--pleaseshare" ng-bind-html="'ballot.thankyou.pleaseshare' | translate"></p>
 
       <div ng-show="$ctrl.yourVote">
         <button class="ballot__button ballot__button--facebook icon icon--facebook"

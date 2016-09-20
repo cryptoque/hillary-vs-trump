@@ -14,8 +14,6 @@
   line-height: inuit-rem(50px);
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-    top: inuit-rem(220px);
-    transform: translate(-50%, 0);
     font-size: inuit-rem($inuit-global-font-size);
     line-height: inuit-rem(30px);
     width: 90%;
@@ -65,4 +63,3 @@
   right: 0;
   bottom: 0;
 }
-

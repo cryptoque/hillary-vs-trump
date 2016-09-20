@@ -1,15 +1,14 @@
 class TrumpHillaryController {
   // @ngInject
-  constructor($rootScope) {
+  constructor($window, $rootScope) {
+    this.$window = $window;
     this.$rootScope = $rootScope;
-
-    this.$rootScope.$on('close-modal', (event, yourVote) => {
-      this.yourVote = false;
-    });
   }
 
   openModal(yourVote) {
-    this.yourVote = yourVote;
+    if (!this.$window.localStorage.getItem('hasVoted')) {
+      this.yourVote = yourVote;
+    }
     this.$rootScope.$broadcast('open-modal');
   }
 }

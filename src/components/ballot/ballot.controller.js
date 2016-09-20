@@ -8,21 +8,17 @@ class BallotController {
     this.$filter = $filter;
     this.vcRecaptchaService = vcRecaptchaService;
     this.apiService = apiService;
-    this.isVisible = false;
+
+    this.isVisible =  false;
 
     this.$scope.$on('open-modal', (event) => {
       this.isVisible = true;
-      this.votingEnabled = false;
       this.hasVoted = this.$window.localStorage.getItem('hasVoted');
-      // this.hasVoted = false;
-
-      if (!this.hasVoted) {
-        // this.yourVote = yourVote;
-      }
     });
 
     this.$scope.$on('close-modal', (event, yourVote) => {
       this.isVisible = false;
+      this.yourVote = false;
     });
 
     //Temp
@@ -34,7 +30,7 @@ class BallotController {
   }
 
   submitVote() {
-    if (!this.hasVoted) {
+    if (this.ballotForm.$valid) {
       this.apiError = false;
       this.votingInProgress = true;
       this.apiService.sendVote({ voted: this.yourVote })
@@ -53,8 +49,9 @@ class BallotController {
 
   votingError(response) {
     this.apiError = response.data.error;
-    this.votingEnabled = false;
-    this.vcRecaptchaService.reload();
+    this.$timeout(() => {
+      this.vcRecaptchaService.reload();
+    }, 500);
   }
 
   candidate() {

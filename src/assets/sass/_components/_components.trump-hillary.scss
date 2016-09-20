@@ -28,7 +28,7 @@
 
     @media screen and (min-width: #{map-get($breakpoints, medium)}) {
       &.trump-hillary--winner {
-        z-index: 1000;
+        z-index: 910;
       }
     }
 
@@ -45,6 +45,7 @@
       bottom: 0;
       right: 0;
       margin: 25% 12%;
+      //border: 1px solid lime;
 
       @media screen and (max-width: #{map-get($breakpoints, medium)}) {
         right: auto;
@@ -92,11 +93,23 @@
   }
 
   .trump-hillary__trump {
+    order: 0;
     background-color: $color-republicans;
   }
 
   .trump-hillary__hillary {
+    order: 1;
     background-color: $color-democrats;
+  }
+}
+
+html[dir=rtl] {
+  .trump-hillary__trump {
+    order: 1;
+
+  }
+  .trump-hillary__hillary {
+    order: 0;
   }
 }
 

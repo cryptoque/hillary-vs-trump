@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
     "angular-recaptcha": "^3.0.4",
     "angular-sanitize": "^1.5.8",
     "angular-scroll": "^1.0.0",

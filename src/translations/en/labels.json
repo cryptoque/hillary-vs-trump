@@ -12,7 +12,7 @@
   "error.request.invalid.captcha": "Please fill out the captcha and try again",
   "error.db.connect": "Unexpected error, please try again later",
   "error.db.error": "Unexpected error, please try again later",
-  "error.request.not.unique": "Sorry, this ip-address has already voted",
+  "error.request.not.unique": "Sorry, you have already voted",
   "error.country.lookup.failed": "Unexpected error, please try again later",
 
   "header.title": "Who would <b>the world</b> vote for U.S. president?",
@@ -30,11 +30,12 @@
 
   "ballot.youwouldvote": "YOU WOULD VOTE:",
   "ballot.onevotefromcountry": "ONE VOTE FROM {{country}} FOR:",
+  "ballot.youvotedfor": "You voted for {{country}}",
   "ballot.aspresident": "as 45th PRESIDENT OF THE UNITED STATES",
   "ballot.vote": "Submit vote!",
-  "ballot.thankyou.title": "You voted {{candidate}}",
+  "ballot.thankyou.title": "We've added your vote.",
   "ballot.thankyou.thankyou": "Thank you!",
-  "ballot.thankyou.pleaseshare": "We've added your vote. Go see visual worldwide results map and please share this website",
+  "ballot.thankyou.pleaseshare": "Go checkout the <a href=\"#/results\">worldwide results</a> to see how your and other countries are voting. And please share this website!",
   "ballot.thankyou.button.sharevote": "Share your vote",
   "ballot.thankyou.button.share": "Share",
 

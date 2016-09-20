@@ -13,7 +13,7 @@ class AddClassOnWrapDirective {
     this.$timeout(() => {
       this.origLineHeight = parseInt(element.css('line-height'), 10);
       this.addWrapClass(element, scope.wrapClass);
-    }, 100);
+    }, 200);
 
     angular.element(window).on('resize', () => {
       this.addWrapClass(element, scope.wrapClass);

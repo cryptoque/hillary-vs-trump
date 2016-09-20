@@ -1,0 +1,70 @@
+/* Fade in, Fade out */
+.animate--fadein,
+.animate--fadeout {
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+}
+
+.animate--fadein.ng-hide-remove,
+.animate--fadeout.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+  display: block !important;
+}
+
+.animate--fadeout.ng-hide-add,
+.animate--fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+  display: block !important;
+}
+
+
+
+/* Slide up */
+.animate--slideup {
+}
+.animate--slideup.ng-hide-remove {
+  display: block !important;
+}
+.animate--slideup.ng-hide-remove.ng-hide-remove-active {
+  display: block !important;
+  //animation: slideUp .7s ease-out 2s forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 50%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+
+/* Slide down */
+.animate--slidedown.ng-hide-add.ng-hide-add-active {
+  display: block !important;
+  animation: slideDown .7s ease-in-out forwards;
+}
+
+.animate--slidedown.ng-hide-add {
+  display: block !important;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  40% {
+    transform: translate(-50%, -60%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, 150%);
+  }
+}

@@ -1,5 +1,4 @@
-<section class="splash" ng-hide="$ctrl.hideSplash">
-
+<section class="splash animate--slidedown" ng-hide="$ctrl.$rootScope.splashHidden">
   <p>
     Hi, we see that you're from
     <span class="splash__country">
@@ -10,7 +9,7 @@
     Who would you vote for as 45th president of the United States?
   </p>
 
-  <button ng-click="$ctrl.hideSplash = true;">Start voting!</button>
+  <button ng-click="$ctrl.hideSplash()">Start voting!</button>
 
   <div class="splash__language">
     <label>Language:</label>
@@ -20,4 +19,4 @@
   </div>
 
 </section>
-<div class="splash__bg" ng-hide="$ctrl.hideSplash"></div>
+<div class="splash__bg" ng-hide="$ctrl.$rootScope.splashHidden"></div>
