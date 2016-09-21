@@ -38,7 +38,6 @@ class SceneHillaryDirective {
         ease: Linear.easeNone
       });
 
-
     this.timeline = new TimelineMax({ paused: true, repeat: 0 });
     this.timeline
       .to(this.hillary, .2, {
@@ -101,33 +100,51 @@ class SceneHillaryDirective {
 
   bindUiEvents() {
     this.scene.on('mouseenter mouseover touchstart', () => {
-      if (!this.$rootScope.candidateChosen) {
+      if (!this.scope.candidateChosen) {
         this.timeline.tweenTo('mouseover');
       }
     });
 
     this.scene.on('mouseout', () => {
-      if (!this.$rootScope.candidateChosen) {
+      if (!this.scope.candidateChosen) {
         this.timeline.reverse();
       }
     });
 
     this.button.on('click', () => {
-      this.$rootScope.candidateChosen = true;
-      this.timeline.tweenTo('end');
+      if (!this.scope.candidateChosen) {
+        this.$rootScope.$emit('candidateChosen', 'D');
+        this.timeline.tweenTo('end');
+      }
     });
 
     this.$rootScope.$on('close-modal', (event) => {
       this.timeline.reverse();
-      this.flagTween.stop();
-      this.$rootScope.candidateChosen = false;
+      this.$timeout(() => {
+        this.flagTween.stop();
+        this.$rootScope.$emit('candidateChosen', false);
+      }, 2000);
+    });
+
+    this.$rootScope.$on('candidateChosen', (event, data) => {
+      // console.log('H', data);
+      this.scope.candidateChosen = data;
+      if (data === 'R') {
+        this.timeline.reverse();
+      }
+    });
+
+    this.scope.$on('$destroy', () => {
+      this.timeline.kill();
     });
   }
 
   openDialog() {
-    this.$timeout(() => {
-      this.scope.openModalFn({p: 'D'});
-    }, 500);
+    if (this.timeline.isActive()) {
+      this.$timeout(() => {
+        this.scope.openModalFn({p: 'D'});
+      }, 500);
+    }
   }
 }
 

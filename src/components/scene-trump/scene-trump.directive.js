@@ -36,7 +36,7 @@ class SceneTrumpDirective {
         ease: Power1.easeOut
       });
 
-    this.timeline = new TimelineMax({ paused: true });
+    this.timeline = new TimelineMax({ paused: true, repeat: 0 });
     this.timeline
       .to(this.trump, .2, {
         backgroundPosition: '-2688px 0px',
@@ -95,33 +95,51 @@ class SceneTrumpDirective {
 
   bindUiEvents() {
     this.scene.on('mouseenter mouseover touchstart', () => {
-      if (!this.$rootScope.candidateChosen) {
+      if (!this.scope.candidateChosen) {
         this.timeline.tweenTo('mouseover');
       }
     });
 
     this.scene.on('mouseout', () => {
-      if (!this.$rootScope.candidateChosen) {
+      if (!this.scope.candidateChosen) {
         this.timeline.reverse();
       }
     });
 
     this.button.on('click', () => {
-      this.$rootScope.candidateChosen = true;
-      this.timeline.tweenTo('end');
+      if (!this.scope.candidateChosen) {
+        this.$rootScope.$emit('candidateChosen', 'R');
+        this.timeline.tweenTo('end');
+      }
     });
 
     this.$rootScope.$on('close-modal', (event) => {
       this.timeline.reverse();
-      this.flagTween.stop();
-      this.$rootScope.candidateChosen = false;
+      this.$timeout(() => {
+        this.flagTween.stop();
+        this.$rootScope.$emit('candidateChosen', false);
+      }, 2000);
+    });
+
+    this.$rootScope.$on('candidateChosen', (event, data) => {
+      // console.log('T', data);
+      this.scope.candidateChosen = data;
+      if (data === 'D') {
+        this.timeline.reverse();
+      }
+    });
+
+    this.scope.$on('$destroy', () => {
+      this.timeline.kill();
     });
   }
 
   openDialog() {
-    this.$timeout(() => {
-      this.scope.openModalFn({p: 'R'});
-    }, 500);
+    if (this.timeline.isActive()) {
+      this.$timeout(() => {
+        this.scope.openModalFn({p: 'R'});
+      }, 500);
+    }
   }
 }
 

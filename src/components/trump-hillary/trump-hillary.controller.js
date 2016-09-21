@@ -9,6 +9,7 @@ class TrumpHillaryController {
     this.yourVote = yourVote;
     this.$rootScope.$broadcast('open-modal');
   }
+
 }
 
 export default TrumpHillaryController;
