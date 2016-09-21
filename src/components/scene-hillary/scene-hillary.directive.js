@@ -140,11 +140,11 @@ class SceneHillaryDirective {
   }
 
   openDialog() {
-    if (this.timeline.isActive()) {
+    // if (this.timeline.isActive()) {
       this.$timeout(() => {
         this.scope.openModalFn({p: 'D'});
       }, 500);
-    }
+    // }
   }
 }
 
