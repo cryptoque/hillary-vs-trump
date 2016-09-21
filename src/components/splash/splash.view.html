@@ -1,15 +1,15 @@
 <section class="splash animate--slidedown" ng-hide="$ctrl.$rootScope.splashHidden">
   <p>
-    Hi, we see that you're from
+    {{'splash.hiwesee' | translate}}
     <span class="splash__country">
       <span class="splash__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>{{ 'country.' + $ctrl.countryCode | translate }}!
     </span>
   </p>
   <p>
-    Who would you vote for as 45th president of the United States?
+    {{'splash.whowouldyou' | translate}}
   </p>
 
-  <button ng-click="$ctrl.hideSplash()">Start voting!</button>
+  <button ng-click="$ctrl.hideSplash()">{{'splash.start' | translate}}</button>
 
   <div class="splash__language">
     <div ng-hide="$ctrl.showLanguageSwitch">

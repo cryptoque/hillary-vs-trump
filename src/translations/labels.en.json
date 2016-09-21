@@ -4,7 +4,6 @@
   "page.description": "Worldwide vote 2016. Who would you vote for U.S. president? Donald J. Trump or Hillary Clinton?",
   "share.headline": "Who would you vote for U.S. president?",
   "share.action": "I voted: {{candidate}}.",
-
   "error.polls.closed": "The polls are closed",
   "error.request.invalid.ip": "Unexpected error, please try again later",
   "error.request.invalid.parameters": "Unexpected error",
@@ -14,20 +13,20 @@
   "error.db.error": "Unexpected error, please try again later",
   "error.request.not.unique": "Sorry, you have already voted",
   "error.country.lookup.failed": "Unexpected error, please try again later",
-
-  "header.title": "Who would <b>the world</b> vote for as U.S. president?",
+  "header.title": "Who would <b>the world</b> vote for U.S. president?",
   "header.results": "Results",
   "header.info": "INFO",
   "header.days-left": "days left",
   "header.day-left": "day left",
-
   "fullname.trump": "Donald J. Trump",
   "fullname.hillary": "Hillary Clinton",
   "shortname.trump": "Trump",
   "shortname.hillary": "Clinton",
   "shortname.split": "Draw",
   "vote": "Vote",
-
+  "splash.hiwesee": "Hi, we see that you're from",
+  "splash.whowouldyou": "Who would you vote for as 45th president of the United States?",
+  "splash.start": "Start!",
   "ballot.youwouldvote": "YOU WOULD VOTE:",
   "ballot.onevotefromcountry": "ONE VOTE FROM {{country}} GOES TO:",
   "ballot.youvotedfor": "You already voted for {{country}}",
@@ -35,16 +34,14 @@
   "ballot.vote": "Submit vote!",
   "ballot.thankyou.title": "We've added your vote!",
   "ballot.thankyou.thankyou": "Thank you!",
-  "ballot.thankyou.pleaseshare": "Check out the <a href=\"#/results\">results</a> to see how your country and others have voted and share it with the rest of the world!",
+  "ballot.thankyou.pleaseshare": "Check out the <a href=\"#/results\">results</a> to see how your country and other countries have voted and share it with the rest of the world!",
   "ballot.thankyou.button.sharevote": "Share your vote",
   "ballot.thankyou.button.share": "Share",
-
   "worldmap.title": "Worldwide Poll:",
   "worldmap.subtitle": "United States presidential election, 2016",
   "worldmap.totalvotes": "Total number of votes: {{votes}}",
   "worldmap.country-votes": "Country (total votes)",
   "worldmap.candidate": "Candidate",
-
   "country.AF": "Afghanistan",
   "country.AX": "Åland Islands",
   "country.AL": "Albania",
@@ -290,7 +287,6 @@
   "country.YE": "Yemen",
   "country.ZM": "Zambia",
   "country.ZW": "Zimbabwe",
-
   "lang.ab": "Abkhaz",
   "lang.aa": "Afar",
   "lang.af": "Afrikaans",

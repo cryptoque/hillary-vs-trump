@@ -14,8 +14,8 @@ angular.module('Vote', [
 
     // Detect language
     const language = translateServiceProvider.detectLanguage(Languages);
-    translateServiceProvider.setTranslation(`translations/${language}/labels.json`);
-    translateServiceProvider.setFallbackTranslation(`translations/en/labels.json`);
+    translateServiceProvider.setTranslation(`translations/labels.${language}.json`);
+    translateServiceProvider.setFallbackTranslation(`translations/labels.en.json`);
 
     // States
     $stateProvider
