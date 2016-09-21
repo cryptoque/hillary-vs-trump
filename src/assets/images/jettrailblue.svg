@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="256px" height="40px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <clipPath id="_clip1">
+        <rect id="jettrailblue" x="0" y="0" width="256" height="40"/>
+    </clipPath>
+    <g clip-path="url(#_clip1)">
+        <path d="M1.365,40c0,0 247.167,0 251.367,0c4.199,0 4.513,-2.148 0,-2.606c-4.513,-0.459 -22.427,2.309 -25.037,-15.588c-2.61,-17.897 -17.419,-28.086 -35.051,-17.536c-17.632,10.55 -14.815,-4.412 -25.037,6.82c-10.221,11.232 -23.327,21.696 -35.051,17.536c-11.723,-4.161 -16.918,-0.516 -19.027,2.922c-2.11,3.439 -3.599,2.797 -15.022,-3.897c-11.423,-6.693 -21.025,-8.309 -31.046,0.975c-10.021,9.283 -16.517,5.816 -23.033,1.948c-6.516,-3.868 -34.644,5.232 -40.059,6.82c-5.414,1.587 -5.001,2.606 -3.004,2.606Z" style="fill:#0062c5;"/>
+    </g>
+</svg>

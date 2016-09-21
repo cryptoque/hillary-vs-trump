@@ -11,3 +11,5 @@ import './components/world-map';
 import './components/country-results';
 import './components/top-nav';
 import './components/trump-hillary';
+import './components/scene-hillary';
+import './components/scene-trump';

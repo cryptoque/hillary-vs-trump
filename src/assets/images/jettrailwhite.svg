@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="332px" height="50px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <clipPath id="_clip1">
+        <rect id="jettrailwhite" x="0" y="0" width="332" height="50"/>
+    </clipPath>
+    <g clip-path="url(#_clip1)">
+        <path d="M2.235,50c0,0 321.824,0 327.231,0c5.406,0 0.916,-4.052 -1.97,-8.102c-2.887,-4.05 -55.125,-54.611 -96.78,-38.87c-41.656,15.741 -46.858,3.623 -60.862,15.947c-14.004,12.324 -26.034,35.19 -27.937,21.927c-2.031,-14.159 -22.947,-27.132 -41.904,-8.97c-12.864,12.324 -18.335,20.106 -18.957,7.973c-0.463,-9.033 -4.526,-3.212 -7.982,-1.993c-11.107,3.914 -22.342,5.473 -29.932,3.986c-7.59,-1.487 -16.655,1.868 -25.941,2.99c-12.436,1.503 -21.63,5.112 -14.966,5.112Z" style="fill:#f1f3f3;"/>
+    </g>
+</svg>

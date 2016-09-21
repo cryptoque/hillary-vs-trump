@@ -7,4 +7,5 @@ import 'angular-socialshare';
 import 'angular-scroll';
 import 'topojson';
 import 'leaflet';
+import 'gsap';
 import './topojson.init';
