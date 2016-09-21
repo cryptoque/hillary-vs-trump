@@ -28,7 +28,7 @@ class BallotController {
     if (this.ballotForm.$valid) {
       this.apiError = false;
       this.votingInProgress = true;
-      this.apiService.sendVote({ voted: this.yourVote })
+      this.apiService.sendVote({ voted: this.yourVote, gRecaptchaResponse: this.ballotForm.gRecaptchaResponse })
         .then(this.votingSuccess)
         .catch(this.votingError)
         .finally(() => {
