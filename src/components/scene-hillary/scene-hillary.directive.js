@@ -8,7 +8,7 @@ class SceneHillaryDirective {
   link(scope, element, attrs) {
     this.scope = scope;
     this.scene = element;
-    this.hillary = this.scene.find('.scene__hillary');
+    this.hillary = this.scene.find('.scene--hillary__hillary');
     this.button = this.scene.find('.scene__button');
 
     this.timeline = new TimelineMax({ paused: true, yoyo: false, repeat: 0 });

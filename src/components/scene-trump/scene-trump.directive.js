@@ -8,7 +8,7 @@ class SceneTrumpDirective {
   link(scope, element, attrs) {
     this.scope = scope;
     this.scene = element;
-    this.trump = this.scene.find('.scene__trump');
+    this.trump = this.scene.find('.scene--trump__trump');
     this.button = this.scene.find('.scene__button');
 
     this.timeline = new TimelineMax({ paused: true });

@@ -1,10 +1,11 @@
 .scene {
   position: absolute;
   top: 0;
-  left: -40%;
-  width: 140%;
+  left: 0;
+  width: 100%;
   height: 100%;
   perspective: 1000;
+
 
   .scene__container {
     //position: absolute;
@@ -32,19 +33,16 @@
     white-space: nowrap;
   }
 
-  .scene__hillary,
-  .scene__trump,
-  .scene__hillary-flag,
-  .scene__hillary-whitehouse,
-  .scene__hillary-tree {
+  .scene--hillary__hillary,
+  .scene--trump__trump {
+    //display: none;
     position: absolute;
     background-repeat: no-repeat;
     background-position: 0 0;
     transform-origin: center center;
   }
 
-  .scene__hillary {
-    display: none;
+  .scene--hillary__hillary {
     z-index: 950;
     left: 50%;
     top: calc(1037px*1.55);
@@ -55,7 +53,7 @@
     transform: scale(4);
   }
 
-  .scene__trump {
+  .scene--trump__trump {
     z-index: 950;
     left: 50%;
     top: calc(1197px*1.35);
@@ -66,39 +64,63 @@
     transform: scale(4);
   }
 
-  .scene__hillary-flag {
-    //display: none;
-    z-index: 920;
-    top: 0;
-    right: -30%;
-    width: 100%;
-    height: 100%;
-    background-image: url(../images/flaghillary.svg);
-    background-size: contain;
-    opacity: .3;
-    //transform: scale(.8) translateX(50%);
-  }
-
-  .scene__hillary-whitehouse {
+  .scene--hillary__background,
+  .scene--trump__background {
+    position: absolute;
     z-index: 930;
-    top: 30%;
-    left: 49%;
-    background-image: url(../images/whitehouse.svg);
-    background-size: contain;
+    top: 50%;
     width: 100%;
     height: 100%;
+    transform: translateY(-50%);
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      padding: 0 !important;
+    }
   }
 
-  .scene__hillary-tree {
+  .scene--hillary__background {
+    right: 0;
+    padding-left: 39%;
+  }
+
+  .scene--trump__background {
+    left: 0;
+    padding-right: 39%;
+  }
+
+  .scene--hillary__whitehouse,
+  .scene--hillary__fighter--blue,
+  .scene--hillary__fighter--white,
+  .scene--hillary__fighter--red,
+  .scene--hillary__trail--blue,
+  .scene--hillary__trail--white,
+  .scene--hillary__trail--red,
+  .scene--hillary__tree,
+  .scene--hillary__bush,
+  .scene--hillary__blue-bg
+  {
     //display: none;
-    z-index: 925;
-    top: 30%;
-    left: 29%;
-    background-image: url(../images/tree.svg);
-    background-size: contain;
-    width: 30%;
-    height: 100%;
-    //transform: translateX(50%);
-
   }
+
+  .scene--hillary__flag {
+    transform: translateY(-10%);
+    //transform: rotate(13deg);
+    transform-origin: center center;
+  }
+
+
+  .scene--trump__flag,
+  .scene--trump__red-bg,
+  .scene--trump__whitehouse,
+  .scene--trump__eagle,
+  .scene--trump__wall
+  {
+    //display: none;
+  }
+
+  .scene--trump__flag {
+    transform: scale(2);
+    //transform-origin: left top;
+  }
+
 }
