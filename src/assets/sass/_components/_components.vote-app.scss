@@ -55,8 +55,12 @@
       overflow: hidden;
     }
 
-    .page--info__title {
+    .page--info__title,
+    .page--info__subtitle {
       text-align: center;
+    }
+
+    .page--info__title {
       margin-bottom: inuit-rem(10px);
     }
 

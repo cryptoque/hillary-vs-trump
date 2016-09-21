@@ -6,9 +6,7 @@ class TrumpHillaryController {
   }
 
   openModal(yourVote) {
-    if (!this.$window.localStorage.getItem('hasVoted')) {
-      this.yourVote = yourVote;
-    }
+    this.yourVote = yourVote;
     this.$rootScope.$broadcast('open-modal');
   }
 }

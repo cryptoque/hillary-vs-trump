@@ -18,7 +18,6 @@ class BallotController {
 
     this.$scope.$on('close-modal', (event) => {
       this.isVisible = false;
-      this.yourVote = false;
     });
 
     this.votingSuccess = this.votingSuccess.bind(this);
@@ -39,7 +38,8 @@ class BallotController {
   }
 
   votingSuccess(response) {
-    this.hasVoted = true;
+    this.hasVoted = new Date().getTime();
+    this.votedFor = this.yourVote;
     this.$window.localStorage.setItem('hasVoted', this.hasVoted);
   }
 
@@ -50,8 +50,8 @@ class BallotController {
     }, 500);
   }
 
-  candidate() {
-    return this.$filter('translate')('fullname.' + (this.yourVote === 'R' ? 'trump' : (this.yourVote === 'D' ? 'hillary' : '')));
+  candidate(c) {
+    return this.$filter('translate')('fullname.' + (c === 'R' ? 'trump' : (c === 'D' ? 'hillary' : '')));
   }
 
   closeModal() {

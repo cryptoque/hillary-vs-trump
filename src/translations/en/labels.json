@@ -1,6 +1,6 @@
 {
   "page.url": "https://worldwide.vote/hillary-vs-trump/",
-  "page.title": "Worldwide.vote: Hillary vs Trump",
+  "page.title": "Worldwide.vote: Hillary vs Trump - Presidential Election 2016",
   "page.description": "Worldwide vote 2016. Who would you vote for U.S. president? Donald J. Trump or Hillary Clinton?",
   "share.headline": "Who would you vote for U.S. president?",
   "share.action": "I voted: {{candidate}}.",
@@ -15,7 +15,7 @@
   "error.request.not.unique": "Sorry, you have already voted",
   "error.country.lookup.failed": "Unexpected error, please try again later",
 
-  "header.title": "For who would <b>the world</b> vote for as U.S. president?",
+  "header.title": "Who would <b>the world</b> vote for as U.S. president?",
   "header.results": "Results",
   "header.info": "INFO",
   "header.days-left": "days left",
@@ -33,7 +33,7 @@
   "ballot.youvotedfor": "You voted for {{country}}",
   "ballot.aspresident": "as 45th PRESIDENT OF THE UNITED STATES",
   "ballot.vote": "Submit vote!",
-  "ballot.thankyou.title": "We've added your vote.",
+  "ballot.thankyou.title": "We've added your vote!",
   "ballot.thankyou.thankyou": "Thank you!",
   "ballot.thankyou.pleaseshare": "Check out the <a href=\"#/results\">results</a> to see how your country and others have voted and share it with the rest of the world!",
   "ballot.thankyou.button.sharevote": "Share your vote",

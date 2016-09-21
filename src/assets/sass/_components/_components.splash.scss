@@ -53,6 +53,10 @@
     display: block;
     margin: inuit-rem(40px) auto 0 auto;
     font-size: inuit-rem(14px);
+
+    select {
+      padding: inuit-rem(5px) inuit-rem(10px);
+    }
   }
 }
 

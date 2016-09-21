@@ -2,7 +2,7 @@
   <a href class="ballot__close icon icon--close" ng-click="$ctrl.closeModal()"></a>
 
   <!-- Vote now -->
-  <div class="ballot__container" ng-if="!$ctrl.hasVoted">
+  <div class="ballot__container" ng-show="!$ctrl.hasVoted" ng-class="{'animate--fadeout': !$ctrl.hasVoted}">
 
     <form name="$ctrl.ballotForm" ng-submit="$ctrl.submitVote()">
       <p class="ballot__header">
@@ -11,7 +11,7 @@
       </p>
 
       <div class="ballot__content">
-        <h2 class="ballot__title" ng-show="$ctrl.yourVote">{{$ctrl.candidate()}}</h2>
+        <h2 class="ballot__title" ng-show="$ctrl.yourVote">{{$ctrl.candidate($ctrl.yourVote)}}</h2>
         <p>{{'ballot.aspresident' | translate}}</p>
 
         <div class="ballot__captcha-vote">
@@ -35,9 +35,9 @@
   </div>
 
   <!-- Thank you -->
-  <div class="ballot__container" ng-if="$ctrl.hasVoted">
-    <p class="ballot__subtitle" ng-show="$ctrl.yourVote">{{ 'ballot.thankyou.title' | translate }}</p>
-    <p class="ballot__subtitle" ng-hide="$ctrl.yourVote">
+  <div class="ballot__container animate--fadein" ng-show="$ctrl.hasVoted">
+    <p class="ballot__subtitle" ng-show="$ctrl.votedFor">{{ 'ballot.thankyou.title' | translate }}</p>
+    <p class="ballot__subtitle" ng-hide="$ctrl.votedFor">
       <span class="ballot__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>
       {{'ballot.youvotedfor' | translate:{country: ('country.' + $ctrl.countryCode | translate)} }}
     </p>
@@ -46,14 +46,14 @@
       <h2 class="ballot__title">{{'ballot.thankyou.thankyou' | translate}}</h2>
       <p class="ballot__text ballot__text--pleaseshare" ng-bind-html="'ballot.thankyou.pleaseshare' | translate"></p>
 
-      <div ng-show="$ctrl.yourVote">
+      <div ng-show="$ctrl.votedFor">
         <button class="ballot__button ballot__button--facebook icon icon--facebook"
                 socialshare
                 socialshare-provider="facebook"
                 socialshare-type="feed"
                 socialshare-via="1788524538092788"
                 socialshare-media="http://720kb.net/assets/img/720kb-fb.png"
-                socialshare-text="{{ 'share.action' | translate:{candidate: $ctrl.candidate()} }}"
+                socialshare-text="{{ 'share.action' | translate:{candidate: $ctrl.candidate($ctrl.votedFor)} }}"
                 socialshare-caption="{{ 'share.headline' | translate }}"
                 socialshare-url="{{ 'page.url' | translate }}"
                 socialshare-popup-height="300"
@@ -64,14 +64,14 @@
                 socialshare
                 socialshare-provider="twitter"
                 socialshare-hashtags="trump #hillary"
-                socialshare-text="{{ 'share.action' | translate:{candidate: $ctrl.candidate()} }} {{ 'share.headline' | translate }}"
+                socialshare-text="{{ 'share.action' | translate:{candidate: $ctrl.candidate($ctrl.votedFor)} }} {{ 'share.headline' | translate }}"
                 socialshare-url="{{ 'page.url' | translate }}"
                 socialshare-popup-height="300"
                 socialshare-popup-width="400"
                 socialshare-trigger="click">{{'ballot.thankyou.button.sharevote' | translate}}</button>
       </div>
 
-      <div ng-hide="$ctrl.yourVote">
+      <div ng-hide="$ctrl.votedFor">
         <button class="ballot__button ballot__button--facebook icon icon--facebook"
            socialshare
            socialshare-provider="facebook"

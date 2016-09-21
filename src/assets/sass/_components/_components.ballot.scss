@@ -84,6 +84,11 @@
     }
   }
 
+  .ballot__subtitle {
+    @extend %font--bold;
+    text-transform: uppercase;
+  }
+
   .ballot__content {
     @extend %font--bold;
     border-top: inuit-rem(3px) solid $color-background-darker;

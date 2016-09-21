@@ -24,6 +24,7 @@
     @media screen and (min-width: #{map-get($breakpoints, medium)}) {
       &.trump-hillary--winner {
         z-index: 910;
+        //border-top: 2px solid lime;
       }
     }
 
