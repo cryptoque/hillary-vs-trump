@@ -1,16 +1,20 @@
 <div class="trump-hillary">
-  <div class="trump-hillary__trump" ng-class="{'trump-hillary--winner': $ctrl.yourVote === 'R'}">
-    <div class="fili-test"></div>
-
-    <div class="trump-hillary__hotspot" hotspot="trump-hillary--hover" hotspot-parent="trump-hillary__trump">
-      <button class="trump-hillary__button" ng-click="$ctrl.openModal('R')">{{ 'vote' | translate }} {{ 'shortname.trump' | translate }}</button>
-    </div>
-
-  </div>
+  <!-- Hillary -->
   <div class="trump-hillary__hillary" ng-class="{'trump-hillary--winner': $ctrl.yourVote === 'D'}">
+    <div class="svg__hillary"></div>
 
     <div class="trump-hillary__hotspot" hotspot="trump-hillary--hover" hotspot-parent="trump-hillary__hillary">
       <button class="trump-hillary__button" ng-click="$ctrl.openModal('D')">{{ 'vote' | translate }} {{ 'shortname.hillary' | translate }}</button>
+    </div>
+
+  </div>
+
+  <!-- Trump -->
+  <div class="trump-hillary__trump" ng-class="{'trump-hillary--winner': $ctrl.yourVote === 'R'}">
+    <div class="svg__trump"></div>
+
+    <div class="trump-hillary__hotspot" hotspot="trump-hillary--hover" hotspot-parent="trump-hillary__trump">
+      <button class="trump-hillary__button" ng-click="$ctrl.openModal('R')">{{ 'vote' | translate }} {{ 'shortname.trump' | translate }}</button>
     </div>
 
   </div>

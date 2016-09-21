@@ -30,7 +30,7 @@
 
   "ballot.youwouldvote": "YOU WOULD VOTE:",
   "ballot.onevotefromcountry": "ONE VOTE FROM {{country}} GOES TO:",
-  "ballot.youvotedfor": "You voted for {{country}}",
+  "ballot.youvotedfor": "You already voted for {{country}}",
   "ballot.aspresident": "as 45th PRESIDENT OF THE UNITED STATES",
   "ballot.vote": "Submit vote!",
   "ballot.thankyou.title": "We've added your vote!",

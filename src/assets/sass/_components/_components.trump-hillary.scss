@@ -88,24 +88,30 @@
   }
 
   .trump-hillary__trump {
-    order: 0;
+    order: 1;
     background-color: $color-republicans;
   }
 
   .trump-hillary__hillary {
-    order: 1;
+    order: 0;
     background-color: $color-democrats;
   }
 }
 
 html[dir=rtl] {
   .trump-hillary__trump {
-    order: 1;
+    order: 0;
 
   }
   .trump-hillary__hillary {
-    order: 0;
+    order: 1;
   }
+}
+
+
+.trump-hillary {
+
+
 }
 
 .fili-test {
