@@ -9,6 +9,7 @@ webpack
 cp -r src/api/ build/
 cp -r src/translations/ build/
 cp -r src/json/ build/
+cp -r src/favicon.ico build/
 
 php ./composer.phar install
 php ./scripts/generate-results-json.php
