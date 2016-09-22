@@ -75,15 +75,15 @@ angular.module('Vote', [
   })
 
   // @ngInject
-  .run(($rootScope, $window, translateService) => {
+  .run(($rootScope, $window, $location, translateService) => {
 
     // Load translations
     translateService.loadTranslations();
 
     // Google Analytics
     $window.ga('create', 'UA-83949074-2', 'auto');
+
     $rootScope.$on('$stateChangeSuccess', function (event) {
       $window.ga('send', 'pageview', $location.path());
     });
-
   });
