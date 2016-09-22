@@ -24,7 +24,8 @@ class SceneTrumpDirective {
     this.eagle = this.scene.find('.scene--trump__eagle');
     this.wall = this.scene.find('.scene--trump__wall > g');
 
-    this.timelineFlag = new TimelineMax({ paused: true, repeat: -1, yoyo: true })
+    this.timelineFlag = new TimelineMax({ paused: true, repeat: -1, yoyo: true });
+    this.timelineFlag
       .fromTo(this.flag, 40, {
         x: '-40%',
         y: '-40%',
@@ -35,7 +36,8 @@ class SceneTrumpDirective {
         ease: Power1.easeOut
       });
 
-    this.timelineButton = new TimelineMax({ paused: true, repeat: 0 })
+    this.timelineButton = new TimelineMax({ paused: true, repeat: 0 });
+    this.timelineButton
       .to(this.button, .2, {
         y: -100,
         opacity: 1,
@@ -48,7 +50,8 @@ class SceneTrumpDirective {
         ease: Back.easeIn
       }, .5);
 
-    this.timelineFull = new TimelineMax({ paused: true, repeat: 0 })
+    this.timelineFull = new TimelineMax({ paused: true, repeat: 0 });
+    this.timelineFull
       .to(this.trump, .2, {
         backgroundPosition: '-2688px 0px',
         ease: SteppedEase.config(3)
@@ -65,13 +68,13 @@ class SceneTrumpDirective {
         force3D: false,
         ease: Power4.easeOut
       })
-      .from(this.redBg, .3, {
-        opacity: 0,
-        y: 100
+      .from(this.redBg, .2, {
+        opacity: 0
       })
       .from(this.whitehouse, .3, {
         opacity: 0,
-        x: -100
+        x: -200,
+        ease: Back.easeOut.config(1.7)
       })
       .from(this.flag, .4, {
         opacity: 0,
@@ -108,10 +111,10 @@ class SceneTrumpDirective {
       }
     });
 
-    this.button.on('click', () => {
+    this.button.on('click touchend', () => {
       if (!this.scope.candidateChosen) {
-        this.timelineFull.tweenTo('end');
         this.timelineButton.reverse();
+        this.timelineFull.tweenTo('end');
         this.$rootScope.$emit('candidateChosen', 'R');
       }
     });
@@ -123,6 +126,7 @@ class SceneTrumpDirective {
         this.$rootScope.$emit('candidateChosen', false);
       }, 2000);
     });
+
 
     this.$rootScope.$on('candidateChosen', (event, data) => {
       this.scope.candidateChosen = data;

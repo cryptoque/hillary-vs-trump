@@ -1,7 +1,7 @@
 /* Fade in, Fade out */
 .animate--fadein,
 .animate--fadeout {
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
 }
 
 .animate--fadein.ng-hide-remove,
@@ -17,43 +17,17 @@
 }
 
 
-
-/* Slide up */
-.animate--slideup {
-}
-.animate--slideup.ng-hide-remove {
+/* Splash slide down */
+.animate--splash-down.ng-hide-add.ng-hide-add-active {
   display: block !important;
-}
-.animate--slideup.ng-hide-remove.ng-hide-remove-active {
-  display: block !important;
-  //animation: slideUp .7s ease-out 2s forwards;
+  animation: splashSlideDown .7s ease-in-out forwards;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 50%);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-
-
-/* Slide down */
-.animate--slidedown.ng-hide-add.ng-hide-add-active {
-  display: block !important;
-  animation: slideDown .7s ease-in-out forwards;
-}
-
-.animate--slidedown.ng-hide-add {
+.animate--splash-down.ng-hide-add {
   display: block !important;
 }
 
-@keyframes slideDown {
+@keyframes splashSlideDown {
   from {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -68,3 +42,107 @@
     transform: translate(-50%, 150%);
   }
 }
+
+
+/* Ballot slide left */
+.animate--ballot-left {
+  transform: translateX(0%);
+}
+.animate--ballot-left.ng-hide-add {
+  display: block !important;
+  animation: ballotSlideRight .4s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+.animate--ballot-left.ng-hide-remove.ng-hide-remove-active,
+.animate--ballot-left.ng-hide-remove.ng-hide-add-active {
+  display: block !important;
+}
+.animate--ballot-left.ng-hide-remove {
+  display: block !important;
+  animation: ballotSlideLeft .4s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+
+/* Ballot slide right */
+.animate--ballot-right {
+  transform: translateX(100%);
+}
+.animate--ballot-right.ng-hide-add {
+  display: block !important;
+  animation: ballotSlideLeft .6s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+.animate--ballot-right.ng-hide-remove.ng-hide-remove-active,
+.animate--ballot-right.ng-hide-remove.ng-hide-add-active {
+  display: block !important;
+}
+.animate--ballot-right.ng-hide-remove {
+  display: block !important;
+  animation: ballotSlideRight .6s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+
+/* Ballot slide up */
+@media screen and (max-width: #{map-get($breakpoints, medium)}) {
+  .animate--ballot-left,
+  .animate--ballot-right {
+    transform: translate(0, 0%);
+  }
+  .animate--ballot-left.ng-hide-add,
+  .animate--ballot-right.ng-hide-add {
+    display: block !important;
+    animation: ballotSlideUp .4s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  }
+  .animate--ballot-left.ng-hide-remove.ng-hide-remove-active,
+  .animate--ballot-left.ng-hide-remove.ng-hide-add-active,
+  .animate--ballot-right.ng-hide-remove.ng-hide-remove-active,
+  .animate--ballot-right.ng-hide-remove.ng-hide-add-active {
+    display: block !important;
+  }
+  .animate--ballot-left.ng-hide-remove,
+  .animate--ballot-right.ng-hide-remove {
+    display: block !important;
+    animation: ballotSlideDown .4s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  }
+}
+
+
+
+
+
+@keyframes ballotSlideLeft {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes ballotSlideRight {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes ballotSlideUp {
+  from {
+    transform: translate(0, 0%);
+  }
+
+  to {
+    transform: translate(0, 100%);
+  }
+}
+@keyframes ballotSlideDown {
+  from {
+    transform: translate(0, 100%);
+  }
+
+  to {
+    transform: translate(0, 0%);
+  }
+}
+
+

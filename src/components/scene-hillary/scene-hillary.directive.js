@@ -30,14 +30,16 @@ class SceneHillaryDirective {
     this.fighterRed = this.scene.find('.scene--hillary__fighter--red');
     this.fighterRedTrail = this.scene.find('.scene--hillary__trail--red');
 
-    this.timelineFlag = new TimelineMax({ paused: true, repeat: -1, yoyo: true })
+    this.timelineFlag = new TimelineMax({ paused: true, repeat: -1, yoyo: true });
+    this.timelineFlag
       .to(this.flag, 40, {
         rotation: '360',
         transformOrigin: '50% 50%',
         ease: Linear.easeNone
       });
 
-    this.timelineButton = new TimelineMax({ paused: true, repeat: 0 })
+    this.timelineButton = new TimelineMax({ paused: true, repeat: 0 });
+    this.timelineButton
       .to(this.button, .2, {
         y: -100,
         opacity: 1,
@@ -50,7 +52,8 @@ class SceneHillaryDirective {
         ease: Back.easeIn
       }, .5);
 
-    this.timelineFull = new TimelineMax({ paused: true, repeat: 0 })
+    this.timelineFull = new TimelineMax({ paused: true, repeat: 0 });
+    this.timelineFull
       .to(this.hillary, .2, {
         backgroundPosition: '-1128px 0px',
         ease: SteppedEase.config(3)
@@ -67,13 +70,13 @@ class SceneHillaryDirective {
         force3D: false,
         ease: Power4.easeOut
       })
-      .from(this.blueBg, .3, {
-        opacity: 0,
-        y: 100
+      .from(this.blueBg, .2, {
+        opacity: 0
       })
-      .from(this.whitehouse, .3, {
+      .from(this.whitehouse, .5, {
         opacity: 0,
-        x: 200
+        x: 200,
+        ease: Back.easeOut.config(1.7)
       })
       .from(this.flag, .4, {
         opacity: 0,
@@ -81,7 +84,8 @@ class SceneHillaryDirective {
       })
       .staggerFrom([this.tree, this.bush], .4, {
         opacity: 0,
-        x: -100
+        x: -100,
+        ease: Back.easeOut.config(1.7)
       }, .5)
       .staggerFrom([
         [this.fighterBlue, this.fighterBlueTrail],
@@ -113,7 +117,7 @@ class SceneHillaryDirective {
       }
     });
 
-    this.button.on('click', () => {
+    this.button.on('click touchend', () => {
       if (!this.scope.candidateChosen) {
         this.timelineFull.tweenTo('end');
         this.timelineButton.reverse();

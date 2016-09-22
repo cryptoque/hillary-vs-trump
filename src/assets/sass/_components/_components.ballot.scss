@@ -6,18 +6,7 @@
   height: 100%;
   background-color: #FFF;
   text-align: center;
-
-  @media screen and (min-width: #{map-get($breakpoints, medium)}) {
-    width: 50%;
-
-    &.ballot--slide-left {
-      animation: ballotSlideLeft .5s ease-out forwards;
-    }
-
-    &.ballot--slide-right {
-      animation: ballotSlideRight .5s ease-out forwards;
-    }
-  }
+  width: 50%;
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
     width: 100%;
@@ -63,7 +52,7 @@
   .ballot__header {
     @extend %font--bold;
     text-align: center;
-    margin-bottom: inuit-rem(40px);
+    margin-bottom: inuit-rem(20px);
     text-transform: uppercase;
 
     .ballot__flag {
@@ -140,27 +129,5 @@
       background-position: inuit-rem(20px) center;
       padding-left: inuit-rem(60px);
     }
-  }
-}
-
-
-
-@keyframes ballotSlideLeft {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes ballotSlideRight {
-  from {
-    transform: translateX(0%);
-  }
-
-  to {
-    transform: translateX(100%);
   }
 }
