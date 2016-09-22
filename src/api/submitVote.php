@@ -2,6 +2,7 @@
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', __DIR__ . '/../logs/votes.log');
+define('SECRET', 'Z6i7nNLAo7Xi');
 
 require ROOTPATH . '/vendor/autoload.php';
 require __DIR__ . '/functions.php';
@@ -22,16 +23,9 @@ if (filter_var(CLIENTIP, FILTER_VALIDATE_IP) === false) {
 $params = json_decode(file_get_contents('php://input'), true);
 if (!count($params) || !isset($params['voted'])) { apiError('request.invalid.parameters'); }
 
-// reCaptcha
-if (!STAGING) {
-  if (!isset($params['gRecaptchaResponse'])) { apiError('request.missing.captcha'); }
-  $recaptcha = new \ReCaptcha\ReCaptcha($_CONFIG['general']['google.recaptcha']);
-  $resp = $recaptcha->verify($params['gRecaptchaResponse'], CLIENTIP);
-  if (!$resp->isSuccess()) {
-    $errors = $resp->getErrorCodes();
-    apiError('request.invalid.captcha');
-  }
-}
+// Verify token
+if (!isset($params['token'])) { apiError('request.missing.token'); }
+
 
 // Connect DB
 $db = new mysqli($_DB['database.host'], $_DB['database.username'], $_DB['database.password']);
@@ -40,18 +34,22 @@ if ($db->connect_errno) {
 }
 $db->select_db($_DB['database.dbname']);
 
-// Test if ip already voted
-$results = $db->query("SELECT `hash` FROM `votes` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
-if ($results->num_rows) {
-  apiError('request.not.unique');
-}
-
 // Test if IP already looked up
-$results = $db->query("SELECT `country` FROM `country-lookup` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
+$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
 if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCode = $row['country'];
 } else {
   apiError('country.lookup.failed');
+}
+
+if ($params['token'] !== sha1($row['hash'] . SECRET . date('Y-m-d'))) {
+  apiError('request.invalid.token');
+}
+
+// Test if ip already voted
+$results = $db->query("SELECT `hash` FROM `votes` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
+if ($results->num_rows) {
+  apiError('request.not.unique');
 }
 
 // Insert vote into db

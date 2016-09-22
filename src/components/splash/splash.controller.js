@@ -6,11 +6,12 @@ class SplashController {
     this.Languages = Languages;
     this.translateService = translateService;
 
+    this.countryCode = this.$rootScope.countryCode;
     this.language = translateService.getCurrentLanguage();
   }
 
   changeLanguage() {
-    this.$window.location = '/?lang=' + this.language;
+    this.$window.location = '?lang=' + this.language;
   }
 
   hideSplash() {

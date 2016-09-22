@@ -113,23 +113,8 @@
       margin-bottom: inuit-rem(15px);
     }
 
-    .ballot__captcha-vote {
-      @include inuit-clearfix();
-      margin: 0 auto;
-      display: inline-block;
-
-      .ballot__recaptcha,
-      .ballot__button--vote {
-        margin: 0 inuit-rem(5px) 0 inuit-rem(5px);
-
-        @media screen and (min-width: #{map-get($breakpoints, large)}) {
-          float: left;
-        }
-      }
-
-      .ballot__recaptcha > div {
-        display: inline-block;
-      }
+    .ballot__button--vote {
+      margin: 0 inuit-rem(5px) 0 inuit-rem(5px);
     }
 
     .ballot__error {

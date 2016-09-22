@@ -2,7 +2,6 @@ import 'angular';
 import 'angular-animate';
 import 'angular-sanitize';
 import 'angular-ui-router';
-import 'angular-recaptcha';
 import 'angular-socialshare';
 import 'angular-scroll';
 import 'topojson';

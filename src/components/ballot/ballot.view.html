@@ -13,18 +13,7 @@
       <div class="ballot__content">
         <h2 class="ballot__title" ng-show="$ctrl.yourVote">{{$ctrl.candidate($ctrl.yourVote)}}</h2>
         <p>{{'ballot.aspresident' | translate}}</p>
-
-        <div class="ballot__captcha-vote">
-          <div class="ballot__recaptcha"
-               vc-recaptcha
-               ng-model="$ctrl.ballotForm.gRecaptchaResponse"
-               on-success="$ctrl.apiError = false"></div>
-          <button class="ballot__button ballot__button--vote" ng-disabled="$ctrl.votingInProgress">{{'ballot.vote' | translate}}</button>
-        </div>
-
-        <div class="ballot__error" ng-if="$ctrl.ballotForm.$submitted && $ctrl.ballotForm.$error.recaptcha && !$ctrl.apiError && !$ctrl.votingInProgress">
-          <span ng-bind-html="'error.request.missing.captcha' | translate"></span>
-        </div>
+        <button class="ballot__button ballot__button--vote" ng-disabled="$ctrl.votingInProgress">{{'ballot.vote' | translate}}</button>
 
         <div class="ballot__error" ng-if="$ctrl.apiError">
           <span ng-bind-html="'error.' + $ctrl.apiError | translate"></span>
@@ -37,10 +26,7 @@
   <!-- Thank you -->
   <div class="ballot__container animate--fadein" ng-show="$ctrl.hasVoted">
     <p class="ballot__subtitle" ng-show="$ctrl.votedFor">{{ 'ballot.thankyou.title' | translate }}</p>
-    <p class="ballot__subtitle" ng-hide="$ctrl.votedFor">
-      <span class="ballot__flag flag-icon flag-icon-{{ $ctrl.countryCode.toLowerCase() }}"></span>
-      {{'ballot.youvotedfor' | translate:{country: ('country.' + $ctrl.countryCode | translate)} }}
-    </p>
+    <p class="ballot__subtitle" ng-hide="$ctrl.votedFor">{{'ballot.youvotedfor' | translate }}</p>
 
     <div class="ballot__content">
       <h2 class="ballot__title">{{'ballot.thankyou.thankyou' | translate}}</h2>

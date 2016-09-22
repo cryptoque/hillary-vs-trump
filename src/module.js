@@ -2,7 +2,6 @@ angular.module('Vote', [
     'ngAnimate',
     'ngSanitize',
     'ui.router',
-    'vcRecaptcha',
     '720kb.socialshare',
     'duScroll'
   ])
@@ -10,7 +9,7 @@ angular.module('Vote', [
   .constant('Languages', [ 'en', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])
 
   // @ngInject
-  .config(($stateProvider, $urlRouterProvider, translateServiceProvider, vcRecaptchaServiceProvider, Languages) => {
+  .config(($stateProvider, $urlRouterProvider, translateServiceProvider, Languages) => {
 
     // Detect language
     const language = translateServiceProvider.detectLanguage(Languages);
@@ -33,8 +32,9 @@ angular.module('Vote', [
         url: '/',
         controllerAs: '$ctrl',
         //@ngInject
-        controller: function(countryLookup) {
-          this.countryCode = countryLookup.data.country;
+        controller: function($rootScope, countryLookup) {
+          $rootScope.countryCode = countryLookup.data.country;
+          $rootScope.token = countryLookup.data.token;
         },
         template: require('./views/root.index.html'),
         resolve: {
@@ -72,9 +72,6 @@ angular.module('Vote', [
     // Redirect unknown states to the root state
     $urlRouterProvider
       .otherwise('/');
-
-    // Initialize reCaptcha
-    vcRecaptchaServiceProvider.setSiteKey('6LewDCoTAAAAAMpHUX9TQWjTPoCQ08SNBbdUk926')
   })
 
   // @ngInject

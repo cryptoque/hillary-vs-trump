@@ -3,8 +3,7 @@ class BallotDirective {
     this.restrict = 'E';
     this.scope = {};
     this.bindToController = {
-      yourVote: '=',
-      countryCode: '='
+      yourVote: '='
     };
     this.controller = 'BallotController';
     this.controllerAs = '$ctrl';

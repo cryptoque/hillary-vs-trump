@@ -1,14 +1,14 @@
 class BallotController {
   // @ngInject
-  constructor($window, $rootScope, $scope, $timeout, $filter, vcRecaptchaService, apiService) {
+  constructor($window, $rootScope, $scope, $timeout, $filter, apiService) {
     this.$window = $window;
     this.$rootScope = $rootScope;
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$filter = $filter;
-    this.vcRecaptchaService = vcRecaptchaService;
     this.apiService = apiService;
 
+    this.countryCode = this.$rootScope.countryCode;
     this.isVisible =  false;
 
     this.$scope.$on('open-modal', (event) => {
@@ -28,7 +28,7 @@ class BallotController {
     if (this.ballotForm.$valid) {
       this.apiError = false;
       this.votingInProgress = true;
-      this.apiService.sendVote({ voted: this.yourVote, gRecaptchaResponse: this.ballotForm.gRecaptchaResponse })
+      this.apiService.sendVote({ voted: this.yourVote, token: this.$rootScope.token })
         .then(this.votingSuccess)
         .catch(this.votingError)
         .finally(() => {
@@ -45,9 +45,6 @@ class BallotController {
 
   votingError(response) {
     this.apiError = response.data.error;
-    this.$timeout(() => {
-      this.vcRecaptchaService.reload();
-    }, 500);
   }
 
   candidate(c) {
