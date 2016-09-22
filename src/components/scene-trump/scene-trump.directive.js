@@ -19,7 +19,7 @@ class SceneTrumpDirective {
     this.button = this.scene.find('.scene__button');
 
     this.flag = this.scene.find('.scene--trump__flag');
-    this.redBg = this.scene.find('.scene--trump__red-bg');
+    this.redBg = this.scene.find('.scene--trump__red-bg, .scene--trump__bg-filler');
     this.whitehouse = this.scene.find('.scene--trump__whitehouse');
     this.eagle = this.scene.find('.scene--trump__eagle');
     this.wall = this.scene.find('.scene--trump__wall > g');
@@ -110,9 +110,9 @@ class SceneTrumpDirective {
 
     this.button.on('click', () => {
       if (!this.scope.candidateChosen) {
-        this.$rootScope.$emit('candidateChosen', 'R');
-        this.timelineFull.play();
+        this.timelineFull.tweenTo('end');
         this.timelineButton.reverse();
+        this.$rootScope.$emit('candidateChosen', 'R');
       }
     });
 

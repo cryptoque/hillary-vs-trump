@@ -89,5 +89,24 @@
     left: 0;
   }
 
-  .scene--trump__flag {}
+  .scene--trump__bg-filler,
+  .scene--hillary__bg-filler {
+    position: absolute;
+    z-index: 920;
+    bottom: 0;
+    height: 25%;
+    width: 100%;
+
+    @media screen and (min-width: #{map-get($breakpoints, medium)}) {
+      display: none;
+    }
+  }
+
+  .scene--trump__bg-filler {
+    background-color: #e34a47;
+  }
+
+  .scene--hillary__bg-filler {
+    background-color: #0672df;
+  }
 }

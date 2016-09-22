@@ -20,7 +20,7 @@ class SceneHillaryDirective {
 
     this.flag = this.scene.find('.scene--hillary__flag');
     this.whitehouse = this.scene.find('.scene--hillary__whitehouse');
-    this.blueBg = this.scene.find('.scene--hillary__blue-bg');
+    this.blueBg = this.scene.find('.scene--hillary__blue-bg, .scene--hillary__bg-filler');
     this.tree = this.scene.find('.scene--hillary__tree');
     this.bush = this.scene.find('.scene--hillary__bush');
     this.fighterBlue = this.scene.find('.scene--hillary__fighter--blue');
@@ -115,9 +115,9 @@ class SceneHillaryDirective {
 
     this.button.on('click', () => {
       if (!this.scope.candidateChosen) {
-        this.$rootScope.$emit('candidateChosen', 'D');
-        this.timelineFull.play();
+        this.timelineFull.tweenTo('end');
         this.timelineButton.reverse();
+        this.$rootScope.$emit('candidateChosen', 'D');
       }
     });
 
