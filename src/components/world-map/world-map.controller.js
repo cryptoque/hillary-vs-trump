@@ -16,6 +16,11 @@ class WorldMapController {
       undecided: '#dadada',
       split: '#B26CC1'
     };
+
+    this.totalVoteCount = this.votingResults.total.D + this.votingResults.total.R;
+    if (this.totalVoteCount < 1000) {
+      this.totalVoteCount = '<1000';
+    }
   }
 
   initMap() {

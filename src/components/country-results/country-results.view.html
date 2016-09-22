@@ -1,7 +1,9 @@
 <table class="country-results">
   <thead>
     <tr>
-      <td  colspan="2" class="country-results__label-country">{{ 'worldmap.country-votes' | translate}}</td>
+      <td colspan="2" class="country-results__label-country">
+        {{ 'worldmap.country' | translate}} <span ng-show="$ctrl.thresholdReached">{{ 'worldmap.country-total-votes' | translate}}</span>
+      </td>
       <td class="country-results__label-candidate">
         {{ 'worldmap.candidate' | translate}} : %
       </td>
@@ -13,7 +15,7 @@
         <span class="flag-icon flag-icon-{{code.toLowerCase()}}"></span>
       </td>
       <td class="country-results__countryname country-results__countryname--{{data.winner}}">
-        <span>{{'country.' + code | translate}} ({{data.votes}})</span>
+        <span>{{'country.' + code | translate}} <span ng-show="$ctrl.thresholdReached">({{data.votes}})</span></span>
       </td>
       <td class="country-results__score">
         <div class="country-results__winner country-results__winner--{{data.winner}}">
