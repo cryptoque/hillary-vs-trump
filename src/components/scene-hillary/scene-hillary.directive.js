@@ -30,39 +30,39 @@ class SceneHillaryDirective {
     this.fighterRed = this.scene.find('.scene--hillary__fighter--red');
     this.fighterRedTrail = this.scene.find('.scene--hillary__trail--red');
 
-    this.flagTween = new TimelineMax({ paused: true, repeat: -1, yoyo: true });
-    this.flagTween
+    this.timelineFlag = new TimelineMax({ paused: true, repeat: -1, yoyo: true })
       .to(this.flag, 40, {
         rotation: '360',
         transformOrigin: '50% 50%',
         ease: Linear.easeNone
       });
 
-    this.timeline = new TimelineMax({ paused: true, repeat: 0 });
-    this.timeline
-      .to(this.hillary, .2, {
-        backgroundPosition: '-1128px 0px',
-        ease: SteppedEase.config(3)
-      })
+    this.timelineButton = new TimelineMax({ paused: true, repeat: 0 })
       .to(this.button, .2, {
         y: -100,
         opacity: 1,
         ease: Back.easeOut
       })
-      .addPause('mouseover')
-
-      .to(this.button, .2, {
+      .addLabel('mouseover')
+      .to(this.button, .4, {
         y: 150,
         opacity: 0,
         ease: Back.easeIn
-      }, .5)
+      }, .5);
+
+    this.timelineFull = new TimelineMax({ paused: true, repeat: 0 })
+      .to(this.hillary, .2, {
+        backgroundPosition: '-1128px 0px',
+        ease: SteppedEase.config(3)
+      })
+      .addLabel('mouseover')
       .to(this.hillary, .3, {
         backgroundPosition: '-1880px 0px',
         ease: SteppedEase.config(2)
       })
       .to(this.hillary, .6, {
-        y: '200px',
-        marginLeft: '-225px',
+        y: 80,
+        x: 80,
         scale: .8,
         force3D: false,
         ease: Power4.easeOut
@@ -77,7 +77,7 @@ class SceneHillaryDirective {
       })
       .from(this.flag, .4, {
         opacity: 0,
-        onStart: () => { this.flagTween.play() }
+        onStart: () => { this.timelineFlag.play() }
       })
       .staggerFrom([this.tree, this.bush], .4, {
         opacity: 0,
@@ -101,50 +101,53 @@ class SceneHillaryDirective {
   bindUiEvents() {
     this.scene.on('mouseenter mouseover touchstart', () => {
       if (!this.scope.candidateChosen) {
-        this.timeline.tweenTo('mouseover');
+        this.timelineFull.tweenTo('mouseover');
+        this.timelineButton.tweenTo('mouseover');
       }
     });
 
     this.scene.on('mouseout', () => {
       if (!this.scope.candidateChosen) {
-        this.timeline.reverse();
+        this.timelineFull.reverse();
+        this.timelineButton.reverse();
       }
     });
 
     this.button.on('click', () => {
       if (!this.scope.candidateChosen) {
         this.$rootScope.$emit('candidateChosen', 'D');
-        this.timeline.tweenTo('end');
+        this.timelineFull.play();
+        this.timelineButton.reverse();
       }
     });
 
     this.$rootScope.$on('close-modal', (event) => {
-      this.timeline.reverse();
+      this.timelineFull.reverse();
       this.$timeout(() => {
-        this.flagTween.stop();
+        this.timelineFlag.stop();
         this.$rootScope.$emit('candidateChosen', false);
       }, 2000);
     });
 
     this.$rootScope.$on('candidateChosen', (event, data) => {
-      // console.log('H', data);
       this.scope.candidateChosen = data;
       if (data === 'R') {
-        this.timeline.reverse();
+        this.timelineFull.reverse();
+        this.timelineButton.reverse();
       }
     });
 
     this.scope.$on('$destroy', () => {
-      this.timeline.kill();
+      this.timelineFull.kill();
+      this.timelineFlag.kill();
+      this.timelineButton.kill();
     });
   }
 
   openDialog() {
-    // if (this.timeline.isActive()) {
-      this.$timeout(() => {
-        this.scope.openModalFn({p: 'D'});
-      }, 500);
-    // }
+    this.$timeout(() => {
+      this.scope.openModalFn({p: 'D'});
+    }, 500);
   }
 }
 

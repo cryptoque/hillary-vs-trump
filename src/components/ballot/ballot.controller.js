@@ -9,7 +9,7 @@ class BallotController {
     this.apiService = apiService;
 
     this.countryCode = this.$rootScope.countryCode;
-    this.isVisible =  false;
+    this.isVisible = false;
 
     this.$scope.$on('open-modal', (event) => {
       this.isVisible = true;
