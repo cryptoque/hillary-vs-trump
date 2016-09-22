@@ -33,7 +33,12 @@ class WorldMapController {
       minZoom: 1,
       maxBounds: bounds,
       zoomControl: false,
-      dragging: false
+      touchZoom: false,
+      dragging: false,
+      doubleClickZoom: false,
+      scrollWheelZoom: false,
+      boxZoom: false,
+      tap: false
     });
 
     // this.leafletMap.on('click', function(e) {

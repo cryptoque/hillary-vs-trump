@@ -14,7 +14,8 @@
   line-height: inuit-rem(50px);
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-    top: 45%;
+    top: auto;
+    bottom: -25%;
     font-size: inuit-rem($inuit-global-font-size);
     line-height: inuit-rem(30px);
     width: 90%;
@@ -42,16 +43,16 @@
   }
 
   button {
-    margin-top: inuit-rem(35px);
+    margin: inuit-rem(35px) 0;
 
     @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-      margin-top: inuit-rem(15px);
+      margin: inuit-rem(15px) 0;
     }
   }
 
   .splash__language {
     display: block;
-    margin: inuit-rem(40px) auto 0 auto;
+    margin: 0 auto;
     font-size: inuit-rem(14px);
 
     select {
