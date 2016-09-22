@@ -10,6 +10,6 @@ import './components/vote-app';
 import './components/world-map';
 import './components/country-results';
 import './components/top-nav';
-import './components/trump-hillary';
+import './components/trump-hillary-container';
 import './components/scene-hillary';
 import './components/scene-trump';

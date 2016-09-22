@@ -1,0 +1,15 @@
+<div class="trump-hillary-container">
+  <div class="trump-hillary-container__hillary" ng-class="{'trump-hillary-container--winner': $ctrl.yourVote === 'D'}">
+
+    <scene-hillary open-modal-fn="$ctrl.openModal(p)"></scene-hillary>
+
+  </div>
+
+  <div class="trump-hillary-container__trump" ng-class="{'trump-hillary-container--winner': $ctrl.yourVote === 'R'}">
+
+    <scene-trump open-modal-fn="$ctrl.openModal(p)"></scene-trump>
+
+  </div>
+
+  <ballot your-vote="$ctrl.yourVote"></ballot>
+</div>

@@ -1,4 +1,4 @@
-.trump-hillary {
+.trump-hillary-container {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -7,8 +7,8 @@
   width: 100%;
   height: 100%;
 
-  .trump-hillary__trump,
-  .trump-hillary__hillary {
+  .trump-hillary-container__trump,
+  .trump-hillary-container__hillary {
     position: relative;
     flex: 1 1 auto;
     align-self: stretch;
@@ -18,29 +18,29 @@
     overflow: hidden;
 
     @media screen and (min-width: #{map-get($breakpoints, medium)}) {
-      &.trump-hillary--winner {
-        z-index: 910;
+      &.trump-hillary-container--winner {
+        z-index: 990;
       }
     }
   }
 
-  .trump-hillary__trump {
+  .trump-hillary-container__trump {
     order: 1;
     background-color: $color-republicans;
   }
 
-  .trump-hillary__hillary {
+  .trump-hillary-container__hillary {
     order: 0;
     background-color: $color-democrats;
   }
 }
 
 html[dir=rtl] {
-  .trump-hillary__trump {
+  .trump-hillary-container__trump {
     order: 0;
 
   }
-  .trump-hillary__hillary {
+  .trump-hillary-container__hillary {
     order: 1;
   }
 }

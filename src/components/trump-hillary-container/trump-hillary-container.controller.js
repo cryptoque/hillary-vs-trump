@@ -1,4 +1,4 @@
-class TrumpHillaryController {
+class TrumpHillaryContainerController {
   // @ngInject
   constructor($window, $rootScope) {
     this.$window = $window;
@@ -12,4 +12,4 @@ class TrumpHillaryController {
 
 }
 
-export default TrumpHillaryController;
+export default TrumpHillaryContainerController;
