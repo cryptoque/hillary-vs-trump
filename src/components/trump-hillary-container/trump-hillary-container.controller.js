@@ -1,13 +1,16 @@
 class TrumpHillaryContainerController {
   // @ngInject
-  constructor($window, $rootScope) {
+  constructor($window, $timeout, $rootScope) {
     this.$window = $window;
+    this.$timeout = $timeout;
     this.$rootScope = $rootScope;
   }
 
   openModal(yourVote) {
     this.yourVote = yourVote;
-    this.$rootScope.$broadcast('open-modal');
+    this.$timeout(() => {
+      this.$rootScope.$broadcast('open-modal');
+    }, 500);
   }
 
 }

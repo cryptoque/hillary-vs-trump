@@ -10,6 +10,8 @@
 }
 
 .header {
+  position: relative;
+  z-index: 1000;
   order: 0;
   flex: 0;
   align-self: auto;
@@ -36,7 +38,6 @@
     .page__wrapper {
       max-width: $inuit-wrapper-width;
       margin: 0 auto;
-      overflow: hidden;
     }
   }
 
@@ -48,7 +49,6 @@
       max-width: inuit-rem(840px);
       padding: 0 inuit-rem(20px);
       margin: 0 auto;
-      overflow: hidden;
     }
 
     .page--info__title,
