@@ -44,7 +44,7 @@ class SceneHillaryDirective {
         y: -100,
         opacity: 1,
         ease: Back.easeOut
-      })
+      }, .3)
       .addLabel('mouseover')
       .to(this.button, .4, {
         y: 150,
@@ -80,7 +80,7 @@ class SceneHillaryDirective {
       })
       .from(this.flag, .4, {
         opacity: 0,
-        onStart: () => { this.timelineFlag.play() }
+        onStart: () => { this.timelineFlag.play(); this.openDialog(); }
       })
       .staggerFrom([this.tree, this.bush], .4, {
         opacity: 0,
@@ -97,7 +97,7 @@ class SceneHillaryDirective {
         x: 300,
         y: 300
       }, .1)
-      .addPause('end', this.openDialog);
+      .addPause('end');
 
     this.bindUiEvents();
   }
@@ -126,11 +126,13 @@ class SceneHillaryDirective {
     });
 
     this.$rootScope.$on('close-modal', (event) => {
-      this.timelineFull.reverse();
+      this.$timeout(() => {
+        this.timelineFull.reverse();
+      }, 500);
       this.$timeout(() => {
         this.timelineFlag.stop();
         this.$rootScope.$emit('candidateChosen', false);
-      }, 2000);
+      }, 2500);
     });
 
     this.$rootScope.$on('candidateChosen', (event, data) => {

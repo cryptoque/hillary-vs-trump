@@ -4,8 +4,8 @@
   z-index: 1010;
   top: 50%;
   left: 50%;
-  width: 60%;
-  max-width: inuit-rem(768px);
+  width: inuit-rem(768px);
+  max-width: 90%;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, .95);
   text-align: center;
@@ -14,8 +14,7 @@
   line-height: inuit-rem(50px);
 
   @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-    top: auto;
-    bottom: -25%;
+    top: 45%;
     font-size: inuit-rem($inuit-global-font-size);
     line-height: inuit-rem(30px);
     width: 90%;
@@ -69,3 +68,31 @@
   right: 0;
   bottom: 0;
 }
+
+/* Splash slide down */
+.animate--splash-down.ng-hide-add.ng-hide-add-active {
+  display: block !important;
+  animation: splashSlideDown .7s ease-in-out forwards;
+}
+
+.animate--splash-down.ng-hide-add {
+  display: block !important;
+}
+
+@keyframes splashSlideDown {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate(-50%, -60%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, 150%);
+  }
+}
+

@@ -1,4 +1,5 @@
 .vote-app {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -19,18 +20,13 @@
 }
 
 .page {
-  position: relative;
   order: 1;
   flex: 1;
   align-self: stretch;
 
-  &.page--index {
-    //height: 100vh;
-    //overflow: hidden;
-  }
+  &.page--index {}
 
   &.page--results {
-    //margin-top: inuit-rem(80px);
     margin-bottom: inuit-rem(50px);
 
     @media screen and (min-width: #{map-get($breakpoints, medium)}) {

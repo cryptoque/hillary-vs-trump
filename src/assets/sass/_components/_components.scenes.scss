@@ -19,14 +19,14 @@
   .scene__button {
     position: absolute;
     z-index: 950;
-    bottom: 0;
+    bottom: 10%;
     left: 50%;
     transform: translate(-50%, 150%);
     opacity: 0;
     white-space: nowrap;
 
-    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-      bottom: -10%;
+    @media screen and (max-width: #{map-get($breakpoints, small)}) {
+      bottom: 20%;
     }
   }
 

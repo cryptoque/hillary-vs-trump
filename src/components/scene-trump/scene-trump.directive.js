@@ -42,7 +42,7 @@ class SceneTrumpDirective {
         y: -100,
         opacity: 1,
         ease: Back.easeOut
-      })
+      }, .3)
       .addLabel('mouseover')
       .to(this.button, .4, {
         y: 150,
@@ -78,7 +78,7 @@ class SceneTrumpDirective {
       })
       .from(this.flag, .4, {
         opacity: 0,
-        onStart: () => { this.timelineFlag.play() }
+        onStart: () => { this.timelineFlag.play(); this.openDialog(); }
       })
       .staggerFrom(this.wall, .3, {
         opacity: 0,
@@ -90,7 +90,7 @@ class SceneTrumpDirective {
         x: -300,
         y: -300
       }, .3)
-      .addPause('end', this.openDialog);
+      .addPause('end');
 
     this.bindUiEvents();
 
@@ -120,11 +120,13 @@ class SceneTrumpDirective {
     });
 
     this.$rootScope.$on('close-modal', (event) => {
-      this.timelineFull.reverse();
+      this.$timeout(() => {
+        this.timelineFull.reverse();
+      }, 500);
       this.$timeout(() => {
         this.timelineFlag.stop();
         this.$rootScope.$emit('candidateChosen', false);
-      }, 2000);
+      }, 2500);
     });
 
 

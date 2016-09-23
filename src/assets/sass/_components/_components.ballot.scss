@@ -131,3 +131,105 @@
     }
   }
 }
+
+
+/* Ballot slide left */
+.animate--ballot-left {
+  transform: translateX(0%);
+}
+.animate--ballot-left.ng-hide-add {
+  display: block !important;
+  animation: ballotSlideRight .4s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+.animate--ballot-left.ng-hide-remove.ng-hide-remove-active,
+.animate--ballot-left.ng-hide-remove.ng-hide-add-active {
+  display: block !important;
+}
+.animate--ballot-left.ng-hide-remove {
+  display: block !important;
+  animation: ballotSlideLeft .4s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+
+/* Ballot slide right */
+.animate--ballot-right {
+  transform: translateX(100%);
+}
+.animate--ballot-right.ng-hide-add {
+  display: block !important;
+  animation: ballotSlideLeft .6s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+.animate--ballot-right.ng-hide-remove.ng-hide-remove-active,
+.animate--ballot-right.ng-hide-remove.ng-hide-add-active {
+  display: block !important;
+}
+.animate--ballot-right.ng-hide-remove {
+  display: block !important;
+  animation: ballotSlideRight .6s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+
+/* Ballot slide up */
+@media screen and (max-width: #{map-get($breakpoints, medium)}) {
+  .animate--ballot-left,
+  .animate--ballot-right {
+    transform: translate(0, 0%);
+  }
+  .animate--ballot-left.ng-hide-add,
+  .animate--ballot-right.ng-hide-add {
+    display: block !important;
+    animation: ballotSlideUp .6s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  }
+  .animate--ballot-left.ng-hide-remove.ng-hide-remove-active,
+  .animate--ballot-left.ng-hide-remove.ng-hide-add-active,
+  .animate--ballot-right.ng-hide-remove.ng-hide-remove-active,
+  .animate--ballot-right.ng-hide-remove.ng-hide-add-active {
+    display: block !important;
+  }
+  .animate--ballot-left.ng-hide-remove,
+  .animate--ballot-right.ng-hide-remove {
+    display: block !important;
+    transform: translate(0, 100%);
+    animation: ballotSlideDown .6s cubic-bezier(0.86, 0, 0.07, 1) 1.5s forwards;
+  }
+}
+
+
+@keyframes ballotSlideLeft {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes ballotSlideRight {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes ballotSlideUp {
+  from {
+    transform: translate(0, 0%);
+  }
+
+  to {
+    transform: translate(0, 100%);
+  }
+}
+@keyframes ballotSlideDown {
+  from {
+    transform: translate(0, 100%);
+  }
+
+  to {
+    transform: translate(0, 0%);
+  }
+}
+
+
