@@ -21,7 +21,8 @@
     h1 {
       display: inline-block;
       margin-bottom: 0;
-      line-height: inuit-rem(80px);
+      margin-top: inuit-rem(12px);
+      line-height: inuit-rem(50px);
       cursor: pointer;
 
       @media screen and (min-width: #{map-get($breakpoints, medium)}) {
