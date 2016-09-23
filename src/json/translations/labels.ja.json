@@ -25,7 +25,7 @@
   "shortname.hillary": "クリントン",
   "shortname.split": "ドロー",
   "vote": "投票",
-  "splash.hiwesee": "こんにちは、私たちはあなたからしていることがわかり",
+  "splash.hiwesee": "こんにちは、私たちはあなたからしていることがわかり{{country}}",
   "splash.whowouldyou": "あなたは、米国の大統領は誰に投票しますか？",
   "splash.start": "開始！",
   "ballot.youwouldvote": "あなたが投票します：",

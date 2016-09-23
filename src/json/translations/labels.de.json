@@ -25,7 +25,7 @@
   "shortname.hillary": "Clinton",
   "shortname.split": "Zeichnen",
   "vote": "Abstimmung",
-  "splash.hiwesee": "Hallo zusammen, wir sehen, dass Sie aus",
+  "splash.hiwesee": "Hallo, wir sehen dass Sie aus {{country}} sind",
   "splash.whowouldyou": "Wen stimmen Sie für den Präsidenten der Vereinigten Staaten?",
   "splash.start": "Anfang!",
   "ballot.youwouldvote": "WÜRDEN SIE WÄHLEN:",

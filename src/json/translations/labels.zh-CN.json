@@ -25,7 +25,7 @@
   "shortname.hillary": "克林顿",
   "shortname.split": "画",
   "vote": "投票",
-  "splash.hiwesee": "嗨，我们看到，你是",
+  "splash.hiwesee": "嗨，我们看到，你来自{{country}}",
   "splash.whowouldyou": "谁做你投票给美国总统？",
   "splash.start": "开始！",
   "ballot.youwouldvote": "你会投票：",

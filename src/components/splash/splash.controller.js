@@ -8,6 +8,7 @@ class SplashController {
 
     this.countryCode = this.$rootScope.countryCode;
     this.language = translateService.getCurrentLanguage();
+    this.countryFlag = '<span class="splash__flag flag-icon flag-icon-' + this.countryCode.toLowerCase() + '"></span>';
   }
 
   changeLanguage() {

@@ -25,7 +25,7 @@
   "shortname.hillary": "Clinton",
   "shortname.split": "Draw",
   "vote": "Vote",
-  "splash.hiwesee": "Hi, we see that you're from",
+  "splash.hiwesee": "Hi, we see that you're from {{country}}!",
   "splash.whowouldyou": "Who do you vote for president of the United States?",
   "splash.start": "Start!",
   "ballot.youwouldvote": "YOU WOULD VOTE:",

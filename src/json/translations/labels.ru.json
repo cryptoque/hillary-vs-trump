@@ -25,7 +25,7 @@
   "shortname.hillary": "Клинтон",
   "shortname.split": "Привлечь",
   "vote": "Голос",
-  "splash.hiwesee": "Привет, мы видим, что вы из",
+  "splash.hiwesee": "Привет, мы видим , что вы из {{country}} !",
   "splash.whowouldyou": "Кем вы голосовать за президента Соединенных Штатов?",
   "splash.start": "Начало!",
   "ballot.youwouldvote": "Вы бы проголосовали:",

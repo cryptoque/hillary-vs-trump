@@ -25,7 +25,7 @@
   "shortname.hillary": "كلينتون",
   "shortname.split": "رسم",
   "vote": "تصويت",
-  "splash.hiwesee": "مرحبا، ونحن نرى ان كنت من",
+  "splash.hiwesee": "مرحبا، ونحن نرى ان كنت من {{country}} !",
   "splash.whowouldyou": "الذين لم تصوت رئيسا للولايات المتحدة؟",
   "splash.start": "بداية!",
   "ballot.youwouldvote": "أنت سيصوتون:",
