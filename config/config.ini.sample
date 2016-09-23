@@ -1,7 +1,7 @@
 [general]
-google.recaptcha = ""
 maxmind.userid = "115609"
 maxmind.key = ""
+hash.secret = ""
 
 [production]
 database.host = "localhost"

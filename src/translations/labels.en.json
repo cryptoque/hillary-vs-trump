@@ -13,6 +13,7 @@
   "error.db.error": "Unexpected error, please try again later",
   "error.request.not.unique": "Sorry, you have already voted",
   "error.country.lookup.failed": "Unexpected error, please try again later",
+  "error.geoip": "Unexpected error, please try again later",
   "header.title": "Who does <b>the world</b> vote for U.S. president?",
   "header.results": "Results",
   "header.info": "INFO",

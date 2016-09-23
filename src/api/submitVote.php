@@ -2,7 +2,6 @@
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', __DIR__ . '/../logs/votes.log');
-define('SECRET', 'Z6i7nNLAo7Xi');
 
 require ROOTPATH . '/vendor/autoload.php';
 require __DIR__ . '/functions.php';
@@ -42,7 +41,8 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   apiError('country.lookup.failed');
 }
 
-if ($params['token'] !== sha1($row['hash'] . SECRET . date('Y-m-d'))) {
+$token = sha1($row['hash'] . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
+if ($params['token'] !== $token) {
   apiError('request.invalid.token');
 }
 

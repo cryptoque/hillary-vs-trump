@@ -3,7 +3,6 @@
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', __DIR__ . '/../logs/votes.log');
-define('SECRET', 'Z6i7nNLAo7Xi');
 
 require ROOTPATH . '/vendor/autoload.php';
 require __DIR__ . '/functions.php';
@@ -28,7 +27,8 @@ $db->select_db($_DB['database.dbname']);
 
 
 // Test if IP already looked up
-$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
+$hash = sha1(CLIENTIP);
+$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . $hash . "' LIMIT 1");
 if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCode = $row['country'];
 
@@ -40,10 +40,11 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
 
   // Insert country into db for caching purposes
   $db->query("INSERT INTO `country-lookup` (`ip`, `hash`, `country`)" .
-    "VALUES ('" . anonymizeIp(CLIENTIP) . "', '" . sha1(CLIENTIP) . "', '" . $countryCode . "')")
-     or apiError('db.error');
+    "VALUES ('" . anonymizeIp(CLIENTIP) . "', '" . $hash . "', '" . $countryCode . "')")
+     or apiError('error.geoip');
 }
-$token = sha1($row['hash'] . SECRET . date('Y-m-d'));
+
+$token = sha1($hash . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
 echo json_encode(array('country' => $countryCode, 'token' => $token));
 die;
 
