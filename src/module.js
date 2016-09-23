@@ -6,15 +6,15 @@ angular.module('Vote', [
     'duScroll'
   ])
 
-  .constant('Languages', [ 'en', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])
+  .constant('Languages', [ 'en', 'nl', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, Languages) => {
 
     // Detect language
     const language = translateServiceProvider.detectLanguage(Languages);
-    translateServiceProvider.setTranslation(`translations/labels.${language}.json`);
-    translateServiceProvider.setFallbackTranslation(`translations/labels.en.json`);
+    translateServiceProvider.setTranslation(`json/translations/labels.${language}.json`);
+    translateServiceProvider.setFallbackTranslation(`json/translations/labels.en.json`);
 
     // States
     $stateProvider
