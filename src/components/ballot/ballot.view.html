@@ -44,7 +44,8 @@
                 socialshare-url="{{ 'page.url' | translate }}"
                 socialshare-popup-height="300"
                 socialshare-popup-width="400"
-                socialshare-trigger="click" >{{'ballot.thankyou.button.sharevote' | translate}}</button>
+                socialshare-trigger="click"
+                ng-click="$ctrl.sendGAEvent('share-vote', 'facebook')">{{'ballot.thankyou.button.sharevote' | translate}}</button>
 
         <button class="ballot__button ballot__button--twitter icon icon--twitter"
                 socialshare
@@ -54,7 +55,8 @@
                 socialshare-url="{{ 'page.url' | translate }}"
                 socialshare-popup-height="300"
                 socialshare-popup-width="400"
-                socialshare-trigger="click">{{'ballot.thankyou.button.sharevote' | translate}}</button>
+                socialshare-trigger="click"
+                ng-click="$ctrl.sendGAEvent('share-vote', 'twitter')">{{'ballot.thankyou.button.sharevote' | translate}}</button>
       </div>
 
       <div ng-hide="$ctrl.votedFor">
@@ -66,7 +68,8 @@
            socialshare-url="{{ 'page.url' | translate }}"
            socialshare-popup-height="300"
            socialshare-popup-width="400"
-           socialshare-trigger="click">{{'ballot.thankyou.button.share' | translate}}</button>
+           socialshare-trigger="click"
+           ng-click="$ctrl.sendGAEvent('share-page', 'facebook')">{{'ballot.thankyou.button.share' | translate}}</button>
 
         <button class="ballot__button ballot__button--twitter icon icon--twitter"
            socialshare
@@ -76,7 +79,8 @@
            socialshare-url="{{ 'page.url' | translate }}"
            socialshare-popup-height="300"
            socialshare-popup-width="400"
-           socialshare-trigger="click">{{'ballot.thankyou.button.share' | translate}}</button>
+           socialshare-trigger="click"
+           ng-click="$ctrl.sendGAEvent('share-page', 'twitter')">{{'ballot.thankyou.button.share' | translate}}</button>
       </div>
     </div>
 

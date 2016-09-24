@@ -1,10 +1,11 @@
 class SceneHillaryDirective {
-  constructor($rootScope, $timeout) {
+  constructor($window, $rootScope, $timeout) {
     this.restrict = 'E';
     this.scope = {
       'openModalFn': '&'
     };
     this.template = require('./scene-hillary.view.html');
+    this.$window = $window;
     this.$rootScope = $rootScope;
     this.$timeout = $timeout;
 
@@ -153,6 +154,7 @@ class SceneHillaryDirective {
         this.timelineFull.timeScale(1).tweenTo('end');
         this.timelineButton.reverse();
         this.$rootScope.$emit('candidateChosen', 'D');
+        this.$window.ga('send', 'event', 'candidate', 'Hillary');
       }
     });
 
@@ -189,4 +191,4 @@ class SceneHillaryDirective {
 }
 
 // @ngInject
-export default ($rootScope, $timeout) => new SceneHillaryDirective($rootScope, $timeout);
+export default ($window, $rootScope, $timeout) => new SceneHillaryDirective($window, $rootScope, $timeout);

@@ -56,6 +56,10 @@ class BallotController {
       this.$rootScope.$broadcast('close-modal');
     }, 0);
   }
+
+  sendGAEvent(label, value) {
+    this.$window.ga('send', 'event', label, value);
+  }
 }
 
 export default BallotController;

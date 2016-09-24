@@ -1,10 +1,11 @@
 class SceneTrumpDirective {
-  constructor($rootScope, $timeout) {
+  constructor($window, $rootScope, $timeout) {
     this.restrict = 'E';
     this.template = require('./scene-trump.view.html');
     this.scope = {
       'openModalFn': '&'
     };
+    this.$window = $window;
     this.$rootScope = $rootScope;
     this.$timeout = $timeout;
 
@@ -136,6 +137,7 @@ class SceneTrumpDirective {
         this.timelineButton.reverse();
         this.timelineFull.timeScale(1).tweenTo('end');
         this.$rootScope.$emit('candidateChosen', 'R');
+        this.$window.ga('send', 'event', 'candidate', 'Trump');
       }
     });
 
@@ -173,4 +175,4 @@ class SceneTrumpDirective {
 }
 
 // @ngInject
-export default ($rootScope, $timeout) => new SceneTrumpDirective($rootScope, $timeout);
+export default ($window, $rootScope, $timeout) => new SceneTrumpDirective($window, $rootScope, $timeout);

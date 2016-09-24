@@ -13,6 +13,7 @@ class SplashController {
 
   changeLanguage() {
     this.$window.location = '?lang=' + this.language;
+    this.$window.ga('send', 'event', 'language-change', this.language);
   }
 
   hideSplash() {
