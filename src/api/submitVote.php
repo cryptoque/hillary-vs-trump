@@ -59,6 +59,6 @@ $db->query("INSERT INTO `votes` (`ts`, `ip`, `hash`, `vote`, `country`)" .
     or apiError('db.error');
 
 
-logIt('Success. Vote = ' . $params['vote'] . ", Country = " . $countryCode);
+logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode);
 die('OK');
 
