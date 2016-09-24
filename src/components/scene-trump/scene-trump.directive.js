@@ -45,7 +45,7 @@ class SceneTrumpDirective {
       }, .3)
       .addLabel('mouseover')
       .to(this.button, .4, {
-        y: 150,
+        y: 100,
         opacity: 0,
         ease: Back.easeIn
       }, .5);

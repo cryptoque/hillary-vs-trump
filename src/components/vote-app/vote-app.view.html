@@ -2,5 +2,19 @@
   <header class="header">
     <top-nav></top-nav>
   </header>
-  <main class="page page--{{$ctrl.$state.current.name.replace('root.', '')}}" ui-view></main>
+
+  <div class="unsupported-browser" ng-if="$ctrl.isUnsupportedBrowser">
+    <div class="unsupported-browser__sad-trump-hillary"></div>
+    <div class="unsupported-browser__text">
+      <p>
+        This website and your old browser could be Stronger Together...
+      </p>
+      <p ng-switch="$ctrl.deviceDetector.os">
+        <a href="https://support.apple.com/en-us/HT204204" target="_blank" ng-switch-when="ios">Make your Browser Great Again!</a>
+        <a href="http://browsehappy.com/" target="_blank" ng-switch-default>Make your Browser Great Again!</a>
+      </p>
+    </div>
+  </div>
+
+  <main class="page page--{{$ctrl.$state.current.name.replace('root.', '')}}" ui-view ng-if="!$ctrl.isUnsupportedBrowser"></main>
 </div>

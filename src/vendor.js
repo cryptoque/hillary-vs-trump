@@ -4,6 +4,7 @@ import 'angular-sanitize';
 import 'angular-ui-router';
 import 'angular-socialshare';
 import 'angular-scroll';
+import 'ng-device-detector';
 import 'topojson';
 import 'leaflet';
 import 'gsap';

@@ -3,7 +3,8 @@ angular.module('Vote', [
     'ngSanitize',
     'ui.router',
     '720kb.socialshare',
-    'duScroll'
+    'duScroll',
+    'ng.deviceDetector'
   ])
 
   .constant('Languages', [ 'en', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])

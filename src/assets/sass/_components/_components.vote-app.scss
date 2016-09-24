@@ -26,7 +26,15 @@
   flex: 1;
   align-self: stretch;
 
-  &.page--index {}
+  &.page--index {
+    display: flex;
+
+    ui-view,
+    trump-hillary-container {
+      display: flex;
+      flex: 1;
+    }
+  }
 
   &.page--results {
     margin-bottom: inuit-rem(50px);

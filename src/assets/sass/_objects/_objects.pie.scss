@@ -1,19 +1,32 @@
 .pie {
+  position: relative;
+  width: inuit-rem(190px);
+  height: inuit-rem(190px);
+  text-align: center;
+  border-radius: 50%;
+  background: $color-republicans;
+  background-image: linear-gradient(to right, transparent 50%, $color-democrats 0);
+  color: transparent;
   display: inline-block;
+}
 
-  svg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-    background: $color-republicans;
-    border-radius: 50%;
-    transition: all 2s ease;
-  }
+.pie::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  width: 50%; height: 100%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background-color: inherit;
+  transform-origin: left;
+  animation: pieSpin 50s linear infinite, pieBg 100s step-end infinite;
+  animation-play-state: paused;
+  animation-delay: inherit;
+}
 
-  circle {
-    fill: $color-republicans;
-    stroke: $color-democrats;
-    stroke-width: 32;
-    stroke-dasharray: 50 100; /* for 38% */
-  }
+@keyframes pieSpin {
+  to { transform: rotate(.5turn); }
+}
+
+@keyframes pieBg {
+  50% { background: $color-democrats; }
 }

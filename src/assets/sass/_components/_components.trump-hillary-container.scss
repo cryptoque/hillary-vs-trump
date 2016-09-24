@@ -5,10 +5,6 @@
   align-items: stretch;
   width: 100%;
 
-  @media screen and (min-width: #{map-get($breakpoints, medium)}) {
-    position: absolute;
-  }
-
   .trump-hillary-container__trump,
   .trump-hillary-container__hillary {
     position: relative;
@@ -16,7 +12,6 @@
     flex: 1 1 auto;
     align-self: stretch;
     transition: all .2s ease;
-    height: 100vh;
     width: 50%;
     overflow: hidden;
 

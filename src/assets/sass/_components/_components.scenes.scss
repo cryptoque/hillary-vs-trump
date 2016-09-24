@@ -19,15 +19,11 @@
   .scene__button {
     position: absolute;
     z-index: 950;
-    bottom: 10%;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, 150%);
+    transform: translate(-50%, 100%);
     opacity: 0;
     white-space: nowrap;
-
-    @media screen and (max-width: #{map-get($breakpoints, small)}) {
-      bottom: 20%;
-    }
   }
 
   .scene--hillary__hillary,

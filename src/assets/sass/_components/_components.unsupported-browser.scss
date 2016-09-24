@@ -1,0 +1,32 @@
+.unsupported-browser {
+  position: relative;
+  top: 0;
+  background-color: #FFF;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 10%;
+
+  .unsupported-browser__sad-trump-hillary {
+    display: inline-block;
+    background: center center url(../images/disappointed_hillary-trump.svg) no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 425px;
+    margin-bottom: inuit-rem(30px);
+  }
+
+  .unsupported-browser__text {
+    @extend %font--bold;
+    width: 100%;
+    font-weight: bold;
+
+    p {
+      margin-bottom: inuit-rem(5px);
+    }
+
+    a {
+      color: $color-republicans;
+    }
+  }
+}

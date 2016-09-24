@@ -30,6 +30,7 @@ $flag-icon-css-path: '../../../node_modules/flag-icon-css/flags';
 @import '_objects/_objects.pie';
 
 // COMPONENTS
+@import '_components/_components.unsupported-browser';
 @import '_components/_components.vote-app';
 @import '_components/_components.top-nav';
 @import '_components/_components.splash';
