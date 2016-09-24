@@ -165,7 +165,7 @@ class SceneHillaryDirective {
       this.$timeout(() => {
         this.timelineFlag.stop();
         this.$rootScope.$emit('candidateChosen', false);
-      }, 2500);
+      }, 3500);
     });
 
     this.$rootScope.$on('candidateChosen', (event, data) => {

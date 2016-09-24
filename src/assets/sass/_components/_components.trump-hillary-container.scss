@@ -4,20 +4,35 @@
   flex-wrap: nowrap;
   align-items: stretch;
   width: 100%;
+  flex: 1;
+
+  // Target IE10 & IE11 only
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    height: 100vh;
+  }
 
   .trump-hillary-container__trump,
   .trump-hillary-container__hillary {
     position: relative;
     z-index: 899;
-    flex: 1 1 auto;
+    flex: 1;
     align-self: stretch;
-    transition: all .2s ease;
+    transition: all .3s ease;
     width: 50%;
     overflow: hidden;
 
     @media screen and (min-width: #{map-get($breakpoints, medium)}) {
       &.trump-hillary-container--winner {
         z-index: 990;
+      }
+    }
+
+    @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+      &.trump-hillary-container__trump.trump-hillary-container--winner {
+        margin-left: -100%;
+      }
+      &.trump-hillary-container__hillary.trump-hillary-container--winner {
+        padding-left: 100%;
       }
     }
   }

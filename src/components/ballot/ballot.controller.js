@@ -18,6 +18,10 @@ class BallotController {
 
     this.$scope.$on('close-modal', (event) => {
       this.isVisible = false;
+
+      this.$timeout(() => {
+        this.yourVote = false;
+      }, 2500);
     });
 
     this.votingSuccess = this.votingSuccess.bind(this);

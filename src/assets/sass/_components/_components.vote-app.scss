@@ -38,6 +38,7 @@
 
   &.page--results {
     margin-bottom: inuit-rem(50px);
+    flex: 1 1 auto;
 
     @media screen and (min-width: #{map-get($breakpoints, medium)}) {
       background: 0 0 url(../images/page--results__bg.png) repeat-x;
