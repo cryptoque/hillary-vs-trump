@@ -30,7 +30,7 @@ class SceneHillaryDirective {
     this.fighterRed = this.scene.find('.scene--hillary__fighter--red');
     this.fighterRedTrail = this.scene.find('.scene--hillary__trail--red');
 
-    this.timelineFlag = new TimelineMax({ paused: true, repeat: -1, yoyo: true });
+    this.timelineFlag = new TimelineMax({ paused: true, repeat: -1 });
     this.timelineFlag
       .to(this.flag, 40, {
         rotation: '360',
@@ -61,42 +61,73 @@ class SceneHillaryDirective {
       .addLabel('mouseover')
       .to(this.hillary, .3, {
         backgroundPosition: '-1880px 0px',
-        ease: SteppedEase.config(2)
+        ease: SteppedEase.config(2),
+        onStart: () => { this.openDialog(); }
       })
-      .to(this.hillary, .6, {
+      .to(this.hillary, 1, {
         y: 80,
         x: 80,
         scale: .8,
         force3D: false,
         ease: Power4.easeOut
       })
+
+      // Whitehouse + BG
+      .from(this.whitehouse, 1, {
+        scale: 4,
+        opacity: 0,
+        transformOrigin: 'center center',
+        ease: Power4.easeOut
+      }, '-=1')
       .from(this.blueBg, .2, {
-        opacity: 0
-      })
-      .from(this.whitehouse, .5, {
         opacity: 0,
-        x: 200,
-        ease: Back.easeOut.config(1.7)
-      })
-      .from(this.flag, .4, {
+        ease: Power4.easeOut
+      }, '-=.8')
+
+      // Flag
+      .from(this.flag, .8, {
         opacity: 0,
-        onStart: () => { this.timelineFlag.play(); this.openDialog(); }
+        onStart: () => { this.timelineFlag.play(); }
       })
+
+      // Tree + Bush
       .staggerFrom([this.tree, this.bush], .4, {
         opacity: 0,
         x: -100,
         ease: Back.easeOut.config(1.7)
-      }, .5)
-      .staggerFrom([
-        [this.fighterBlue, this.fighterBlueTrail],
-        [this.fighterWhite, this.fighterWhiteTrail],
-        [this.fighterRed, this.fighterRedTrail]
-      ], .3, {
+      }, .5, '-=.5')
+
+      // Fighters
+      .from(this.fighterBlue, 1, {
         opacity: 0,
         scale: .7,
-        x: 300,
-        y: 300
-      }, .1)
+        x: 435,
+        y: 216,
+        ease: Expo.easeOut
+      })
+      .from(this.fighterWhite, 1.4, {
+        opacity: 0,
+        scale: .7,
+        x: 457,
+        y: 390,
+        ease: Expo.easeOut
+      }, '-=.7')
+      .from(this.fighterRed, 1, {
+        opacity: 0,
+        scale: .7,
+        x: 310,
+        y: 356,
+        ease: Expo.easeOut
+      }, '-=.6')
+      .from(this.fighterBlueTrail, 1, {
+        opacity: 0
+      }, '-=1.9')
+      .from(this.fighterWhiteTrail, 1, {
+        opacity: 0
+      }, '-=1.5')
+      .from(this.fighterRedTrail, 1, {
+        opacity: 0
+      }, '-=.8')
       .addPause('end');
 
     this.bindUiEvents();
@@ -105,7 +136,7 @@ class SceneHillaryDirective {
   bindUiEvents() {
     this.scene.on('mouseenter mouseover touchstart', () => {
       if (!this.scope.candidateChosen) {
-        this.timelineFull.tweenTo('mouseover');
+        this.timelineFull.timeScale(1).tweenTo('mouseover');
         this.timelineButton.tweenTo('mouseover');
       }
     });
@@ -119,7 +150,7 @@ class SceneHillaryDirective {
 
     this.button.on('click touchend', () => {
       if (!this.scope.candidateChosen) {
-        this.timelineFull.tweenTo('end');
+        this.timelineFull.timeScale(1).tweenTo('end');
         this.timelineButton.reverse();
         this.$rootScope.$emit('candidateChosen', 'D');
       }
@@ -127,7 +158,7 @@ class SceneHillaryDirective {
 
     this.$rootScope.$on('close-modal', (event) => {
       this.$timeout(() => {
-        this.timelineFull.reverse();
+        this.timelineFull.timeScale(2).reverse();
       }, 500);
       this.$timeout(() => {
         this.timelineFlag.stop();
@@ -138,7 +169,7 @@ class SceneHillaryDirective {
     this.$rootScope.$on('candidateChosen', (event, data) => {
       this.scope.candidateChosen = data;
       if (data === 'R') {
-        this.timelineFull.reverse();
+        this.timelineFull.timeScale(2).reverse();
         this.timelineButton.reverse();
       }
     });
