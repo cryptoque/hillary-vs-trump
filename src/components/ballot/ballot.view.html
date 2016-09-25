@@ -50,7 +50,7 @@
         <button class="ballot__button ballot__button--twitter icon icon--twitter"
                 socialshare
                 socialshare-provider="twitter"
-                socialshare-hashtags="trump #hillary"
+                socialshare-hashtags="Election2016 #{{$ctrl.candidate($ctrl.votedFor)}}"
                 socialshare-text="{{ 'share.action' | translate:{candidate: $ctrl.candidate($ctrl.votedFor)} }} {{ 'share.headline' | translate }}"
                 socialshare-url="{{ 'page.url' | translate }}"
                 socialshare-popup-height="300"
@@ -74,7 +74,7 @@
         <button class="ballot__button ballot__button--twitter icon icon--twitter"
            socialshare
            socialshare-provider="twitter"
-           socialshare-hashtags="trump #hillary"
+           socialshare-hashtags="Election2016 #Trump #Hillary"
            socialshare-text="{{ 'share.headline' | translate }}"
            socialshare-url="{{ 'page.url' | translate }}"
            socialshare-popup-height="300"
