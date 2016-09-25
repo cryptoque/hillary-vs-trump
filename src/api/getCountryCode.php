@@ -44,6 +44,10 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
      or apiError('error.geoip');
 }
 
+if (!$countryCode) {
+  apiError('error.geoip');
+}
+
 $token = sha1($hash . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
 echo json_encode(array('country' => $countryCode, 'token' => $token));
 die;
