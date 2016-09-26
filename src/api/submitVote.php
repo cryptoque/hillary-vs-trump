@@ -1,5 +1,5 @@
 <?php
-$startTime = microtime();
+$startTime = microtime(true);
 
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
@@ -71,7 +71,7 @@ $db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
     or apiError('db.error');
 
 
-$endTime = microtime() - $startTime;
+$endTime = microtime(true) - $startTime;
 logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ', VPN = ' . $anon . ' (' . $endTime . 'ms)');
 die('OK');
 
