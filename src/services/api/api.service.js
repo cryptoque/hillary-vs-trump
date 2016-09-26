@@ -15,8 +15,7 @@ class ApiService {
   lookupCountry() {
     return this.$http({
       method: 'GET',
-      url: './api/getCountryCode.php',
-      cache: true
+      url: './api/getCountryCode.php'
     });
   }
 
