@@ -34,6 +34,8 @@ $db->select_db($_DB['database.dbname']);
 $counter=0;
 $results = $db->query("SELECT * FROM `votes` INNER JOIN `country-lookup` ON `votes`.`hash` = `country-lookup`.`hash`");
 while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
+  ratelimiter(250, 60);
+
   $ip = $row['ip'];
   if (strstr($row['ip'], '.xxx')) {
     $ip = $deAnonIps[$row['hash']];
@@ -61,4 +63,36 @@ while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
 
   $counter++;
   if ($counter > 10) die;
+}
+
+
+function ratelimiter($rate = 5, $per = 8) {
+  $last_check = microtime(True);
+  $allowance = $rate;
+
+  return function ($consumed = 1) use (
+    &$last_check,
+    &$allowance,
+    $rate,
+    $per
+  ) {
+    $current = microtime(True);
+    $time_passed = $current - $last_check;
+    $last_check = $current;
+
+    $allowance += $time_passed * ($rate / $per);
+    if ($allowance > $rate)
+      $allowance = $rate;
+
+    if ($allowance < $consumed) {
+      $duration = ($consumed - $allowance) * ($per / $rate);
+      $last_check += $duration;
+      usleep($duration * 1000000);
+      $allowance = 0;
+    }
+    else
+      $allowance -= $consumed;
+
+    return;
+  };
 }
