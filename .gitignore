@@ -1,6 +1,7 @@
 .idea/
 node_modules/
 build/
+build-new/
 vendor/
 npm-debug.log
 config/config.ini
