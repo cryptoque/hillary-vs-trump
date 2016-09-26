@@ -41,8 +41,8 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   // TODO: check if ip is anonymous
 
   // Insert country into db for caching purposes
-  $db->query("INSERT INTO `country-lookup` (`ip`, `hash`, `country`)" .
-    "VALUES ('" . anonymizeIp(CLIENTIP) . "', '" . $hash . "', '" . $countryCode . "')")
+  $db->query("INSERT INTO `country-lookup` (`ip`, `hash`, `country`, `anon`)" .
+    "VALUES ('" . CLIENTIP . "', '" . $hash . "', '" . $countryCode . "', -1)")
      or apiError('error.geoip');
 }
 
