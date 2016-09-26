@@ -2,6 +2,7 @@
 maxmind.userid = "115609"
 maxmind.key = ""
 hash.secret = ""
+getintel.sub = ""
 
 [production]
 database.host = "localhost"
