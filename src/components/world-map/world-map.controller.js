@@ -1,9 +1,10 @@
 class WorldMapController {
   // @ngInject
-  constructor($window, $document, $timeout) {
+  constructor($window, $document, $timeout, CountryThreshold) {
     this.$window = $window;
     this.$document = $document;
     this.$timeout = $timeout;
+    this.CountryThreshold = CountryThreshold;
 
     this.initCountryLayer = this.initCountryLayer.bind(this);
     this.clickLayer = this.clickLayer.bind(this);
@@ -18,9 +19,6 @@ class WorldMapController {
     };
 
     this.totalVoteCount = this.votingResults.total.D + this.votingResults.total.R;
-    if (this.totalVoteCount < 1000) {
-      this.totalVoteCount = '<1000';
-    }
   }
 
   initMap() {
@@ -71,14 +69,14 @@ class WorldMapController {
     let fillColor;
     if (countryVote) {
 
-      if (countryVote.winner === 'R') {
+      if (countryVote.votes < this.CountryThreshold) {
+        fillColor = this.colors.undecided;
+      } else if (countryVote.winner === 'R') {
         fillColor = this.colors.republicans;
       } else if (countryVote.winner === 'D') {
         fillColor = this.colors.democrats;
-      } else {
-
+      } else if (countryVote.winner === 'S') {
         fillColor = this.colors.split;
-
       }
 
     } else {

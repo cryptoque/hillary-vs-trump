@@ -8,6 +8,7 @@ angular.module('Vote', [
   ])
 
   .constant('Languages', [ 'en', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])
+  .constant('CountryThreshold', 20)
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, Languages) => {
@@ -48,17 +49,22 @@ angular.module('Vote', [
         url: '/results',
         controllerAs: '$ctrl',
         //@ngInject
-        controller: function(votingResults, topoData) {
+        controller: function($timeout, $state, votingResults, topoData) {
           this.votingResults = votingResults.data;
           this.topoData = topoData.data;
+
+          // Reload page every 61 seconds
+          $timeout(() => {
+            $state.reload();
+          }, 60001);
         },
         template: require('./views/root.results.html'),
         resolve: {
-          votingResults: ($http) => {
-            return $http.get('json/results.json');
+          votingResults: (apiService) => {
+            return apiService.votingResults();
           },
-          topoData: ($http) => {
-            return $http.get('json/countries-iso2.topo.json');
+          topoData: (apiService) => {
+            return apiService.topoData();
           }
         }
       })

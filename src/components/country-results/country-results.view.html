@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <td colspan="2" class="country-results__label-country">
-        {{ 'worldmap.country' | translate}} <span ng-show="$ctrl.thresholdReached">{{ 'worldmap.country-total-votes' | translate}}</span>
+        {{ 'worldmap.country' | translate}} {{ 'worldmap.country-total-votes' | translate}}
       </td>
       <td class="country-results__label-candidate">
         {{ 'worldmap.candidate' | translate}} : %
@@ -10,17 +10,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="country in $ctrl.countries" id="country-{{country[1]}}">
+    <tr ng-repeat="(code, data) in $ctrl.votingResults.countries" id="country-{{code}}">
       <td class="country-results__flag">
-        <span class="flag-icon flag-icon-{{country[1].toLowerCase()}}"></span>
+        <span class="flag-icon flag-icon-{{code.toLowerCase()}}"></span>
       </td>
-      <td class="country-results__countryname country-results__countryname--{{country[2].winner}}">
-        <span>{{'country.' + country[1] | translate}} <span ng-show="$ctrl.thresholdReached">({{country[2].votes}})</span></span>
+      <td class="country-results__countryname country-results__countryname--{{data.winner}}">
+        <span>{{'country.' + code | translate}} <span>({{data.votes}})</span></span>
       </td>
       <td class="country-results__score">
-        <div class="country-results__winner country-results__winner--{{country[2].winner}}">
-          <span class="country-results__name">{{$ctrl.candidate(country[2].winner)}}:</span>
-          <span class="country-results__percentage">{{country[2].percentage}}%</span>
+        <div class="country-results__winner country-results__winner--{{data.winner}}" ng-if="data.votes >= $ctrl.CountryThreshold">
+          <span class="country-results__name">{{$ctrl.candidate(data.winner)}}:</span>
+          <span class="country-results__percentage">{{data.percentage}}%</span>
+        </div>
+        <div class="country-results__winner country-results__winner--U" ng-if="data.votes < $ctrl.CountryThreshold">
+          <span class="country-results__name"></span>
+          <span class="country-results__percentage">&lt; {{$ctrl.CountryThreshold}} {{'votes' | translate}}</span>
         </div>
       </td>
     </tr>

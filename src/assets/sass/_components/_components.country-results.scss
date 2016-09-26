@@ -60,8 +60,11 @@
     &.country-results__countryname--R {
       color: $color-republicans;
     }
-    &.country-results__countryname--U {
+    &.country-results__countryname--S {
       color: $color-split;
+    }
+    &.country-results__countryname--U {
+      color: $color-undecided;
     }
   }
 
@@ -80,9 +83,13 @@
         border-right: inuit-rem(20px) solid $color-republicans;
         color: $color-republicans;
       }
-      &.country-results__winner--U {
+      &.country-results__winner--S {
         border-right: inuit-rem(20px) solid $color-split;
         color: $color-split;
+      }
+      &.country-results__winner--U {
+        border-right: inuit-rem(20px) solid $color-undecided;
+        color: $color-undecided;
       }
     }
 
