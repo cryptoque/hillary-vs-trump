@@ -29,15 +29,27 @@ class TranslateProvider {
       preferredLanguage = languageFromUrl[1];
     } else {
       let browserLanguage;
-      if (navigator.languages) {
-        let filtered = navigator.languages.filter((value) => availableLanguages.includes(value.substr(0, 2)));
+      let n = navigator.languages || navigator.language || navigator.userLanguage;
+      if (angular.isArray(n)) {
+        let filtered = [];
+        angular.forEach(n, (v) => {
+          if (availableLanguages.includes(v)) {
+            filtered.push(v);
+          }
+          if (availableLanguages.includes(v.substr(0, 2))) {
+            filtered.push(v.substr(0, 2));
+          }
+        });
         browserLanguage = filtered[0];
       } else {
-        browserLanguage = (navigator.language || navigator.userLanguage);
+        if (availableLanguages.indexOf(n) > -1) {
+          browserLanguage = n;
+        } else if (availableLanguages.indexOf(n.substr(0, 2)) > -1) {
+          browserLanguage = n.substr(0, 2);
+        }
       }
-
       if (browserLanguage) {
-        preferredLanguage = browserLanguage.substr(0, 2);
+        preferredLanguage = browserLanguage;
       }
     }
 
