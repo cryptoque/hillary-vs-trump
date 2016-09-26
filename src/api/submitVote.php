@@ -1,4 +1,6 @@
 <?php
+$startTime = microtime();
+
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', ROOTPATH . '/logs/votes.log');
@@ -8,7 +10,6 @@ require __DIR__ . '/functions.php';
 use GeoIp2\WebService\Client;
 
 define('CLIENTIP', STAGING ? '1.0.0.0' : getIp());
-
 //apiError('polls.closed');
 
 $_CONFIG = parse_ini_file(ROOTPATH . '/config/config.ini', true);
@@ -70,6 +71,7 @@ $db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
     or apiError('db.error');
 
 
-logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode);
+$endTime = microtime() - $startTime;
+logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ', VPN = ' . $anon . ' (' . $endTime . 'ms)');
 die('OK');
 
