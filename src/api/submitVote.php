@@ -34,7 +34,7 @@ if ($db->connect_errno) {
 $db->select_db($_DB['database.dbname']);
 
 // Test if IP already looked up
-$results = $db->query("SELECT `country`, `hash`, `anon` FROM `country-lookup` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
+$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
 if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCode = $row['country'];
 } else {
@@ -52,9 +52,12 @@ if ($results->num_rows) {
   apiError('request.not.unique');
 }
 
+// TODO: check if ip is anonymous
+$anon = -1;
+
 // Insert vote into db
-$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`)" .
-    "VALUES ('" . time() . "', '" . sha1(CLIENTIP) . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "')")
+$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
+    "VALUES ('" . time() . "', '" . sha1(CLIENTIP) . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '" . $anon . "')")
     or apiError('db.error');
 
 

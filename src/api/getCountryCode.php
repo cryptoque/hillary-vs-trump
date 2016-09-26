@@ -38,11 +38,9 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $record = $geoIpClient->country(CLIENTIP);
   $countryCode = $record->country->isoCode;
 
-  // TODO: check if ip is anonymous
-
   // Insert country into db for caching purposes
-  $db->query("INSERT INTO `country-lookup` (`ip`, `hash`, `country`, `anon`)" .
-    "VALUES ('" . CLIENTIP . "', '" . $hash . "', '" . $countryCode . "', -1)")
+  $db->query("INSERT INTO `country-lookup` (`ip`, `hash`, `country`)" .
+    "VALUES ('" . CLIENTIP . "', '" . $hash . "', '" . $countryCode . "')")
      or apiError('error.geoip');
 }
 

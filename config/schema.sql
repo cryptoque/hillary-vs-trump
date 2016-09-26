@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 14, 2016 at 11:33 AM
--- Server version: 10.0.26-MariaDB-0+deb8u1
+-- Generation Time: Sep 26, 2016 at 04:17 PM
+-- Server version: 10.0.27-MariaDB-0+deb8u1
 -- PHP Version: 5.6.24-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -42,11 +42,10 @@ CREATE TABLE IF NOT EXISTS `country-lookup` (
 CREATE TABLE IF NOT EXISTS `votes` (
 `id` int(11) NOT NULL,
   `ts` int(11) NOT NULL,
-  `ip` varchar(45) NOT NULL,
   `hash` varchar(40) NOT NULL,
   `vote` varchar(1) NOT NULL,
   `country` varchar(2) NOT NULL,
-  `dummy` int(11) NOT NULL
+  `anon` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
