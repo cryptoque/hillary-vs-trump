@@ -52,7 +52,7 @@ while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
     $anon = -1;
   }
 
-  echo $row['ip'] . "\t" . $anon . PHP_EOL;
+  echo $ip . "\t" . $anon . PHP_EOL;
 
   if ($anon > -1) {
     $db->query("UPDATE `votes` SET `anon` = '" . $anon . "' WHERE `votes`.`hash` = '" . $row['hash'] . "' LIMIT 1");
@@ -62,7 +62,9 @@ while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   }
 
   $counter++;
-  if ($counter > 10) die;
+  if ($counter % 100 === 0) {
+    echo PHP_EOL . "Count " . $counter . PHP_EOL . PHP_EOL;
+  }
 }
 
 

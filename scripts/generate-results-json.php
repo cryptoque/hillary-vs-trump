@@ -1,9 +1,9 @@
 <?php
 define('ROOTPATH', __DIR__ . '/../');
 define('STAGING', gethostname() !== 'hillary-vs-trump');
-define('FILE', ROOTPATH . '/build/json/results.json');
 
-if (!php_sapi_name() == "cli") { die('Only through CLI'); }
+if (!php_sapi_name() == 'cli') { die('Only through CLI'); }
+$options = getopt('', array('anon'));
 
 $_CONFIG = parse_ini_file(ROOTPATH . '/config/config.ini', true);
 $_DB = STAGING ? $_CONFIG['staging'] : $_CONFIG['production'];
@@ -17,7 +17,10 @@ $db->select_db($_DB['database.dbname']);
 $countryCodes = array();
 $votes = array('D' => array(), 'R' => array());
 $totalVotes = array('D' => 0, 'R' => 0);
-$results = $db->query("SELECT `country`, `vote` FROM `votes`");
+$anonThreshold = isset($options['anon']) ? .9 : 2;
+$results = $db->query("SELECT `country`, `vote` FROM `votes` WHERE `anon` < " . $anonThreshold);
+if ($db->error) die ($db->error);
+
 while ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCodes[] = $row['country'];
 
@@ -66,12 +69,13 @@ foreach (array_unique($countryCodes) as $country) {
 $totalPercentageH = round(100 / (($totalVotes['D']+$totalVotes['R']) / $totalVotes['D']));
 $totalPercentageT = round(100 / (($totalVotes['D']+$totalVotes['R']) / $totalVotes['R']));
 
-file_put_contents(FILE, json_encode(array(
+echo json_encode(array(
   'total' => $totalVotes,
   'D' => $totalPercentageH,
   'R' => $totalPercentageT,
   'countries' => array_orderby($countryVotes, 'votes', SORT_DESC)
-)), LOCK_EX);
+));
+
 
 
 function array_orderby()
