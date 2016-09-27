@@ -198,7 +198,7 @@
     border-radius: 50%;
     vertical-align: middle;
     margin-right: inuit-rem(5px);
-    background: url(../images/icon--world.svg) 0 0 repeat-x;
+    background: url(../images/icon--world.svg) inuit-rem(-50px) 0 repeat-x;
     background-size: inuit-rem(50px) inuit-rem(43px);
     animation: slideBg 4s linear infinite;
 
@@ -207,18 +207,19 @@
       height: inuit-rem(35px);
       border: inuit-rem(3px) solid #FFF;
       animation: slideBgMobile 4s linear infinite;
+      background-position: inuit-rem(-35px) 0;;
       background-size: inuit-rem(35px) inuit-rem(30px);
     }
   }
 
   @keyframes slideBg {
-    from { background-position: 0 0; }
-    to { background-position: inuit-rem(-50px) 0; }
+    from { background-position: inuit-rem(-50px) 0; }
+    to { background-position: 0 0; }
   }
 
   @keyframes slideBgMobile {
-    from { background-position: 0 0; }
-    to { background-position: inuit-rem(-35px) 0; }
+    from { background-position: inuit-rem(-35px) 0; }
+    to { background-position: 0 0; }
   }
 
   @keyframes flip {

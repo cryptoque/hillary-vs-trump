@@ -39,8 +39,7 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCode = $record->country->isoCode;
 
   // Insert country into db for caching purposes
-  $db->query("INSERT INTO `country-lookup` (`ip`, `hash`, `country`)" .
-    "VALUES ('" . CLIENTIP . "', '" . $hash . "', '" . $countryCode . "')")
+  $db->query("INSERT INTO `country-lookup` (`hash`, `country`) VALUES ('" . $hash . "', '" . $countryCode . "')")
      or apiError('error.geoip');
 }
 
