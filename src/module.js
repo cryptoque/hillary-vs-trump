@@ -54,7 +54,8 @@ angular.module('Vote', [
           this.topoData = topoData.data;
 
           // Reload page every 61 seconds
-          $timeout(() => {
+          let once = $timeout(() => {
+            $timeout.cancel(once);
             $state.reload();
           }, 60001);
         },
