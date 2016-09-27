@@ -44,7 +44,7 @@
   "worldmap.subtitle": "Президентские выборы в США 2016 года",
   "worldmap.scale.day": "За последние 24 часа",
   "worldmap.scale.total": "Все голоса",
-  "worldmap.totalvotes": "Общее количество голосов: {{votes}}",
+  "worldmap.totalvotes": "Количество голосов: {{votes}}",
   "worldmap.country": "Страна",
   "worldmap.candidate": "кандидат",
   "country.AF": "Афганистан",

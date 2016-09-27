@@ -12,7 +12,8 @@
         </select>
       </p>
       <p class="world-map__sub">
-        {{'worldmap.totalvotes' | translate:{'votes': ($ctrl.votingResults.total.D + $ctrl.votingResults.total.R) } }}
+        {{'worldmap.totalvotes' | translate:{'votes': ($ctrl.votingResults.total.D + $ctrl.votingResults.total.R) } }}<br />
+        ({{'ballot.footer' | translate}})
       </p>
 
       <div class="world-map__pie pie">
@@ -30,7 +31,6 @@
           {{$ctrl.votingResults.D}}%
         </div>
       </div>
-
     </div>
   </div>
 

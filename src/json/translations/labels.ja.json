@@ -44,7 +44,7 @@
   "worldmap.subtitle": "2016年アメリカ合衆国大統領選挙",
   "worldmap.scale.day": "過去24時間",
   "worldmap.scale.total": "全ての投票",
-  "worldmap.totalvotes": "投票の総数： {{votes}}",
+  "worldmap.totalvotes": "投票の数： {{votes}}",
   "worldmap.country": "国",
   "worldmap.candidate": "候補者",
   "country.AF": "アフガニスタン",

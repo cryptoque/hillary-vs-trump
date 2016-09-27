@@ -44,7 +44,7 @@
   "worldmap.subtitle": "elección presidencial de Estados Unidos de 2016",
   "worldmap.scale.day": "Últimas 24 Horas",
   "worldmap.scale.total": "Todos los votos",
-  "worldmap.totalvotes": "Número total de votos: {{votes}}",
+  "worldmap.totalvotes": "Número de votos: {{votes}}",
   "worldmap.country": "Pais",
   "worldmap.candidate": "Candidato",
   "country.AF": "Afganistán",

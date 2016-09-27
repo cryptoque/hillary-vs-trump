@@ -44,7 +44,7 @@
   "worldmap.subtitle": "2016年美国总统选举",
   "worldmap.scale.day": "过去24小时",
   "worldmap.scale.total": "所有投票",
-  "worldmap.totalvotes": "总票数： {{votes}}",
+  "worldmap.totalvotes": "票数： {{votes}}",
   "worldmap.country": "国家",
   "worldmap.candidate": "候选人",
   "country.AF": "阿富汗",
