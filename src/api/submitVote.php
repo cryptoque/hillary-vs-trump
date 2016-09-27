@@ -54,16 +54,17 @@ if ($results->num_rows) {
 }
 
 // Check if ip is anonymous
-try {
-  $result = json_decode(getUrlContent('http://' . $_CONFIG['general']['getintel.sub'] . '.getipintel.net/check.php?format=json&contact=fili@fili.nl&flags=b&ip=' . CLIENTIP));
-  if (!$result) {
-    $anon = -1;
-  } else {
-    $anon = $result->result;
-  }
-} catch(Exception $e) {
-  $anon = -1;
-}
+$anon = -1;
+//try {
+//  $result = json_decode(getUrlContent('http://' . $_CONFIG['general']['getintel.sub'] . '.getipintel.net/check.php?format=json&contact=fili@fili.nl&flags=b&ip=' . CLIENTIP));
+//  if (!$result) {
+//    $anon = -1;
+//  } else {
+//    $anon = $result->result;
+//  }
+//} catch(Exception $e) {
+//  $anon = -1;
+//}
 
 // Insert vote into db
 $db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
