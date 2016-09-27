@@ -46,7 +46,15 @@ angular.module('Vote', [
         }
       })
       .state('root.results', {
-        url: '/results?filter-anon',
+        url: '/results?scale',
+        resolve: {
+          votingResults: ($stateParams, apiService) => {
+            return apiService.votingResults($stateParams['scale']);
+          },
+          topoData: (apiService) => {
+            return apiService.topoData();
+          }
+        },
         controllerAs: '$ctrl',
         //@ngInject
         controller: function($timeout, $state, votingResults, topoData) {
@@ -59,15 +67,7 @@ angular.module('Vote', [
             $state.reload();
           }, 60001);
         },
-        template: require('./views/root.results.html'),
-        resolve: {
-          votingResults: ($stateParams, apiService) => {
-            return apiService.votingResults($stateParams['filter-anon'] === 'true');
-          },
-          topoData: (apiService) => {
-            return apiService.topoData();
-          }
-        }
+        template: require('./views/root.results.html')
       })
       .state('root.info', {
         url: '/info',

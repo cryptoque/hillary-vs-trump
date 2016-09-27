@@ -3,7 +3,8 @@ define('ROOTPATH', __DIR__ . '/../');
 define('STAGING', gethostname() !== 'hillary-vs-trump');
 
 if (!php_sapi_name() == 'cli') { die('Only through CLI'); }
-$options = getopt('', array('no-anon'));
+$options = getopt('', array('scale:'));
+if (!isset($options['scale']) || !($options['scale'] === 'total' || $options['scale'] === 'day')) { die('Set scale to either day or total'); }
 
 $_CONFIG = parse_ini_file(ROOTPATH . '/config/config.ini', true);
 $_DB = STAGING ? $_CONFIG['staging'] : $_CONFIG['production'];
@@ -17,8 +18,8 @@ $db->select_db($_DB['database.dbname']);
 $countryCodes = array();
 $votes = array('D' => array(), 'R' => array());
 $totalVotes = array('D' => 0, 'R' => 0);
-$anonThreshold = isset($options['no-anon']) ? .9 : 2;
-$results = $db->query("SELECT `country`, `vote` FROM `votes` WHERE `anon` < " . $anonThreshold);
+$tsThreshold = ($options['scale'] === 'total' ? 0 : time() - (24*60*60));
+$results = $db->query("SELECT `country`, `vote` FROM `votes` WHERE `ts` >= " . $tsThreshold);
 if ($db->error) die ($db->error);
 
 while ($row = $results->fetch_array(MYSQLI_ASSOC)) {

@@ -19,11 +19,11 @@ class ApiService {
     });
   }
 
-  votingResults(noAnon = false) {
-    const json = noAnon ? 'results--no-anon.json' : 'results.json';
+  votingResults(scale = 'total') {
+    scale = scale === 'day' ? 'day' : 'total';
     return this.$http({
       method: 'GET',
-      url: 'json/' + json
+      url: `json/results.${scale}.json`
     });
   }
 
