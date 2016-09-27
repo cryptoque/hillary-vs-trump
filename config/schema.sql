@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 26, 2016 at 04:17 PM
+-- Generation Time: Sep 27, 2016 at 06:30 PM
 -- Server version: 10.0.27-MariaDB-0+deb8u1
 -- PHP Version: 5.6.24-0+deb8u1
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `hillary-vs-trump`
 --
+CREATE DATABASE IF NOT EXISTS `hillary-vs-trump` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `hillary-vs-trump`;
 
 -- --------------------------------------------------------
 
@@ -26,9 +28,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `country-lookup`
 --
 
+DROP TABLE IF EXISTS `country-lookup`;
 CREATE TABLE IF NOT EXISTS `country-lookup` (
 `id` int(11) NOT NULL,
-  `ip` varchar(45) NOT NULL,
   `hash` varchar(40) NOT NULL,
   `country` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -39,13 +41,14 @@ CREATE TABLE IF NOT EXISTS `country-lookup` (
 -- Table structure for table `votes`
 --
 
+DROP TABLE IF EXISTS `votes`;
 CREATE TABLE IF NOT EXISTS `votes` (
 `id` int(11) NOT NULL,
   `ts` int(11) NOT NULL,
   `hash` varchar(40) NOT NULL,
   `vote` varchar(1) NOT NULL,
   `country` varchar(2) NOT NULL,
-  `anon` tinyint(1) NOT NULL
+  `anon` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -62,7 +65,7 @@ ALTER TABLE `country-lookup`
 -- Indexes for table `votes`
 --
 ALTER TABLE `votes`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `hash` (`hash`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
