@@ -3,7 +3,7 @@ define('ROOTPATH', __DIR__ . '/../');
 define('STAGING', gethostname() !== 'hillary-vs-trump');
 
 if (!php_sapi_name() == 'cli') { die('Only through CLI'); }
-$options = getopt('', array('anon'));
+$options = getopt('', array('no-anon'));
 
 $_CONFIG = parse_ini_file(ROOTPATH . '/config/config.ini', true);
 $_DB = STAGING ? $_CONFIG['staging'] : $_CONFIG['production'];
