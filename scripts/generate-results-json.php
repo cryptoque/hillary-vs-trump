@@ -17,7 +17,7 @@ $db->select_db($_DB['database.dbname']);
 $countryCodes = array();
 $votes = array('D' => array(), 'R' => array());
 $totalVotes = array('D' => 0, 'R' => 0);
-$anonThreshold = isset($options['anon']) ? .9 : 2;
+$anonThreshold = isset($options['no-anon']) ? .9 : 2;
 $results = $db->query("SELECT `country`, `vote` FROM `votes` WHERE `anon` < " . $anonThreshold);
 if ($db->error) die ($db->error);
 

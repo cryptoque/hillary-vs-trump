@@ -46,7 +46,7 @@ angular.module('Vote', [
         }
       })
       .state('root.results', {
-        url: '/results',
+        url: '/results?filter-anon',
         controllerAs: '$ctrl',
         //@ngInject
         controller: function($timeout, $state, votingResults, topoData) {
@@ -60,8 +60,8 @@ angular.module('Vote', [
         },
         template: require('./views/root.results.html'),
         resolve: {
-          votingResults: (apiService) => {
-            return apiService.votingResults();
+          votingResults: ($stateParams, apiService) => {
+            return apiService.votingResults($stateParams['filter-anon'] === 'true');
           },
           topoData: (apiService) => {
             return apiService.topoData();

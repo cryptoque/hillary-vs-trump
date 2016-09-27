@@ -19,10 +19,11 @@ class ApiService {
     });
   }
 
-  votingResults() {
+  votingResults(noAnon = false) {
+    const json = noAnon ? 'results--no-anon.json' : 'results.json';
     return this.$http({
       method: 'GET',
-      url: 'json/results.json'
+      url: 'json/' + json
     });
   }
 
