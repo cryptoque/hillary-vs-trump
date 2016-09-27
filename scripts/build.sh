@@ -13,6 +13,9 @@ cp -r src/opengraph.png build-new/
 
 php ./composer.phar install
 
+php ./scripts/generate-results-json.php --scale=day >./build/json/results.day.json
+php ./scripts/generate-results-json.php --scale=total >./build/json/results.total.json
+
 du -sh build-new/ build/
 
 while true; do
