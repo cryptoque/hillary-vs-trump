@@ -37,7 +37,7 @@
   "ballot.vote": "Envie seu voto!",
   "ballot.thankyou.title": "Nós adicionamos seu voto!",
   "ballot.thankyou.thankyou": "Obrigado!",
-  "ballot.thankyou.pleaseshare": "Você pode votar uma vez por dia! Confira os <a href=\"#/results\">resultados</a> para ver como o seu país e outros países votaram e compartilhá-lo com o resto do mundo!",
+  "ballot.thankyou.pleaseshare": "Você pode votar uma vez por dia! Confira os <a href=\"#/results/\">resultados</a> para ver como o seu país e outros países votaram e compartilhá-lo com o resto do mundo!",
   "ballot.thankyou.button.sharevote": "Seu voto",
   "ballot.thankyou.button.share": "Compartilhar",
   "worldmap.title": "Worldwide Enquete:",

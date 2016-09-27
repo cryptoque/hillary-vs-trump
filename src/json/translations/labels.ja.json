@@ -37,7 +37,7 @@
   "ballot.vote": "あなたの投票を送信！",
   "ballot.thankyou.title": "私たちはあなたの投票を追加しました！",
   "ballot.thankyou.thankyou": "ありがとうございました！",
-  "ballot.thankyou.pleaseshare": "あなたは1日1回投票することができます！ チェックアウト<a href=\"#/results\">の結果を</a>あなたの国やその他の国が投票したかを確認し、世界の残りの部分とそれを共有します！",
+  "ballot.thankyou.pleaseshare": "あなたは1日1回投票することができます！ チェックアウト<a href=\"#/results/\">の結果を</a>あなたの国やその他の国が投票したかを確認し、世界の残りの部分とそれを共有します！",
   "ballot.thankyou.button.sharevote": "あなたの投票を共有します",
   "ballot.thankyou.button.share": "シェア",
   "worldmap.title": "世界的な世論調査：",
