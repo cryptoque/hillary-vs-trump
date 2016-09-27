@@ -46,7 +46,10 @@ angular.module('Vote', [
         }
       })
       .state('root.results', {
-        url: '/results?scale',
+        url: '/results/:scale',
+        params: {
+          scale: 'day'
+        },
         resolve: {
           votingResults: ($stateParams, apiService) => {
             return apiService.votingResults($stateParams['scale']);
@@ -57,15 +60,20 @@ angular.module('Vote', [
         },
         controllerAs: '$ctrl',
         //@ngInject
-        controller: function($timeout, $state, votingResults, topoData) {
+        controller: function($timeout, $state, $stateParams, votingResults, topoData) {
           this.votingResults = votingResults.data;
           this.topoData = topoData.data;
+          this.timeScale = $stateParams.scale;
 
           // Reload page every 61 seconds
           let once = $timeout(() => {
             $timeout.cancel(once);
             $state.reload();
           }, 60001);
+
+          this.switchTimeScale = function() {
+            $state.go($state.current, { scale: this.timeScale });
+          }
         },
         template: require('./views/root.results.html')
       })

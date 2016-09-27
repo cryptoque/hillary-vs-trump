@@ -1,6 +1,6 @@
 class WorldMapController {
   // @ngInject
-  constructor($window, $document, $timeout, CountryThreshold) {
+  constructor($window, $document, $timeout, $stateParams, CountryThreshold) {
     this.$window = $window;
     this.$document = $document;
     this.$timeout = $timeout;
@@ -17,8 +17,6 @@ class WorldMapController {
       undecided: '#dadada',
       split: '#B26CC1'
     };
-
-    this.totalVoteCount = this.votingResults.total.D + this.votingResults.total.R;
   }
 
   initMap() {

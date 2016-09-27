@@ -19,7 +19,7 @@ class ApiService {
     });
   }
 
-  votingResults(scale = 'total') {
+  votingResults(scale = 'day') {
     scale = scale === 'day' ? 'day' : 'total';
     return this.$http({
       method: 'GET',

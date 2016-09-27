@@ -20,13 +20,14 @@
         </div>
       </div>
     </form>
+    <div class="ballot__footer">{{'ballot.footer' | translate}}</div>
 
   </div>
 
   <!-- Thank you -->
   <div class="ballot__container animate--fadein" ng-show="$ctrl.hasVoted">
-    <p class="ballot__subtitle" ng-show="$ctrl.votedFor">{{ 'ballot.thankyou.title' | translate }}</p>
-    <p class="ballot__subtitle" ng-hide="$ctrl.votedFor">{{'ballot.youvotedfor' | translate }}</p>
+    <p class="ballot__subtitle" ng-show="$ctrl.votedFor">{{'ballot.thankyou.title' | translate }}</p>
+    <p class="ballot__subtitle" ng-hide="$ctrl.votedFor">{{'ballot.alreadyvoted' | translate }}</p>
 
     <div class="ballot__content">
       <h2 class="ballot__title">{{'ballot.thankyou.thankyou' | translate}}</h2>

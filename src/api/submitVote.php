@@ -47,8 +47,8 @@ if ($params['token'] !== $token) {
   apiError('request.invalid.token');
 }
 
-// Test if ip already voted
-$results = $db->query("SELECT `hash` FROM `votes` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
+// Test if ip already voted within past 24 hours
+$results = $db->query("SELECT `hash` FROM `votes` WHERE `hash` = '" . sha1(CLIENTIP) . "' AND `ts` > " . (time() - (24*60*60)) . " LIMIT 1");
 if ($results->num_rows) {
   apiError('request.not.unique');
 }
@@ -74,5 +74,8 @@ $db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
 
 $endTime = microtime(true) - $startTime;
 logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ', VPN = ' . $anon . ' (' . $endTime . 'ms)');
-die('OK');
+
+
+echo json_encode(array('ts' => time()));
+die;
 

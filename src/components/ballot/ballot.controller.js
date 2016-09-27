@@ -13,7 +13,10 @@ class BallotController {
 
     this.$scope.$on('open-modal', (event) => {
       this.isVisible = true;
-      this.hasVoted = this.$window.localStorage.getItem('hasVoted');
+      this.now =  Math.round(new Date().getTime() / 1000);
+      this.lastVote =  Math.round(this.$window.localStorage.getItem('hasVoted') / 1000) || 0;
+      this.timePast = this.now - this.lastVote;
+      this.hasVoted = (this.timePast > (24*60*60) ? false : true);
     });
 
     this.$scope.$on('close-modal', (event) => {
@@ -21,6 +24,7 @@ class BallotController {
 
       this.$timeout(() => {
         this.yourVote = false;
+        this.votedFor = false;
       }, 2500);
     });
 
