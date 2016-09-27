@@ -21,7 +21,7 @@ $totalVotes = array('D' => 0, 'R' => 0);
 if ($options['scale'] === 'total') {
   $query = "SELECT DISTINCT `hash`, `country`, `vote` FROM `votes`";
 } else {
-  $query = "SELECT `hash`, `country`, `vote` FROM `votes` WHERE `ts` >= " . time() - (24*60*60);
+  $query = "SELECT `hash`, `country`, `vote` FROM `votes` WHERE `ts` >= " . (time() - (24*60*60));
 }
 $results = $db->query($query);
 if ($db->error) die ($db->error);
