@@ -43,7 +43,7 @@
   "worldmap.title": "Worldwide Poll:",
   "worldmap.subtitle": "United States presidential election, 2016",
   "worldmap.scale.day": "Past 24 hours",
-  "worldmap.scale.total": "All votes",
+  "worldmap.scale.total": "Total unique votes",
   "worldmap.totalvotes": "Number of votes: {{votes}}",
   "worldmap.country": "Country",
   "worldmap.candidate": "Candidate",

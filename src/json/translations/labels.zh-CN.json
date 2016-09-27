@@ -43,7 +43,7 @@
   "worldmap.title": "全球调查：",
   "worldmap.subtitle": "2016年美国总统选举",
   "worldmap.scale.day": "过去24小时",
-  "worldmap.scale.total": "所有投票",
+  "worldmap.scale.total": "总票数独特",
   "worldmap.totalvotes": "票数： {{votes}}",
   "worldmap.country": "国家",
   "worldmap.candidate": "候选人",

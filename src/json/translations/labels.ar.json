@@ -43,7 +43,7 @@
   "worldmap.title": "في جميع أنحاء العالم الإستطلاع:",
   "worldmap.subtitle": "انتخابات الرئاسة الأمريكية 2016",
   "worldmap.scale.day": "24 ساعة الماضية",
-  "worldmap.scale.total": "كل الأصوات",
+  "worldmap.scale.total": "مجموع الأصوات الفريدة",
   "worldmap.totalvotes": "عدد الأصوات: {{votes}}",
   "worldmap.country": "بلد",
   "worldmap.candidate": "مرشح",

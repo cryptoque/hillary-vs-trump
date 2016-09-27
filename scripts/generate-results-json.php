@@ -18,8 +18,12 @@ $db->select_db($_DB['database.dbname']);
 $countryCodes = array();
 $votes = array('D' => array(), 'R' => array());
 $totalVotes = array('D' => 0, 'R' => 0);
-$tsThreshold = ($options['scale'] === 'total' ? 0 : time() - (24*60*60));
-$results = $db->query("SELECT `country`, `vote` FROM `votes` WHERE `ts` >= " . $tsThreshold);
+if ($options['scale'] === 'total') {
+  $query = "SELECT DISTINCT `hash`, `country`, `vote` FROM `votes`";
+} else {
+  $query = "SELECT `hash`, `country`, `vote` FROM `votes` WHERE `ts` >= " . time() - (24*60*60);
+}
+$results = $db->query($query);
 if ($db->error) die ($db->error);
 
 while ($row = $results->fetch_array(MYSQLI_ASSOC)) {

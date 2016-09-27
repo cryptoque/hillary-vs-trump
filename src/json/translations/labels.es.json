@@ -43,7 +43,7 @@
   "worldmap.title": "En todo el mundo Encuesta:",
   "worldmap.subtitle": "elección presidencial de Estados Unidos de 2016",
   "worldmap.scale.day": "Últimas 24 Horas",
-  "worldmap.scale.total": "Todos los votos",
+  "worldmap.scale.total": "Total de votos únicas",
   "worldmap.totalvotes": "Número de votos: {{votes}}",
   "worldmap.country": "Pais",
   "worldmap.candidate": "Candidato",
