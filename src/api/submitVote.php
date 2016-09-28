@@ -46,9 +46,8 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
 $token = sha1($row['hash'] . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
 $t = base64_encode($token . ':' . $_CONFIG['general']['token.salt']);
 $n = crc32(base64_encode($_CONFIG['general']['nonce.salt'] . $params['voted'] . ':' . $token));
-$p = crc32(base64_encode($_CONFIG['general']['nonce.salt'] . $_SERVER['HTTP_USER_AGENT'])) * 4;
 
-if ($t !== $params['t'] || $n !== $params['n'] || $p !== $params['p']) {
+if ($t !== $params['t'] || $n !== $params['n']) {
 //  apiError('request.invalid.token');
 }
 
@@ -59,13 +58,13 @@ if ($results->num_rows) {
 }
 
 // Insert vote into db
-$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`, `ua`)" .
-    "VALUES ('" . time() . "', '" . sha1(CLIENTIP) . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '-1', '" . mysqli_escape_string($db, $_SERVER['HTTP_USER_AGENT']) . "')")
+$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
+    "VALUES ('" . time() . "', '" . sha1(CLIENTIP) . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '-1')")
     or apiError('db.error');
 
 
 $endTime = microtime(true) - $startTime;
-logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ', UA = ' . $_SERVER['HTTP_USER_AGENT'] . ' (' . $endTime . 'ms)');
+logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ' (' . $endTime . 'ms)');
 
 
 echo json_encode(array('ts' => time()));
