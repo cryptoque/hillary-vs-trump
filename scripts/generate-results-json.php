@@ -19,7 +19,7 @@ $countryCodes = array();
 $votes = array('D' => array(), 'R' => array());
 $totalVotes = array('D' => 0, 'R' => 0);
 if ($options['scale'] === 'total') {
-  $query = "SELECT DISTINCT `hash`, `country`, `vote` FROM `votes`";
+  $query = "SELECT DISTINCT `hash`, `country`, `vote` FROM `votes` ORDER BY `ts` DESC";
 } else {
   $query = "SELECT `hash`, `country`, `vote` FROM `votes` WHERE `ts` >= " . (time() - (24*60*60));
 }
