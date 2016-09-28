@@ -26,8 +26,7 @@ if (!count($params) || !isset($params['voted'])) { apiError('request.invalid.par
 // Verify token
 $tokenValid = true;
 if (!(isset($params['t']) && isset($params['n']) && isset($params['p']))) {
-  $tokenValid = false;
-//  apiError('request.missing.token');
+  apiError('request.missing.token');
 }
 
 // Connect DB
@@ -50,8 +49,7 @@ $t = base64_encode($token . ':' . $_CONFIG['general']['token.salt']);
 $n = crc32(base64_encode($_CONFIG['general']['nonce.salt'] . $params['voted'] . ':' . $token));
 
 if ($t !== $params['t'] || $n !== $params['n']) {
-  $tokenValid = false;
-//  apiError('request.invalid.token');
+  apiError('request.invalid.token');
 }
 
 // Test if ip already voted within past 24 hours
@@ -67,7 +65,7 @@ $db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
 
 
 $endTime = microtime(true) - $startTime;
-logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ', Token valid = ' . ($tokenValid ? 'true' : 'false') . ' (' . $endTime . 'ms)');
+logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ' (' . $endTime . 'ms)');
 
 
 echo json_encode(array('ts' => time()));
