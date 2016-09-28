@@ -38,14 +38,15 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $record = $geoIpClient->country(CLIENTIP);
   $countryCode = $record->country->isoCode;
 
+  if (strlen($countryCode) !== 2) {
+    apiError('error.geoip');
+  }
+
   // Insert country into db for caching purposes
   $db->query("INSERT INTO `country-lookup` (`hash`, `country`) VALUES ('" . $hash . "', '" . $countryCode . "')")
      or apiError('error.geoip');
 }
 
-if (!$countryCode) {
-  apiError('error.geoip');
-}
 
 $token = sha1($hash . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
 echo json_encode(array('country' => $countryCode, 'token' => $token));

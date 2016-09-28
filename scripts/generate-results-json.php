@@ -3,8 +3,9 @@ define('ROOTPATH', __DIR__ . '/../');
 define('STAGING', gethostname() !== 'hillary-vs-trump');
 
 if (!php_sapi_name() == 'cli') { die('Only through CLI'); }
-$options = getopt('', array('scale:'));
+$options = getopt('', array('scale:', 'file:'));
 if (!isset($options['scale']) || !($options['scale'] === 'total' || $options['scale'] === 'day')) { die('Set scale to either day or total'); }
+if (!isset($options['file'])) { die('Specify file'); }
 
 $_CONFIG = parse_ini_file(ROOTPATH . '/config/config.ini', true);
 $_DB = STAGING ? $_CONFIG['staging'] : $_CONFIG['production'];
@@ -77,13 +78,14 @@ foreach (array_unique($countryCodes) as $country) {
 $totalPercentageH = round(100 / (($totalVotes['D']+$totalVotes['R']) / $totalVotes['D']));
 $totalPercentageT = round(100 / (($totalVotes['D']+$totalVotes['R']) / $totalVotes['R']));
 
-echo json_encode(array(
+if (!file_put_contents($options['file'], json_encode(array(
   'total' => $totalVotes,
   'D' => $totalPercentageH,
   'R' => $totalPercentageT,
   'countries' => array_orderby($countryVotes, 'votes', SORT_DESC)
-));
-
+), FILE_APPEND | LOCK_EX))) {
+  die('Saving failed: ' . $options['file']);
+}
 
 
 function array_orderby()
