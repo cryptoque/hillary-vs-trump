@@ -2,7 +2,8 @@
 maxmind.userid = "115609"
 maxmind.key = ""
 hash.secret = ""
-getintel.sub = ""
+token.salt = ""
+nonce.salt = ""
 
 [production]
 database.host = "localhost"

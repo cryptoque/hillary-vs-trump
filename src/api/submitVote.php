@@ -24,8 +24,9 @@ $params = json_decode(file_get_contents('php://input'), true);
 if (!count($params) || !isset($params['voted'])) { apiError('request.invalid.parameters'); }
 
 // Verify token
-if (!isset($params['token'])) { apiError('request.missing.token'); }
-
+if (!isset($params['t'])) { apiError('request.missing.token'); }
+if (!isset($params['n'])) { apiError('request.missing.token'); }
+if (!isset($params['p'])) { apiError('request.missing.token'); }
 
 // Connect DB
 $db = new mysqli($_DB['database.host'], $_DB['database.username'], $_DB['database.password']);
@@ -42,8 +43,13 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   apiError('country.lookup.failed');
 }
 
+
 $token = sha1($row['hash'] . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
-if ($params['token'] !== $token) {
+$t = base64_encode($token . ':' . $_CONFIG['general']['token.salt']);
+$n = crc32(base64_encode($_CONFIG['general']['nonce.salt'] . $params['voted'] . ':' . $token));
+$p = crc32(base64_encode($_CONFIG['general']['nonce.salt'] . $_SERVER['HTTP_USER_AGENT'])) * 4;
+
+if ($t !== $params['t'] || $n !== $params['n'] || $p !== $params['p']) {
   apiError('request.invalid.token');
 }
 
@@ -53,27 +59,14 @@ if ($results->num_rows) {
   apiError('request.not.unique');
 }
 
-// Check if ip is anonymous
-$anon = -1;
-//try {
-//  $result = json_decode(getUrlContent('http://' . $_CONFIG['general']['getintel.sub'] . '.getipintel.net/check.php?format=json&contact=fili@fili.nl&flags=b&ip=' . CLIENTIP));
-//  if (!$result) {
-//    $anon = -1;
-//  } else {
-//    $anon = $result->result;
-//  }
-//} catch(Exception $e) {
-//  $anon = -1;
-//}
-
 // Insert vote into db
-$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
-    "VALUES ('" . time() . "', '" . sha1(CLIENTIP) . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '" . $anon . "')")
+$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`, `ua`)" .
+    "VALUES ('" . time() . "', '" . sha1(CLIENTIP) . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '-1', '" . mysqli_escape_string($db, $_SERVER['HTTP_USER_AGENT']) . "')")
     or apiError('db.error');
 
 
 $endTime = microtime(true) - $startTime;
-logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ', VPN = ' . $anon . ' (' . $endTime . 'ms)');
+logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ', UA = ' . $_SERVER['HTTP_USER_AGENT'] . ' (' . $endTime . 'ms)');
 
 
 echo json_encode(array('ts' => time()));

@@ -2,6 +2,7 @@ angular.module('Vote', [
     'ngAnimate',
     'ngSanitize',
     'ui.router',
+    'base64',
     '720kb.socialshare',
     'duScroll',
     'ng.deviceDetector'
@@ -9,6 +10,8 @@ angular.module('Vote', [
 
   .constant('Languages', [ 'en', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])
   .constant('CountryThreshold', 20)
+  .constant('Ns', 'OCqSjB45mTglboj6Y5lxAXF0zDB7TkNPShN2h3vkSqpDqE1oTsoUzSSDV7oxdssiOglgASaY6p7YKJMrXIcBlti1QgBDWfnosGG1')
+  .constant('Ts', '1JZDf51XSFzswQ1xoTqNjGGQyPswcfZlO5bmokOjAO4uRDdkGfTQivejlnZHYwrknjcX5MzhR5ElUOaEu0y5Tk9kLFyj2c74khWO')
 
   // @ngInject
   .config(($stateProvider, $urlRouterProvider, translateServiceProvider, Languages) => {

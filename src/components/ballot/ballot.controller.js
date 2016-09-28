@@ -1,12 +1,14 @@
 class BallotController {
   // @ngInject
-  constructor($window, $rootScope, $scope, $timeout, $filter, apiService) {
+  constructor($window, $rootScope, $scope, $timeout, $filter, $base64, apiService, Ts) {
     this.$window = $window;
     this.$rootScope = $rootScope;
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$filter = $filter;
+    this.$base64 = $base64;
     this.apiService = apiService;
+    this.Ts = Ts;
 
     this.countryCode = this.$rootScope.countryCode;
     this.isVisible = false;
@@ -36,12 +38,17 @@ class BallotController {
     if (this.ballotForm.$valid) {
       this.apiError = false;
       this.votingInProgress = true;
-      this.apiService.sendVote({ voted: this.yourVote, token: this.$rootScope.token })
-        .then(this.votingSuccess)
-        .catch(this.votingError)
-        .finally(() => {
-          this.votingInProgress = false;
-        });
+      this.apiService.sendVote({
+        voted: this.yourVote,
+        t: this.$base64.encode(this.$rootScope.token + ':' + this.Ts),
+        n: this.apiService.nonce(this.yourVote + ':' + this.$rootScope.token),
+        p: this.apiService.nonce(window.navigator.userAgent) * 4
+      })
+      .then(this.votingSuccess)
+      .catch(this.votingError)
+      .finally(() => {
+        this.votingInProgress = false;
+      });
     }
   }
 
