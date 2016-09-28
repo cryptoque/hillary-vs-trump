@@ -18,7 +18,11 @@ class BallotController {
       this.now =  Math.round(new Date().getTime() / 1000);
       this.lastVote =  Math.round(this.$window.localStorage.getItem('hasVoted') / 1000) || 0;
       this.timePast = this.now - this.lastVote;
-      this.hasVoted = (this.timePast > (24*60*60) ? false : true);
+      this.hasVoted = this.timePast <= (24*60*60);
+
+      if(this.detectHeadlessBrowser()) {
+        this.hasVoted = true;
+      }
     });
 
     this.$scope.$on('close-modal', (event) => {
@@ -74,6 +78,18 @@ class BallotController {
 
   sendGAEvent(label, value) {
     this.$window.ga('send', 'event', label, value);
+  }
+
+  detectHeadlessBrowser() {
+    return typeof window._phantom !== 'undefined' ||
+      typeof window.callPhantom !== 'undefined' ||
+      typeof window.__phantomas !== 'undefined' ||
+      typeof window.Buffer !== 'undefined' ||
+      typeof window.emit !== 'undefined' ||
+      typeof window.spawn !== 'undefined' ||
+      typeof window.webdriver !== 'undefined' ||
+      typeof window.domAutomation !== 'undefined' ||
+      typeof window.domAutomationController !== 'undefined';
   }
 }
 
