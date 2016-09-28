@@ -50,8 +50,8 @@ foreach (array_unique($countryCodes) as $country) {
   $totalVotesForThisCountry = $voteD + $voteR;
 
   if ($totalVotesForThisCountry > 0) {
-    $percentageD = $voteD ? 100 / ($totalVotesForThisCountry / $voteD) : 0;
-    $percentageR = $voteR ? 100 / ($totalVotesForThisCountry / $voteR) : 0;
+    $percentageD = $voteD ? round(100 / ($totalVotesForThisCountry / $voteD)) : 0;
+    $percentageR = $voteR ? round(100 / ($totalVotesForThisCountry / $voteR)) : 0;
 
     if ($percentageD === 50) {
       $winner = 'S';
@@ -69,7 +69,7 @@ foreach (array_unique($countryCodes) as $country) {
     $countryVotes[$country] = array(
       'winner' => $winner,
       'votes' => $totalVotesForThisCountry,
-      'percentage' => round($percentage)
+      'percentage' => $percentage
     );
   }
 }
