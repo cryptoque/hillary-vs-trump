@@ -24,9 +24,9 @@ $params = json_decode(file_get_contents('php://input'), true);
 if (!count($params) || !isset($params['voted'])) { apiError('request.invalid.parameters'); }
 
 // Verify token
-if (!isset($params['t'])) { apiError('request.missing.token'); }
-if (!isset($params['n'])) { apiError('request.missing.token'); }
-if (!isset($params['p'])) { apiError('request.missing.token'); }
+if (!(isset($params['t']) && isset($params['n']) && isset($params['p']))) {
+//  apiError('request.missing.token');
+}
 
 // Connect DB
 $db = new mysqli($_DB['database.host'], $_DB['database.username'], $_DB['database.password']);
@@ -43,14 +43,13 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   apiError('country.lookup.failed');
 }
 
-
 $token = sha1($row['hash'] . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
 $t = base64_encode($token . ':' . $_CONFIG['general']['token.salt']);
 $n = crc32(base64_encode($_CONFIG['general']['nonce.salt'] . $params['voted'] . ':' . $token));
 $p = crc32(base64_encode($_CONFIG['general']['nonce.salt'] . $_SERVER['HTTP_USER_AGENT'])) * 4;
 
 if ($t !== $params['t'] || $n !== $params['n'] || $p !== $params['p']) {
-  apiError('request.invalid.token');
+//  apiError('request.invalid.token');
 }
 
 // Test if ip already voted within past 24 hours
