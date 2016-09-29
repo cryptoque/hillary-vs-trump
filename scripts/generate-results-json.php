@@ -83,7 +83,7 @@ if (!file_put_contents($options['file'], json_encode(array(
   'D' => $totalPercentageH,
   'R' => $totalPercentageT,
   'countries' => array_orderby($countryVotes, 'votes', SORT_DESC)
-), FILE_APPEND | LOCK_EX))) {
+), LOCK_EX))) {
   die('Saving failed: ' . $options['file']);
 }
 
