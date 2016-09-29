@@ -16,8 +16,10 @@
         <a ui-sref="root.info">How it works</a>
       </p>
 
-      <div class="world-map__pie">
-        <pie percentages="[$ctrl.votingResults.R, $ctrl.votingResults.D]" colors="['#EF5C5C', '#00A7FF']"></pie>
+      <div class="world-map__pie pie">
+        <svg viewBox="0 0 32 32">
+          <circle r="16" cx="16" cy="16" ng-style="{'strokeDasharray': $ctrl.votingResults.D + ' 100'}" />
+        </svg>
 
         <div class="world-map__R">
           {{'shortname.trump' | translate}}<br />

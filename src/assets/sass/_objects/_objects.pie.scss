@@ -1,0 +1,21 @@
+.pie {
+  position: relative;
+  width: inuit-rem(190px);
+  height: inuit-rem(190px);
+  display: inline-block;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    background: $color-republicans;
+    border-radius: 50%;
+  }
+
+  circle {
+    fill: $color-republicans;
+    stroke: $color-democrats;
+    stroke-width: 32;
+    stroke-dasharray: 1 100; /* for 38% */
+  }
+}
