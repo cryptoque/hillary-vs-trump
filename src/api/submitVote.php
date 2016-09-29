@@ -1,6 +1,10 @@
 <?php
 $startTime = microtime(true);
 
+if (time() > 1478563200) {
+  apiError('polls.closed');
+}
+
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', ROOTPATH . '/logs/votes.log');
@@ -10,7 +14,6 @@ require __DIR__ . '/functions.php';
 use GeoIp2\WebService\Client;
 
 define('CLIENTIP', STAGING ? '1.0.0.0' : getIp());
-//apiError('polls.closed');
 
 $_CONFIG = parse_ini_file(ROOTPATH . '/config/config.ini', true);
 $_DB = STAGING ? $_CONFIG['staging'] : $_CONFIG['production'];

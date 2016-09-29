@@ -10,6 +10,7 @@ angular.module('Vote', [
 
   .constant('Languages', [ 'en', 'fr', 'de', 'es', 'pt', 'ar', 'ru', 'ja', 'zh-CN'  ])
   .constant('CountryThreshold', 20)
+  .constant('EndDate', 1478563200)
   .constant('Ns', 'OCqSjB45mTglboj6Y5lxAXF0zDB7TkNPShN2h3vkSqpDqE1oTsoUzSSDV7oxdssiOglgASaY6p7YKJMrXIcBlti1QgBDWfnosGG1')
   .constant('Ts', '1JZDf51XSFzswQ1xoTqNjGGQyPswcfZlO5bmokOjAO4uRDdkGfTQivejlnZHYwrknjcX5MzhR5ElUOaEu0y5Tk9kLFyj2c74khWO')
 
@@ -63,10 +64,11 @@ angular.module('Vote', [
         },
         controllerAs: '$ctrl',
         //@ngInject
-        controller: function($timeout, $state, $stateParams, votingResults, topoData) {
+        controller: function($timeout, $state, $stateParams, votingResults, topoData, EndDate) {
           this.votingResults = votingResults.data;
           this.topoData = topoData.data;
           this.timeScale = $stateParams.scale;
+          this.endDateReached = (new Date().getTime() / 1000) > EndDate;
 
           // Reload page every 61 seconds
           let once = $timeout(() => {
