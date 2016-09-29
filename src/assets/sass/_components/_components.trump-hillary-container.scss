@@ -26,32 +26,69 @@
         z-index: 990;
       }
     }
+  }
+}
 
+
+.trump-hillary-container {
+  .trump-hillary-container__trump,
+  .trump-hillary-container__hillary {
     @media screen and (max-width: #{map-get($breakpoints, medium)}) {
-      &.trump-hillary-container__trump.trump-hillary-container--winner {
-        margin-left: -100%;
-      }
       &.trump-hillary-container__hillary.trump-hillary-container--winner {
         padding-left: 100%;
+        margin-left: 0;
+      }
+      &.trump-hillary-container__trump.trump-hillary-container--winner {
+        margin-left: -100%;
+        padding-left: 0;
       }
     }
   }
-
   .trump-hillary-container__trump {
     order: 1;
   }
-
   .trump-hillary-container__hillary {
     order: 0;
+  }
+
+  &.trump-hillary-container--switcheroo {
+    .trump-hillary-container__trump,
+    .trump-hillary-container__hillary {
+      @media screen and (max-width: #{map-get($breakpoints, medium)}) {
+        &.trump-hillary-container__hillary.trump-hillary-container--winner {
+          padding-left: 100%;
+          margin-left: 0;
+        }
+        &.trump-hillary-container__trump.trump-hillary-container--winner {
+          padding-left: 100%;
+          margin-left: 0;
+        }
+
+      }
+    }
+    .trump-hillary-container__trump {
+      order: 0;
+    }
+    .trump-hillary-container__hillary {
+      order: 1;
+    }
   }
 }
 
 html[dir=rtl] {
   .trump-hillary-container__trump {
     order: 0;
-
   }
   .trump-hillary-container__hillary {
     order: 1;
+  }
+
+  .trump-hillary-container--switcheroo {
+    .trump-hillary-container__trump {
+      order: 1;
+    }
+    .trump-hillary-container__hillary {
+      order: 0;
+    }
   }
 }

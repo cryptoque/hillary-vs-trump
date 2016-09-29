@@ -1,4 +1,7 @@
-<section class="ballot" ng-show="$ctrl.isVisible" ng-class="{'animate--ballot-left': $ctrl.yourVote === 'R', 'animate--ballot-right': $ctrl.yourVote === 'D'}">
+<section class="ballot" ng-show="$ctrl.isVisible" ng-class="{
+  'animate--ballot-left': $ctrl.yourVote === 'R' && !$ctrl.switcheroo || $ctrl.yourVote === 'D' && $ctrl.switcheroo,
+  'animate--ballot-right': $ctrl.yourVote === 'R' && $ctrl.switcheroo || $ctrl.yourVote === 'D' && !$ctrl.switcheroo
+  }">
   <a href class="ballot__close icon icon--close" ng-click="$ctrl.closeModal()"></a>
 
   <!-- Vote now -->

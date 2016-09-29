@@ -194,7 +194,8 @@
   .animate--ballot-right.ng-hide-remove {
     display: block !important;
     transform: translate(0, 100%);
-    animation: ballotSlideDown .6s cubic-bezier(0.86, 0, 0.07, 1) 2.5s forwards;
+    animation: ballotSlideDown .6s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+    animation-delay: 2.5s;
   }
 }
 
