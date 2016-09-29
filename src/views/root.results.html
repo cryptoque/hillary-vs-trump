@@ -7,8 +7,8 @@
       <h1 class="world-map__title">{{'worldmap.title' | translate}}<br />{{'worldmap.subtitle' | translate}}</h1>
       <p class="world-map__timescale" ng-if="!$ctrl.endDateReached">
         <select ng-change="$ctrl.switchTimeScale()" ng-model="$ctrl.timeScale">
-          <option value="day">{{'worldmap.scale.day' | translate}}</option>
           <option value="total">{{'worldmap.scale.total' | translate}}</option>
+          <option value="day">{{'worldmap.scale.day' | translate}}</option>
         </select>
       </p>
       <p class="world-map__sub">
