@@ -46,6 +46,11 @@
   .world-map__D {
     right: inuit-rem(15px);
   }
+
+  .world-map__pie {
+    position: relative;
+    display: inline-block;
+  }
 }
 
 #world-map-leaflet {
