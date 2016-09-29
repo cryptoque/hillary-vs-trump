@@ -25,9 +25,10 @@
 
   .world-map__sub {
     @extend %font--bold;
-    color: $color-democrats;
+    color: $color-link;
     font-size: inuit-rem($inuit-font-size-tiny);
     margin-bottom: inuit-rem(30px);
+    line-height: inuit-rem(20px);
   }
 
   .world-map__R,

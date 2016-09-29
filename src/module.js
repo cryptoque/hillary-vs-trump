@@ -52,7 +52,7 @@ angular.module('Vote', [
       .state('root.results', {
         url: '/results/:scale',
         params: {
-          scale: 'day'
+          scale: 'total'
         },
         resolve: {
           votingResults: ($stateParams, apiService) => {
