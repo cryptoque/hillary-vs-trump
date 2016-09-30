@@ -89,8 +89,7 @@ class BallotController {
       typeof window.spawn !== 'undefined' ||
       typeof window.webdriver !== 'undefined' ||
       typeof window.domAutomation !== 'undefined' ||
-      typeof window.domAutomationController !== 'undefined' ||
-      (window.outerWidth === 0 && window.outerHeight === 0);
+      typeof window.domAutomationController !== 'undefined';
   }
 }
 
