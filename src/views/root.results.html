@@ -5,12 +5,10 @@
 
     <div class="world-map__header">
       <h1 class="world-map__title">{{'worldmap.title' | translate}}<br />{{'worldmap.subtitle' | translate}}</h1>
-      <p class="world-map__timescale" ng-if="!$ctrl.endDateReached">
-        <select ng-change="$ctrl.switchTimeScale()" ng-model="$ctrl.timeScale">
-          <option value="total">{{'worldmap.scale.total' | translate}}</option>
-          <option value="day">{{'worldmap.scale.day' | translate}}</option>
-        </select>
-      </p>
+      <div class="world-map__timescale-container" ng-if="!$ctrl.endDateReached">
+        <a href ui-sref="root.results({scale: 'total'})" class="world-map__timescale" ui-sref-active="world-map__timescale--active">{{'worldmap.scale.total' | translate}}</a>
+        <a href ui-sref="root.results({scale: 'day'})" class="world-map__timescale" ui-sref-active="world-map__timescale--active">{{'worldmap.scale.day' | translate}}</a>
+      </div>
       <p class="world-map__sub">
         {{'worldmap.totalvotes' | translate:{'votes': ($ctrl.votingResults.total.D + $ctrl.votingResults.total.R) } }}<br />
         <a ui-sref="root.info">How it works</a>

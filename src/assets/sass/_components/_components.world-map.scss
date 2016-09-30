@@ -46,6 +46,25 @@
   .world-map__D {
     right: inuit-rem(15px);
   }
+
+  .world-map__timescale-container {
+    display: inline-block;
+    @include inuit-clearfix();
+
+    .world-map__timescale {
+      float: left;
+      text-decoration: none;
+      background-color: $color-background-fallback;
+      padding: inuit-rem(10px) inuit-rem(20px);
+      color: #c5cfd5;
+      margin-bottom: inuit-rem(20px);
+
+      &.world-map__timescale--active {
+        color: #FFF;
+        background-color: $color-background;
+      }
+    }
+  }
 }
 
 #world-map-leaflet {

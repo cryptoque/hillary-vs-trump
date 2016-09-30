@@ -64,7 +64,7 @@ angular.module('Vote', [
         },
         controllerAs: '$ctrl',
         //@ngInject
-        controller: function($timeout, $state, $stateParams, votingResults, topoData, EndDate) {
+        controller: function($scope, $timeout, $state, $stateParams, votingResults, topoData, EndDate) {
           this.votingResults = votingResults.data;
           this.topoData = topoData.data;
           this.timeScale = $stateParams.scale;
@@ -76,9 +76,9 @@ angular.module('Vote', [
             $state.reload();
           }, 60001);
 
-          this.switchTimeScale = function() {
-            $state.go($state.current, { scale: this.timeScale });
-          }
+          $scope.$on('$destroy', () => {
+            $timeout.cancel(once);
+          });
         },
         template: require('./views/root.results.html')
       })
