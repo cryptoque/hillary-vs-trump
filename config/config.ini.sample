@@ -4,6 +4,7 @@ maxmind.key = ""
 hash.secret = ""
 token.salt = ""
 nonce.salt = ""
+ip.salt = ""
 
 [production]
 database.host = "localhost"

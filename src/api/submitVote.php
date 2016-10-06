@@ -39,8 +39,10 @@ if ($db->connect_errno) {
 }
 $db->select_db($_DB['database.dbname']);
 
+$hashedIp = sha1($_CONFIG['general']['ip.salt'] . sha1(CLIENTIP));
+
 // Test if IP already looked up
-$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . sha1(CLIENTIP) . "' LIMIT 1");
+$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . $hashedIp . "' LIMIT 1");
 if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCode = $row['country'];
 } else {
@@ -56,14 +58,14 @@ if ($t !== $params['t'] || $n !== $params['n']) {
 }
 
 // Test if ip already voted within past 24 hours
-$results = $db->query("SELECT `hash` FROM `votes` WHERE `hash` = '" . sha1(CLIENTIP) . "' AND `ts` > " . (time() - (24*60*60)) . " LIMIT 1");
+$results = $db->query("SELECT `hash` FROM `votes` WHERE `hash` = '" . $hashedIp . "' AND `ts` > " . (time() - (24*60*60)) . " LIMIT 1");
 if ($results->num_rows) {
   apiError('request.not.unique');
 }
 
 // Insert vote into db
 $db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
-    "VALUES ('" . time() . "', '" . sha1(CLIENTIP) . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '-1')")
+    "VALUES ('" . time() . "', '" . $hashedIp . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '-1')")
     or apiError('db.error');
 
 

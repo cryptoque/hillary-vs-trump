@@ -27,8 +27,8 @@ $db->select_db($_DB['database.dbname']);
 
 
 // Test if IP already looked up
-$hash = sha1(CLIENTIP);
-$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . $hash . "' LIMIT 1");
+$hashedIp = sha1($_CONFIG['general']['ip.salt'] . sha1(CLIENTIP));
+$results = $db->query("SELECT `country`, `hash` FROM `country-lookup` WHERE `hash` = '" . $hashedIp . "' LIMIT 1");
 if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCode = $row['country'];
 
@@ -43,12 +43,12 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   }
 
   // Insert country into db for caching purposes
-  $db->query("INSERT INTO `country-lookup` (`hash`, `country`) VALUES ('" . $hash . "', '" . $countryCode . "')")
+  $db->query("INSERT INTO `country-lookup` (`hash`, `country`) VALUES ('" . $hashedIp . "', '" . $countryCode . "')")
      or apiError('error.geoip');
 }
 
 
-$token = sha1($hash . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
+$token = sha1($hashedIp . $_CONFIG['general']['hash.secret'] . date('Y-m-d'));
 echo json_encode(array('country' => $countryCode, 'token' => $token));
 die;
 
