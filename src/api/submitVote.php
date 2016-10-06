@@ -64,8 +64,8 @@ if ($results->num_rows) {
 }
 
 // Insert vote into db
-$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`, `anon`)" .
-    "VALUES ('" . time() . "', '" . $hashedIp . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "', '-1')")
+$db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`)" .
+    "VALUES ('" . time() . "', '" . $hashedIp . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "')")
     or apiError('db.error');
 
 
