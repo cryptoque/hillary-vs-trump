@@ -65,9 +65,12 @@ if ($results->num_rows) {
 
 // Insert vote into db
 $db->query("INSERT INTO `votes` (`ts`, `hash`, `vote`, `country`)" .
-    "VALUES ('" . time() . "', '" . $hashedIp . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "')")
-    or apiError('db.error');
+  "VALUES ('" . time() . "', '" . $hashedIp . "', '" . mysqli_escape_string($db, $params['voted']) . "', '" . $countryCode . "')");
 
+if ($db->error) {
+  file_put_contents(ROOTPATH . '/logs/dberror.log', $db->error . PHP_EOL, FILE_APPEND);
+  apiError('db.error');
+}
 
 $endTime = microtime(true) - $startTime;
 logIt('Success. Vote = ' . $params['voted'] . ", Country = " . $countryCode . ' (' . $endTime . 'ms)');

@@ -63,7 +63,7 @@ ALTER TABLE `country-lookup`
 -- Indexes for table `votes`
 --
 ALTER TABLE `votes`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `hash` (`hash`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
