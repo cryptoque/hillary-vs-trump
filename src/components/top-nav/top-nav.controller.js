@@ -6,6 +6,9 @@ class TopNavController {
 
     const now = new Date() / 1000;
     this.daysLeft = Math.floor((EndDate - now) / (3600 * 24));
+    if (this.daysLeft < 0) {
+      this.daysLeft = 0;
+    }
   }
 
   sendGAEvent(label, value) {

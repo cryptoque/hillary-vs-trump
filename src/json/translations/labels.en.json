@@ -4,7 +4,7 @@
   "page.description": "Worldwide vote 2016. Who do you vote for U.S. president? Donald Trump or Hillary Clinton?",
   "share.headline": "Who do you vote for U.S. president?",
   "share.action": "I voted: {{candidate}}.",
-  "error.polls.closed": "The polls are closed",
+  "error.polls.closed": "The poll is closed",
   "error.request.invalid.ip": "Unexpected error, please try again later",
   "error.request.invalid.parameters": "Unexpected error",
   "error.request.missing.token": "Unexpected error, please try again later",

@@ -1,10 +1,6 @@
 <?php
 $startTime = microtime(true);
 
-if (time() > 1478563200) {
-  apiError('polls.closed');
-}
-
 define('ROOTPATH', __DIR__ . '/../../');
 define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
 define('LOGFILE', ROOTPATH . '/logs/votes.log');
@@ -17,6 +13,11 @@ define('CLIENTIP', STAGING ? '1.0.0.0' : getIp());
 
 $_CONFIG = parse_ini_file(ROOTPATH . '/config/config.ini', true);
 $_DB = STAGING ? $_CONFIG['staging'] : $_CONFIG['production'];
+
+// Closing polls on the day of election
+if (time() > 1478563200) {
+  apiError('polls.closed');
+}
 
 // Validate client IP
 if (filter_var(CLIENTIP, FILTER_VALIDATE_IP) === false) {
