@@ -1,7 +1,7 @@
 <?php
 
 define('ROOTPATH', __DIR__ . '/../../');
-define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
+define('STAGING', gethostname() !== 'hillary-vs-trump');
 define('LOGFILE', ROOTPATH . '/logs/votes.log');
 
 require ROOTPATH . '/vendor/autoload.php';
@@ -33,10 +33,17 @@ if ($row = $results->fetch_array(MYSQLI_ASSOC)) {
   $countryCode = $row['country'];
 
 } else {
-  // Get country from IP using maxmind api service
-  $geoIpClient = new Client($_CONFIG['general']['maxmind.userid'], $_CONFIG['general']['maxmind.key']);
-  $record = $geoIpClient->country(CLIENTIP);
-  $countryCode = $record->country->isoCode;
+  // Ip to country lookup is done using maxmind api service (https://www.maxmind.com/en/home)
+  try {
+    $geoIpClient = new Client($_CONFIG['general']['maxmind.userid'], $_CONFIG['general']['maxmind.key']);
+    $record = $geoIpClient->country(CLIENTIP);
+    $countryCode = $record->country->isoCode;
+  } catch (Exception $e) {
+    // Fallback for dev
+    if (STAGING) {
+      $countryCode = 'AU';
+    }
+  }
 
   if (strlen($countryCode) !== 2) {
     apiError('error.geoip');

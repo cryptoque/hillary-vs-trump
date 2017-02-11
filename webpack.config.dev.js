@@ -1,7 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const WebpackMd5Hash = require('webpack-md5-hash');
-const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');

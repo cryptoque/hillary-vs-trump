@@ -1,8 +1,8 @@
 <?php
 $startTime = microtime(true);
 
-define('ROOTPATH', __DIR__ . '/../../');
-define('STAGING', $_SERVER['SERVER_NAME'] === 'localhost');
+define('ROOTPATH', __DIR__ . '/../../');;
+define('STAGING', gethostname() !== 'hillary-vs-trump');
 define('LOGFILE', ROOTPATH . '/logs/votes.log');
 
 require ROOTPATH . '/vendor/autoload.php';

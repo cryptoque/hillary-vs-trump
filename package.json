@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "php -S localhost:9000 -t src/",
-    "serve": "webpack-dev-server --inline --host 0.0.0.0 --port 3000 --config webpack.config.dev.js --content-base src",
+    "serve": "./node_modules/.bin/webpack-dev-server --inline --host 0.0.0.0 --port 3000 --config webpack.config.dev.js --content-base src",
     "build": "./scripts/build.sh",
     "install-composer": "./scripts/install-composer.sh"
   },
@@ -33,7 +32,8 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.3",
     "webpack-md5-hash": "0.0.5"
   },
   "dependencies": {
