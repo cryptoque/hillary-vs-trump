@@ -1,10 +1,10 @@
 [general]
-maxmind.userid = "115609"
-maxmind.key = ""
-hash.secret = ""
-token.salt = ""
-nonce.salt = ""
-ip.salt = ""
+maxmind.userid = "USER_ID_FROM_MAXMIND"
+maxmind.key = "USER_KEY_FROM_MAXMIND"
+hash.secret = "INSERT_RANDOM_AND_LONG_STRING_HERE"
+token.salt = "INSERT_RANDOM_AND_LONG_STRING_HERE"
+nonce.salt = "INSERT_RANDOM_AND_LONG_STRING_HERE"
+ip.salt = "INSERT_RANDOM_AND_LONG_STRING_HERE"
 
 [production]
 database.host = "localhost"
@@ -13,7 +13,7 @@ database.username = "hillary-vs-trump"
 database.password = ""
 
 [staging]
-database.host = "hillary-vs-trump.fili.nl"
-database.dbname = "hillary-vs-trump-test"
-database.username = "hillary-vs-trump-test"
-database.password = ""
+database.host = "mysql"
+database.dbname = "hillary-vs-trump"
+database.username = "root"
+database.password = "1234"

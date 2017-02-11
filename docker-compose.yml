@@ -1,0 +1,26 @@
+hillary-vs-trump-api:
+  build: .
+  ports:
+    - "9000:9000"
+  links:
+    - mysql
+  volumes:
+    - .:/home/docker/app
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  ports:
+    - "9001:80"
+  links:
+    - mysql
+  environment:
+    PMA_HOST: mysql
+    PMA_USER: root
+    PMA_PASSWORD: 1234
+mysql:
+  image: mysql:5.5
+  ports:
+    - "3307:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: 1234
+  volumes:
+    - ./config/schema:/docker-entrypoint-initdb.d
